@@ -29,7 +29,7 @@ No build tooling is required; open the HTML files directly or via a lightweight 
 ---
 
 ## 3. Current Implementation Snapshot
-- **Hero card (landing):** Static background image with overlay text (`card-hero`). The CTA will be added in the roadmap.
+- **Hero card (landing):** Static background image with overlay text (`card-hero`) including a new uppercase label (`.label`). The CTA will be added in the roadmap.
 - **Brew cards:** 9 cards with original product images, titles in English (will stay until localized asset names are available), and overlay links (only French Press wired up now).
 - **French Press page:** Hero image, intro, specifications, instructions, and navigation back to the landing page; all content localized in German.
 - **Footer:** Branded for Hellers Kaffees with address, hours, placeholder phone (`nicht angegeben`), and newsletter sign-up (non-functional).
@@ -40,15 +40,22 @@ All typography currently relies on Adobe Typekit (`p22-mackinac-pro`) and `GTAme
 ---
 
 ## 4. Design System (Current)
-- **Colors:**
+- **Colors & Tokens:**
   - Background (`--bg`): `#f7f5f4`
+  - Surface (`--surface`): `#ffffff`
   - Primary text (`--text`): `#111d3d`
+  - Muted text (`--text-muted`): `#5c6785`
   - Accent beige (`--accent-beige`): `#e6dccf`
-  - Footer background: `#0e1a3a`
-- **Typography:**
-  - Headings & hero text: `p22-mackinac-pro`, serif.
-  - Body & UI text: `GTAmerica`, with fallbacks to Poppins/System UI.
-  - Font sizing is fixed per section (hero 42–60px, body 18px, metadata 15px).
+  - Accent terrakotta (`--accent-terracotta`): `#c97a5c` (Hero-Label, Buttons)
+  - Accent Salbei (`--accent-sage`): `#7e9c87` (Sekundäre Labels)
+  - Accent Ink (`--accent-ink`): `#0e1a3a` (Footer-Hintergrund)
+  - Dark-Mode-Platzhalter: `--bg-dark`, `--surface-dark`, `--text-dark`, `--text-muted-dark`, `--accent-terracotta-dark`, `--accent-sage-dark` – vorgesehen für Phase 8 Toggle.
+- **Typography & Scale:**
+  - Serif: `--font-serif` → `p22-mackinac-pro`
+  - Sans: `--font-sans` → `GTAmerica` mit Poppins/System-Fallback
+  - Type-Scale via `clamp()` Variablen (`--font-size-display`, `--font-size-h1` … `--font-size-label`), Körpertext `--font-size-body` (18px) und Metadaten `--font-size-small` (15px).
+  - `.label` und `h4` nutzen nun die Sans-Serif in Versalien mit `letter-spacing` für Sektionstitel.
+  - Metadaten und Spezifikationen verwenden `--text-muted` für klarere Hierarchie.
 - **Layout:**
   - Wrapper width: 1450px max with 50px horizontal padding (20px on mobile).
   - Cards grid uses flexbox with responsive breakpoints at 1024px (2 columns) and 640px (single column).
