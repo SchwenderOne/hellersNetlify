@@ -121,6 +121,13 @@ h4, h5, h6 {
   padding-right: 50px;
   margin-left: auto;
   margin-right: auto;
+  --wrapper-padding: 50px;
+}
+
+@media (max-width: 640px) {
+  .wrapper {
+    --wrapper-padding: 20px;
+  }
 }
 
 /* Grid */
@@ -175,10 +182,10 @@ article.card {
   width: 100vw;
   max-width: 100vw;
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  /* Break out of wrapper padding to reach viewport edges */
+  left: -50px;
+  margin-right: calc(-50px - 50vw + 100%);
+  margin-left: 0;
 }
 
 .image-container {
@@ -657,10 +664,10 @@ article.card {
     width: 100vw;
     max-width: 100vw;
     position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    /* Break out of wrapper padding to reach viewport edges */
+    left: -20px;
+    margin-right: calc(-20px - 50vw + 100%);
+    margin-left: 0;
   }
   .card-hero .hero-overlay { width: calc(100% - 40px); bottom: 16px; padding: 16px 18px; gap: 10px; }
   .card-hero .hero-overlay h2 { font-size: 28px; }
