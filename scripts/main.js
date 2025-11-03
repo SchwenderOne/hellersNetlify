@@ -24,8 +24,9 @@
 
   // Parallax effect for hero image (Phase 2)
   const initParallax = () => {
+    const heroCard = document.querySelector('.card-hero');
     const heroImageContainer = document.querySelector('.card-hero .image-container');
-    if (!heroImageContainer || window.hellers.env.hasReducedMotion()) {
+    if (!heroCard || !heroImageContainer || window.hellers.env.hasReducedMotion()) {
       return;
     }
 
@@ -35,29 +36,49 @@
     }
 
     let ticking = false;
-    const parallaxSpeed = 0.3; // Subtle effect
-
+    const parallaxSpeed = 0.15; // More subtle effect to prevent layout issues
+    
+    // Store initial values - will be set after page load
+    let heroCardOffsetTop = null;
+    let isInitialized = false;
+    
+    // Ensure image starts with no transform
+    heroImage.style.transform = '';
+    
     const updateParallax = () => {
       if (window.hellers.env.hasReducedMotion()) {
-        heroImage.style.transform = 'none';
+        heroImage.style.transform = '';
         return;
       }
 
-      const rect = heroImageContainer.getBoundingClientRect();
+      // Wait for initialization before applying parallax
+      if (!isInitialized || heroCardOffsetTop === null) {
+        return;
+      }
+
+      const rect = heroCard.getBoundingClientRect();
       const scrollY = window.scrollY || window.pageYOffset;
-      const elementTop = rect.top + scrollY;
       const windowHeight = window.innerHeight;
       
-      // Only apply parallax when hero is in viewport
-      if (rect.bottom > 0 && rect.top < windowHeight) {
-        const scrolled = scrollY - (elementTop - windowHeight);
-        const parallaxOffset = scrolled * parallaxSpeed;
+      // Only apply parallax when hero is in or near viewport
+      if (rect.bottom > 0 && rect.top < windowHeight * 1.5) {
+        // Calculate scroll progress from initial position
+        const scrollProgress = Math.max(0, scrollY - heroCardOffsetTop);
+        const parallaxOffset = scrollProgress * parallaxSpeed;
         
         // Limit parallax to prevent excessive movement
-        const maxOffset = 100;
-        const clampedOffset = Math.max(-maxOffset, Math.min(maxOffset, parallaxOffset));
+        const maxOffset = 50;
+        const clampedOffset = Math.min(maxOffset, Math.max(0, parallaxOffset));
         
-        heroImage.style.transform = `translate3d(0, ${clampedOffset}px, 0)`;
+        if (clampedOffset > 0) {
+          heroImage.style.transform = `translate3d(0, ${clampedOffset}px, 0)`;
+        } else {
+          // Reset to no transform when at top
+          heroImage.style.transform = '';
+        }
+      } else {
+        // Reset transform when scrolled past
+        heroImage.style.transform = '';
       }
       
       ticking = false;
@@ -70,11 +91,50 @@
       }
     };
 
+    // Initialize hero card position
+    const initPosition = () => {
+      const rect = heroCard.getBoundingClientRect();
+      heroCardOffsetTop = rect.top + (window.scrollY || window.pageYOffset);
+      isInitialized = true;
+      // Reset transform on initialization
+      heroImage.style.transform = '';
+    };
+
     // Disable parallax on mobile for performance
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     if (!isMobile) {
+      // Initialize after page is fully loaded and layout is stable
+      const initializeParallax = () => {
+        // Use requestAnimationFrame to ensure layout is calculated
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            initPosition();
+            updateParallax();
+          });
+        });
+      };
+      
+      // Wait for images to load before calculating position
+      if (heroImage.complete && document.readyState === 'complete') {
+        initializeParallax();
+      } else {
+        if (!heroImage.complete) {
+          heroImage.addEventListener('load', initializeParallax, { once: true });
+        }
+        if (document.readyState !== 'complete') {
+          window.addEventListener('load', initializeParallax, { once: true });
+        }
+        // Fallback: initialize after a delay if load event doesn't fire
+        setTimeout(initializeParallax, 500);
+      }
+      
       window.addEventListener('scroll', requestTick, { passive: true });
-      updateParallax(); // Initial call
+      window.addEventListener('resize', () => {
+        if (isInitialized) {
+          initPosition();
+          updateParallax();
+        }
+      }, { passive: true });
     }
   };
 

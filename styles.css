@@ -169,6 +169,8 @@ h4, h5, h6 {
   position: relative;
   width: 100%;
   overflow: hidden;
+  /* Ensure container maintains aspect ratio */
+  min-height: 0;
 }
 
 .image-container img {
@@ -178,6 +180,30 @@ h4, h5, h6 {
   object-fit: cover;
   transition: transform 400ms ease-out;
   will-change: transform;
+  /* Prevent layout shifts from transform */
+  backface-visibility: hidden;
+  transform-origin: center center;
+}
+
+.card-hero .image-container {
+  /* Ensure hero image container properly clips overflow */
+  position: relative;
+  overflow: hidden;
+  /* Maintain aspect ratio of image */
+  aspect-ratio: auto;
+}
+
+.card-hero .image-container img {
+  /* Ensure hero image maintains its aspect ratio */
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Start with image positioned at top */
+  object-position: center top;
+  object-fit: cover;
+  /* Ensure transform doesn't break layout */
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .card:not(.card-hero):hover .image-container img {
