@@ -129,16 +129,40 @@ h4, h5, h6 {
   flex-wrap: wrap;
   column-gap: 24px;
   row-gap: 36px;
-  padding-top: 36px;
+  padding-top: 0;
   padding-bottom: 56px;
 }
 
 .card {
   flex: 0 1 calc((100% - 48px) / 3);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.card:not(.card-hero):hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(14, 26, 58, 0.15);
+}
+
+.card:not(.card-hero):focus-within {
+  outline: 2px solid var(--accent-terracotta);
+  outline-offset: 4px;
+  border-radius: var(--radius-lg);
+}
+
+/* Respect reduced motion */
+[data-reduced-motion="true"] .card:not(.card-hero) {
+  transition: box-shadow 300ms ease;
+}
+
+[data-reduced-motion="true"] .card:not(.card-hero):hover {
+  transform: none;
 }
 
 .card-hero {
   flex: 0 0 100%;
+  margin-left: calc(-50px);
+  margin-right: calc(-50px);
+  width: calc(100% + 100px);
 }
 
 .image-container {
@@ -152,8 +176,16 @@ h4, h5, h6 {
   height: auto;
   display: block;
   object-fit: cover;
-  transition: transform 0.1s ease-out;
+  transition: transform 400ms ease-out;
   will-change: transform;
+}
+
+.card:not(.card-hero):hover .image-container img {
+  transform: scale(1.05);
+}
+
+[data-reduced-motion="true"] .card:not(.card-hero):hover .image-container img {
+  transform: none;
 }
 
 /* Parallax disabled for reduced motion */
@@ -163,6 +195,62 @@ h4, h5, h6 {
 
 /* Rounded corners for guide images (not hero) */
 .card:not(.card-hero) .image-container img { border-radius: var(--radius-lg); }
+
+/* Card Badges (Phase 3) */
+.card-badges {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 15;
+}
+
+.card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  line-height: 1;
+}
+
+.card-badge.badge-difficulty-easy {
+  background: rgba(126, 156, 135, 0.95);
+  color: var(--surface);
+}
+
+.card-badge.badge-difficulty-medium {
+  background: rgba(201, 122, 92, 0.95);
+  color: var(--surface);
+}
+
+.card-badge.badge-difficulty-advanced {
+  background: rgba(17, 29, 61, 0.95);
+  color: var(--surface);
+}
+
+.card-badge.badge-time {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text);
+}
+
+.card-badge-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  display: inline-block;
+}
 
 /* Titles under cards */
 .title {
@@ -518,6 +606,11 @@ h4, h5, h6 {
 @media (max-width: 640px) {
   .wrapper { padding-left: 20px; padding-right: 20px; }
   .card { flex: 0 0 100%; }
+  .card-hero {
+    margin-left: calc(-20px);
+    margin-right: calc(-20px);
+    width: calc(100% + 40px);
+  }
   .card-hero .hero-overlay { width: calc(100% - 40px); bottom: 16px; padding: 16px 18px; gap: 10px; }
   .card-hero .hero-overlay h2 { font-size: 28px; }
   .hero-cta-button { padding: 12px 24px; font-size: 0.6875rem; }

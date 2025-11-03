@@ -29,8 +29,8 @@ No build tooling is required; open the HTML files directly or via a lightweight 
 ---
 
 ## 3. Current Implementation Snapshot
-- **Hero card (landing):** Hero image with subtle parallax scroll effect (disabled on mobile and for `prefers-reduced-motion`). Overlay includes label (`.label`), heading, description, and CTA button ("Jetzt entdecken") that smoothly scrolls to `#brew-methods` section.
-- **Brew cards:** 9 cards with original product images, titles in English (will stay until localized asset names are available), and overlay links (only French Press wired up now).
+- **Hero card (landing):** Hero image with subtle parallax scroll effect (disabled on mobile and for `prefers-reduced-motion`). Overlay includes label (`.label`), heading, description, and CTA button ("Jetzt entdecken") that smoothly scrolls to `#brew-methods` section. Hero card breaks out of wrapper padding for full-width display.
+- **Brew cards:** 9 cards with hover effects (scale, lift, shadow), difficulty badges (Einfach/Mittel/Fortgeschritten), time badges (brew duration), and inline SVG icons (star for difficulty, clock for time). Cards have smooth transitions respecting `prefers-reduced-motion`. Only French Press is currently linked to a recipe page.
 - **French Press page:** Hero image, intro, specifications, instructions, and navigation back to the landing page; all content localized in German.
 - **Footer:** Branded for Hellers Kaffees with address, hours, placeholder phone (`nicht angegeben`), and newsletter sign-up (non-functional).
 - **Skript-Funktionalität:** `scripts/main.js` verwaltet `no-js`-Klasse, `prefers-reduced-motion`-Tracking, Parallax-Effekt für Hero-Bild (Phase 2) und Smooth-Scroll für Hero-CTA-Button.
