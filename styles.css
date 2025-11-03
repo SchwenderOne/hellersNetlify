@@ -144,6 +144,7 @@ h4, h5, h6 {
 .image-container {
   position: relative;
   width: 100%;
+  overflow: hidden;
 }
 
 .image-container img {
@@ -151,6 +152,13 @@ h4, h5, h6 {
   height: auto;
   display: block;
   object-fit: cover;
+  transition: transform 0.1s ease-out;
+  will-change: transform;
+}
+
+/* Parallax disabled for reduced motion */
+[data-reduced-motion="true"] .image-container img {
+  transform: none !important;
 }
 
 /* Rounded corners for guide images (not hero) */
@@ -191,6 +199,7 @@ h4, h5, h6 {
   align-items: center;
   gap: 12px;
   backdrop-filter: blur(6px);
+  z-index: 30;
 }
 
 .card-hero .hero-overlay h2 {
@@ -210,6 +219,52 @@ h4, h5, h6 {
 .card-hero .hero-overlay .label {
   color: var(--accent-terracotta);
   margin-bottom: 4px;
+}
+
+/* Hero CTA Button (Phase 2) */
+.hero-cta-button {
+  margin-top: 8px;
+  padding: 14px 32px;
+  background: var(--accent-terracotta);
+  color: var(--surface);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-label);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 200ms ease, transform 150ms ease, box-shadow 200ms ease;
+  box-shadow: 0 4px 12px rgba(201, 122, 92, 0.25);
+  text-decoration: none;
+  display: inline-block;
+  z-index: 25;
+  position: relative;
+}
+
+.hero-cta-button:hover {
+  background: #dd8a68;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(201, 122, 92, 0.35);
+}
+
+.hero-cta-button:active {
+  transform: translateY(0);
+}
+
+.hero-cta-button:focus-visible {
+  outline: 2px solid var(--accent-sage);
+  outline-offset: 3px;
+}
+
+/* Respect reduced motion for CTA */
+[data-reduced-motion="true"] .hero-cta-button {
+  transition: background 200ms ease;
+}
+
+[data-reduced-motion="true"] .hero-cta-button:hover {
+  transform: none;
 }
 
 /* Footer */
@@ -463,8 +518,9 @@ h4, h5, h6 {
 @media (max-width: 640px) {
   .wrapper { padding-left: 20px; padding-right: 20px; }
   .card { flex: 0 0 100%; }
-  .card-hero .hero-overlay { width: calc(100% - 40px); bottom: 16px; padding: 16px 18px; }
+  .card-hero .hero-overlay { width: calc(100% - 40px); bottom: 16px; padding: 16px 18px; gap: 10px; }
   .card-hero .hero-overlay h2 { font-size: 28px; }
+  .hero-cta-button { padding: 12px 24px; font-size: 0.6875rem; }
   .title { font-size: 24px; }
   .footer-grid { grid-template-columns: 1fr; }
   .guide-title { font-size: 36px; }
