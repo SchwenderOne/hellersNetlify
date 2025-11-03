@@ -216,18 +216,18 @@ article.card {
   /* Ensure hero image container properly clips overflow */
   position: relative;
   overflow: hidden;
-  /* Maintain aspect ratio of image */
-  aspect-ratio: auto;
   /* Ensure container covers full viewport */
   width: 100%;
-  height: 100%;
+  /* Set a reasonable aspect ratio for hero */
+  aspect-ratio: 16 / 9;
+  /* Ensure it's at least viewport height on smaller screens */
+  min-height: 60vh;
 }
 
 .card-hero .image-container img {
   /* Make image larger to prevent white space during parallax scrolling */
   width: calc(100% + 200px);
-  height: auto;
-  min-height: calc(100% + 100px);
+  height: 100%;
   display: block;
   /* Center horizontally, position at top vertically */
   object-position: center top;
@@ -676,10 +676,17 @@ article.card {
     margin-left: 0;
   }
   
+  .card-hero .image-container {
+    /* Adjust aspect ratio for mobile */
+    aspect-ratio: 4 / 3;
+    min-height: 50vh;
+  }
+  
   .card-hero .image-container img {
     /* Smaller extra width on mobile */
     width: calc(100% + 100px);
     margin-left: -50px;
+    height: 100%;
   }
   .card-hero .hero-overlay { width: calc(100% - 40px); bottom: 16px; padding: 16px 18px; gap: 10px; }
   .card-hero .hero-overlay h2 { font-size: 28px; }
