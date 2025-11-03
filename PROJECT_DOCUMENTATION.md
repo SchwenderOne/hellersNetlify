@@ -22,6 +22,7 @@ This document is the single source of truth for the Hellers Kaffees brew guides 
 | `assets/` | Placeholder directory for icons, SVGs, and future static assets. |
 | `BREW_GUIDES_ANALYSIS.md` | Original deep-dive analysis of the reference site. |
 | `ANALYSIS_SUMMARY.md` | Condensed summary of the initial analysis. |
+| `DEVELOPMENT_PLAN.md` | Detailed multi-phase development plan for roadmap implementation. |
 | `PROJECT_DOCUMENTATION.md` | **This document.** |
 
 No build tooling is required; open the HTML files directly or via a lightweight static server.
@@ -29,11 +30,11 @@ No build tooling is required; open the HTML files directly or via a lightweight 
 ---
 
 ## 3. Current Implementation Snapshot
-- **Hero card (landing):** Hero image with subtle parallax scroll effect (disabled on mobile and for `prefers-reduced-motion`). Overlay includes label (`.label`), heading, description, and CTA button ("Jetzt entdecken") that smoothly scrolls to `#brew-methods` section. Hero card breaks out of wrapper padding for full-width display.
-- **Brew cards:** 9 cards with hover effects (scale, lift, shadow), difficulty badges (Einfach/Mittel/Fortgeschritten), time badges (brew duration), and inline SVG icons (star for difficulty, clock for time). Cards have smooth transitions respecting `prefers-reduced-motion`. Only French Press is currently linked to a recipe page.
+- **Hero card (landing):** Full viewport width hero section with subtle parallax scroll effect (disabled on mobile ≤768px and for `prefers-reduced-motion`). Hero card uses viewport width (`100vw`) with precise CSS variable-based positioning to align exactly with viewport edges (no left/right gaps). Hero image is 200px wider than viewport (100px on mobile) and centered with negative margins to prevent white space during parallax scrolling. Overlay includes uppercase label (`.label`), heading, description, and CTA button ("Jetzt entdecken") that smoothly scrolls to `#brew-methods` section. Parallax initialized after page load with proper position tracking.
+- **Brew cards:** 9 cards with hover effects (`translateY(-8px) scale(1.02)` with shadow), difficulty badges (Einfach/Mittel/Fortgeschritten with color coding: sage green, terracotta, dark navy), time badges (brew duration in minutes/hours), and inline SVG icons (star icon for difficulty, clock icon for time). Badges positioned absolutely in top-left corner with backdrop blur. Cards have smooth transitions respecting `prefers-reduced-motion`. Only French Press is currently linked to a recipe page. All cards have transparent backgrounds to prevent white boxes on hover.
 - **French Press page:** Hero image, intro, specifications, instructions, and navigation back to the landing page; all content localized in German.
-- **Footer:** Branded for Hellers Kaffees with address, hours, placeholder phone (`nicht angegeben`), and newsletter sign-up (non-functional).
-- **Skript-Funktionalität:** `scripts/main.js` verwaltet `no-js`-Klasse, `prefers-reduced-motion`-Tracking, Parallax-Effekt für Hero-Bild (Phase 2) und Smooth-Scroll für Hero-CTA-Button.
+- **Footer:** Branded for Hellers Kaffees with address, hours, placeholder phone (`nicht angegeben`), and newsletter sign-up (non-functional). Uses updated accent colors for buttons and improved typography hierarchy.
+- **Skript-Funktionalität:** `scripts/main.js` verwaltet `no-js`-Klasse, `prefers-reduced-motion`-Tracking, Parallax-Effekt für Hero-Bild mit initialisierung nach Page-Load, Smooth-Scroll für Hero-CTA-Button, und `window.hellers.env` Namespace für zukünftige Erweiterungen.
 
 All typography currently relies on Adobe Typekit (`p22-mackinac-pro`) and `GTAmerica` (with fallbacks) via CSS. Google Fonts includes Poppins for general sans-serif fallback.
 
@@ -57,8 +58,9 @@ All typography currently relies on Adobe Typekit (`p22-mackinac-pro`) and `GTAme
   - `.label` und `h4` nutzen nun die Sans-Serif in Versalien mit `letter-spacing` für Sektionstitel.
   - Metadaten und Spezifikationen verwenden `--text-muted` für klarere Hierarchie.
 - **Layout:**
-  - Wrapper width: 1450px max with 50px horizontal padding (20px on mobile).
-  - Cards grid uses flexbox with responsive breakpoints at 1024px (2 columns) and 640px (single column).
+  - Wrapper width: 1450px max with 50px horizontal padding (20px on mobile). CSS variable `--wrapper-padding` used for consistent spacing.
+  - Hero card uses `100vw` width with `left: calc(-1 * var(--wrapper-padding))` to break out to viewport edges. Image container uses `overflow: hidden` to clip larger image (200px wider on desktop, 100px on mobile).
+  - Cards grid uses flexbox with responsive breakpoints at 1024px (2 columns) and 640px (single column). Cards have no padding/margin/background to prevent white boxes on hover.
   - French Press page uses a 1fr / 1.5fr CSS grid that stacks on tablet/mobile.
 
 ---
@@ -74,31 +76,31 @@ If new assets are required (e.g., icons, illustrations), store links here and en
 
 ## 6. Testing & Tooling
 - **Local Preview:** Open `index.html` or `french-press.html` directly in the browser or use a static server (`python -m http.server`), noting instructions to prefer absolute paths for tool commands.
-- **Playwright MCP:** Use `browser_navigate` to open local files (`file:///Users/schwenderone/Documents/brewtest/index.html`) and `browser_take_screenshot` for documentation. Monitor console via `browser_console_messages` before delivery.
-- **Responsive Checks:** Use browser dev tools or Playwright evaluation to ensure breakpoints behave as expected. No automated tests exist yet.
+- **Playwright MCP:** Use `browser_navigate` to open local files (`file:///Users/schwenderone/Documents/brewtest/index.html`) and `browser_take_screenshot` for documentation. Monitor console via `browser_console_messages` before delivery. Verified with Playwright: hero alignment (viewport edges), image coverage during scrolling (no white space), parallax behavior, badge positioning, and responsive breakpoints.
+- **Responsive Checks:** Use browser dev tools or Playwright evaluation to ensure breakpoints behave as expected. Verified breakpoints: 1024px (2 columns), 640px (single column), hero positioning adjusts for mobile padding (20px). No automated tests exist yet.
 
 ---
 
 ## 7. Roadmap — Approved Enhancements
 The user selected the following features for the next development phase. Treat this list as prioritized backlog items. Each bullet includes key requirements and notes.
 
-### 7.1 Hero Enhancements
-- **Parallax Header:** Implement a scrolling parallax effect for the hero image on `index.html`. Keep it subtle to avoid motion sickness. Ensure it degrades gracefully on mobile (either disable or simplify).
-- **Hero CTA Panel:** Add a prominent call-to-action overlay (e.g., "Jetzt entdecken" button) inside the hero overlay. Maintain accessibility (ARIA labels, contrast) and connect to relevant content (e.g., scroll to brew cards or anchor).
+### 7.1 Hero Enhancements ✅ **COMPLETED**
+- **Parallax Header:** ✅ Implemented subtle parallax effect (0.15 speed, max 50px offset) with proper initialization after page load. Disabled on mobile (≤768px) and respects `prefers-reduced-motion`. Image is 200px wider than viewport (100px on mobile) with negative margins to prevent white space during scrolling.
+- **Hero CTA Panel:** ✅ Added "Jetzt entdecken" button with terracotta accent styling, smooth scroll to `#brew-methods`, proper ARIA labels, and focus states. Button includes hover effects respecting reduced motion.
 
-### 7.2 Brew Card Interactions
-Implement all three interaction upgrades across the brew cards:
-1. **Hover Interactions:** Add smooth transitions (scale, shadow, maybe slight tilt) with reduced motion respect (use `prefers-reduced-motion`).
-2. **Tag Badges:** Introduce small badges (e.g., "Einfach", flavor notes) positioned consistently. Determine taxonomy (difficulty, flavor, brew time) and translate into German.
-3. **Illustrative Icons:** Design or source simple line icons representing each brewing method. Icons should harmonize with the color palette and appear either beside titles or within badges.
+### 7.2 Brew Card Interactions ✅ **COMPLETED**
+All three interaction upgrades implemented:
+1. **Hover Interactions:** ✅ Smooth transitions (`translateY(-8px) scale(1.02)` with enhanced shadow), fully respects `prefers-reduced-motion` (transform disabled, shadow-only on reduced motion).
+2. **Tag Badges:** ✅ Badge system with difficulty taxonomy (Einfach=sage, Mittel=terracotta, Fortgeschritten=navy) and time badges (brew duration). All labels in German, positioned consistently in top-left with backdrop blur.
+3. **Illustrative Icons:** ✅ Inline SVG icons (star for difficulty, clock for time) with proper sizing and color inheritance. Icons integrated into badges.
 
 ### 7.3 Storytelling Sections (Landing Page)
 - **Brew Basics Infographic:** Add a new section (below cards) depicting grind sizes, ratios, and water temperature. Use responsive SVG or CSS to render a horizontal infographic. Provide concise German labels.
 - **Farm-to-Cup Timeline:** Create a timeline component showcasing the coffee journey (Farm → Rösten → Brühen). Use icons/illustrations and short descriptions. Consider using a horizontal layout on desktop and vertical on mobile.
 
-### 7.4 Visual Refresh
-- **Accent Color Palette:** Extend the color system with at least two new accent colors (e.g., muted terracotta, sage). Update CSS variables (`:root`) and apply to buttons, badges, headings, etc. Document the new palette in this file when ready.
-- **Font Hierarchy:** Adjust typography to introduce clearer hierarchy (section labels in uppercase sans-serif, refined pairing between serif and sans). Update `styles.css` accordingly and ensure consistent usage across pages.
+### 7.4 Visual Refresh ✅ **COMPLETED**
+- **Accent Color Palette:** ✅ Extended with terracotta (`--accent-terracotta: #c97a5c`) and sage (`--accent-sage: #7e9c87`), plus ink (`--accent-ink: #0e1a3a`) for footer. All colors applied to buttons, badges, labels. Dark mode palette variables defined for Phase 8.
+- **Font Hierarchy:** ✅ Refined typography system with `clamp()`-based responsive type scale, `.label` class for uppercase section labels (sans-serif with letter-spacing), clear distinction between serif headings and sans body text. Consistent usage across all pages.
 
 ### 7.5 Contact/Location
 - **Map Embed:** Embed an interactive Google Map highlighting Hellers Kaffees in the footer or a new "Besuchen Sie uns" section. Ensure the embed is responsive and respects privacy (consider link vs inline iframe depending on policy).
@@ -121,14 +123,43 @@ Document any additional decisions or assets added during implementation back int
 
 ---
 
-## 8. Open Questions / Future Considerations
+## 8. Technical Implementation Notes
+
+### Hero Section Positioning
+The hero card uses a viewport-based positioning strategy to achieve full-width display while breaking out of the wrapper constraints:
+- **Width:** `100vw` to match viewport width exactly
+- **Positioning:** `left: calc(-1 * var(--wrapper-padding))` to break out of wrapper padding (50px desktop, 20px mobile)
+- **Margin:** `margin-right: calc(-1 * var(--wrapper-padding) - 50vw + 100%)` to extend to viewport right edge
+- **Result:** Hero aligns perfectly with viewport edges (0px) regardless of wrapper position
+
+### Parallax Implementation
+- **Speed:** 0.15 multiplier for subtle effect (max 50px offset)
+- **Initialization:** Waits for page load and image load before calculating position
+- **Performance:** Uses `requestAnimationFrame` with throttling, disabled on mobile (≤768px)
+- **Image Coverage:** Hero image is 200px wider than viewport (100px mobile) with `margin-left: -100px` (-50px mobile) to center the larger image, preventing white space during parallax movement
+- **Reduced Motion:** Parallax completely disabled when `prefers-reduced-motion: reduce` is detected
+
+### Badge System
+- **Position:** Absolute positioning in top-left corner of image container (`top: 12px, left: 12px`)
+- **Styling:** Backdrop blur with semi-transparent backgrounds, uppercase text with letter-spacing
+- **Taxonomy:** Difficulty (Einfach/Mittel/Fortgeschritten) with color coding, Time (brew duration in German format)
+- **Icons:** Inline SVG (14x14px) using `currentColor` for theming
+
+### Card Hover Effects
+- **Transform:** `translateY(-8px) scale(1.02)` with enhanced shadow
+- **Image Zoom:** Image scales to 1.05 on card hover
+- **Accessibility:** All transforms disabled when `prefers-reduced-motion` is active, shadow-only hover effect maintained
+
+---
+
+## 9. Open Questions / Future Considerations
 - **Asset Ownership:** Determine whether to replace CDN images with self-hosted versions for long-term stability.
 - **Newsletter Integration:** Decide on real email capture or integrate with an ESP (currently static).
 - **Additional Recipes:** Decide if each brew method will receive its own page like the French Press. If so, replicate the structure and localize content.
 
 ---
 
-## 9. Handover Checklist
+## 10. Handover Checklist
 Before ending any development session:
 1. Confirm `read_lints` is clean for edited files.
 2. Capture updated screenshots via Playwright if visuals change.
