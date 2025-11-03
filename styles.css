@@ -182,9 +182,9 @@ article.card {
   width: 100vw;
   max-width: 100vw;
   position: relative;
-  /* Break out of wrapper padding to reach viewport edges */
-  left: -50px;
-  margin-right: calc(-50px - 50vw + 100%);
+  /* Break out of wrapper to viewport edges - account for wrapper padding */
+  left: calc(-1 * var(--wrapper-padding, 50px));
+  margin-right: calc(-1 * var(--wrapper-padding, 50px) - 50vw + 100%);
   margin-left: 0;
 }
 
@@ -218,19 +218,25 @@ article.card {
   overflow: hidden;
   /* Maintain aspect ratio of image */
   aspect-ratio: auto;
+  /* Ensure container covers full viewport */
+  width: 100%;
+  height: 100%;
 }
 
 .card-hero .image-container img {
-  /* Ensure hero image maintains its aspect ratio */
-  width: 100%;
+  /* Make image larger to prevent white space during parallax scrolling */
+  width: calc(100% + 200px);
   height: auto;
+  min-height: calc(100% + 100px);
   display: block;
-  /* Start with image positioned at top */
+  /* Center horizontally, position at top vertically */
   object-position: center top;
   object-fit: cover;
   /* Ensure transform doesn't break layout */
   will-change: transform;
   backface-visibility: hidden;
+  /* Offset to center the larger image */
+  margin-left: -100px;
 }
 
 .card:not(.card-hero):hover .image-container img {
@@ -664,10 +670,16 @@ article.card {
     width: 100vw;
     max-width: 100vw;
     position: relative;
-    /* Break out of wrapper padding to reach viewport edges */
-    left: -20px;
-    margin-right: calc(-20px - 50vw + 100%);
+    /* Break out of wrapper to viewport edges - account for wrapper padding */
+    left: calc(-1 * var(--wrapper-padding, 20px));
+    margin-right: calc(-1 * var(--wrapper-padding, 20px) - 50vw + 100%);
     margin-left: 0;
+  }
+  
+  .card-hero .image-container img {
+    /* Smaller extra width on mobile */
+    width: calc(100% + 100px);
+    margin-left: -50px;
   }
   .card-hero .hero-overlay { width: calc(100% - 40px); bottom: 16px; padding: 16px 18px; gap: 10px; }
   .card-hero .hero-overlay h2 { font-size: 28px; }
