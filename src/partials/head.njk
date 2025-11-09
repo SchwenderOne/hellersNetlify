@@ -1,0 +1,81 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% set pageTitle = title or 'Hellers Kaffees — Zubereitungsanleitungen' %}
+  <title>{{ pageTitle }}</title>
+  {% set canonical = canonical or 'https://hellerskaffees.com/' %}
+  {% set description = description or 'Spezialitätenkaffee in Charlottenburg, Berlin. Entdecken Sie unsere Zubereitungsanleitungen für French Press, AeroPress, Chemex und mehr.' %}
+  {% set ogImage = ogImage or 'https://hellerskaffees.com/images/og-image.jpg' %}
+  {% set ogType = ogType or 'website' %}
+  {% set ogLocale = ogLocale or 'de_DE' %}
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="{{ ogType }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:title" content="{{ pageTitle }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:image" content="{{ ogImage }}">
+  <meta property="og:locale" content="{{ ogLocale }}">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="{{ canonical }}">
+  <meta name="twitter:title" content="{{ pageTitle }}">
+  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:image" content="{{ ogImage }}">
+
+  <!-- Additional Meta -->
+  <meta name="description" content="{{ description }}">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/azg8ito.css">
+  <link rel="stylesheet" href="styles.css">
+  <!-- EmailJS SDK for newsletter form (Phase 4) -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  {% if schemaOrganization %}
+  <script type="application/ld+json">{{ schemaOrganization | dump | safe }}</script>
+  {% else %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Hellers Kaffees",
+    "url": "https://hellerskaffees.com",
+    "logo": "https://hellerskaffees.com/images/logo.png",
+    "description": "Unabhängige Kaffeerösterei und Café in Charlottenburg, Berlin. Spezialitätenkaffee und Zubereitungsanleitungen.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sybelstraße 19",
+      "addressLocality": "Berlin",
+      "postalCode": "10629",
+      "addressCountry": "DE"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "hello@hellerskaffees.com",
+      "contactType": "customer service"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday"],
+        "opens": "10:00",
+        "closes": "17:00"
+      }
+    ],
+    "sameAs": []
+  }
+  </script>
+  {% endif %}
+  {% if headExtra %}{{ headExtra | safe }}{% endif %}
+</head>

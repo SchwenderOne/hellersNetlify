@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="{{ lang | default('de') }}" class="no-js">
+{% include "head.njk" %}
+<body class="{{ bodyClass | default('') }}">
+  {% include "header.njk" %}
+  {% if skipLinkHref %}
+  <a href="{{ skipLinkHref }}" class="skip-to-content">{{ skipLinkLabel | default('Zum Hauptinhalt springen') }}</a>
+  {% endif %}
+  {{ content | safe }}
+  {% include "footer.njk" %}
+  <script src="scripts/main.js" defer></script>
+</body>
+</html>

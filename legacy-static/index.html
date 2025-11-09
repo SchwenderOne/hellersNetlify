@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hellers Kaffees — Zubereitungsanleitungen</title>
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hellerskaffees.com/">
+  <meta property="og:title" content="Hellers Kaffees — Zubereitungsanleitungen">
+  <meta property="og:description" content="Spezialitätenkaffee in Charlottenburg, Berlin. Entdecken Sie unsere Zubereitungsanleitungen für French Press, AeroPress, Chemex und mehr.">
+  <meta property="og:image" content="https://hellerskaffees.com/images/og-image.jpg">
+  <meta property="og:locale" content="de_DE">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://hellerskaffees.com/">
+  <meta name="twitter:title" content="Hellers Kaffees — Zubereitungsanleitungen">
+  <meta name="twitter:description" content="Spezialitätenkaffee in Charlottenburg, Berlin. Entdecken Sie unsere Zubereitungsanleitungen für French Press, AeroPress, Chemex und mehr.">
+  <meta name="twitter:image" content="https://hellerskaffees.com/images/og-image.jpg">
+  
+  <!-- Additional Meta -->
+  <meta name="description" content="Spezialitätenkaffee in Charlottenburg, Berlin. Entdecken Sie unsere Zubereitungsanleitungen für French Press, AeroPress, Chemex und mehr.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/azg8ito.css">
+  <link rel="stylesheet" href="styles.css">
+  <!-- EmailJS SDK for newsletter form (Phase 4) -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  
+  <!-- Schema.org Organization Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Hellers Kaffees",
+    "url": "https://hellerskaffees.com",
+    "logo": "https://hellerskaffees.com/images/logo.png",
+    "description": "Unabhängige Kaffeerösterei und Café in Charlottenburg, Berlin. Spezialitätenkaffee und Zubereitungsanleitungen.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sybelstraße 19",
+      "addressLocality": "Berlin",
+      "postalCode": "10629",
+      "addressCountry": "DE"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "hello@hellerskaffees.com",
+      "contactType": "customer service"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday"],
+        "opens": "10:00",
+        "closes": "17:00"
+      }
+    ],
+    "sameAs": []
+  }
+  </script>
+</head>
+<body>
+  <!-- Site Header Navigation (Phase 5) -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <a href="index.html" class="header-logo">Hellers Kaffees</a>
+      
+      <nav class="main-navigation" id="main-navigation" aria-label="Hauptnavigation">
+        <a href="index.html#brew-methods" class="nav-link">Zubereitungsmethoden</a>
+        <a href="menu.html" class="nav-link">Menü</a>
+        <a href="events.html" class="nav-link">Veranstaltungen</a>
+        <a href="index.html#visit-us" class="nav-link">Kontakt</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="header-dark-mode-toggle" id="header-dark-mode-toggle" aria-label="Dunkelmodus umschalten">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 2V4M12 20V22M4.93 4.93L6.34 6.34M17.66 17.66L19.07 19.07M2 12H4M20 12H22M6.34 17.66L4.93 19.07M19.07 4.93L17.66 6.34" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span id="dark-mode-label">Dunkel</span>
+        </button>
+        
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menü öffnen" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+  
+  <a href="#brew-methods" class="skip-to-content">Zum Hauptinhalt springen</a>
+  <main>
+    <section id="brew-methods" class="wrapper cards-grid">
+      <!-- Hero wide card -->
+      <article class="card card-hero">
+        <div class="image-container">
+          <img
+            src="https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?v=1693580220&width=1814"
+            srcset="https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?height=667&v=1693580220&width=1000 1000w,
+                    https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?height=867&v=1693580220&width=1300 1300w,
+                    https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?v=1693580220&width=1814 1814w"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
+            alt="Kalita Wave hero" loading="lazy">
+          <div class="hero-overlay">
+            <span class="label">Zubereitungsmethoden</span>
+            <h2>Hellers Kaffees</h2>
+            <p>Spezialitätenkaffee in Charlottenburg, Berlin</p>
+            <a href="menu.html" class="hero-cta-button" aria-label="Zum Menü">Menü</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 9 method cards -->
+      <article class="card">
+        <div class="image-container">
+          <img src="https://greatergoodsroasting.com/cdn/shop/files/French_Press_Square-pichi.jpg?v=1614304903&width=800" alt="French Press" loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw">
+          <div class="card-badges">
+            <span class="card-badge badge-difficulty-easy">
+              <svg class="card-badge-icon" viewBox="0 0 14 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 0L8.5 5L14 5L9.75 8L11.25 13L7 10L2.75 13L4.25 8L0 5L5.5 5L7 0Z"/>
+              </svg>
+              Einfach
+            </span>
+            <span class="card-badge badge-time">
+              <svg class="card-badge-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <path d="M7 4V7L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              5 Min
+            </span>
+          </div>
+          <h3 class="title">French Press</h3>
+          <a class="link-overlay" href="french-press.html" aria-label="French Press"></a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="image-container">
+          <img src="https://greatergoodsroasting.com/cdn/shop/files/Aeropress_Square-pichi.jpg?v=1614304903&width=800" alt="AeroPress" loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw">
+          <div class="card-badges">
+            <span class="card-badge badge-difficulty-medium">
+              <svg class="card-badge-icon" viewBox="0 0 14 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 0L8.5 5L14 5L9.75 8L11.25 13L7 10L2.75 13L4.25 8L0 5L5.5 5L7 0Z"/>
+              </svg>
+              Mittel
+            </span>
+            <span class="card-badge badge-time">
+              <svg class="card-badge-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <path d="M7 4V7L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              3 Min
+            </span>
+          </div>
+          <h3 class="title">AeroPress</h3>
+          <a class="link-overlay" href="aeropress.html" aria-label="AeroPress"></a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="image-container">
+          <img src="https://greatergoodsroasting.com/cdn/shop/files/Chemex_Square-pichi.jpg?v=1614304903&width=800" alt="Chemex" loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw">
+          <div class="card-badges">
+            <span class="card-badge badge-difficulty-medium">
+              <svg class="card-badge-icon" viewBox="0 0 14 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 0L8.5 5L14 5L9.75 8L11.25 13L7 10L2.75 13L4.25 8L0 5L5.5 5L7 0Z"/>
+              </svg>
+              Mittel
+            </span>
+            <span class="card-badge badge-time">
+              <svg class="card-badge-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <path d="M7 4V7L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              4 Min
+            </span>
+          </div>
+          <h3 class="title">Chemex</h3>
+          <a class="link-overlay" href="chemex.html" aria-label="Chemex"></a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="image-container">
+          <img src="https://greatergoodsroasting.com/cdn/shop/files/GG-Origami-Brew_Guide.png?v=1635198944&width=800" alt="Origami Dripper" loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw">
+          <div class="card-badges">
+            <span class="card-badge badge-difficulty-medium">
+              <svg class="card-badge-icon" viewBox="0 0 14 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 0L8.5 5L14 5L9.75 8L11.25 13L7 10L2.75 13L4.25 8L0 5L5.5 5L7 0Z"/>
+              </svg>
+              Mittel
+            </span>
+            <span class="card-badge badge-time">
+              <svg class="card-badge-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <path d="M7 4V7L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              4 Min
+            </span>
+          </div>
+          <h3 class="title">Origami Dripper</h3>
+          <a class="link-overlay" href="origami-dripper.html" aria-label="Origami Dripper"></a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="image-container">
+          <img src="https://greatergoodsroasting.com/cdn/shop/files/V60.jpg?v=1614345748&width=800" alt="V60" loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw">
+          <div class="card-badges">
+            <span class="card-badge badge-difficulty-medium">
+              <svg class="card-badge-icon" viewBox="0 0 14 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 0L8.5 5L14 5L9.75 8L11.25 13L7 10L2.75 13L4.25 8L0 5L5.5 5L7 0Z"/>
+              </svg>
+              Mittel
+            </span>
+            <span class="card-badge badge-time">
+              <svg class="card-badge-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <path d="M7 4V7L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              4 Min
+            </span>
+          </div>
+          <h3 class="title">V60</h3>
+          <a class="link-overlay" href="v60.html" aria-label="V60"></a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="image-container">
+          <img src="https://greatergoodsroasting.com/cdn/shop/files/Drip_Square-pichi.jpg?v=1614304903&width=800" alt="Drip" loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw">
+          <div class="card-badges">
+            <span class="card-badge badge-difficulty-easy">
+              <svg class="card-badge-icon" viewBox="0 0 14 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 0L8.5 5L14 5L9.75 8L11.25 13L7 10L2.75 13L4.25 8L0 5L5.5 5L7 0Z"/>
+              </svg>
+              Einfach
+            </span>
+            <span class="card-badge badge-time">
+              <svg class="card-badge-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <path d="M7 4V7L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              6 Min
+            </span>
+          </div>
+          <h3 class="title">Drip</h3>
+          <a class="link-overlay" href="drip.html" aria-label="Drip"></a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="image-container">
+          <img src="https://greatergoodsroasting.com/cdn/shop/files/Cold_Brew_Square-pichi.jpg?v=1614304903&width=800" alt="Cold Brew" loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw">
+          <div class="card-badges">
+            <span class="card-badge badge-difficulty-easy">
+              <svg class="card-badge-icon" viewBox="0 0 14 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 0L8.5 5L14 5L9.75 8L11.25 13L7 10L2.75 13L4.25 8L0 5L5.5 5L7 0Z"/>
+              </svg>
+              Einfach
+            </span>
+            <span class="card-badge badge-time">
+              <svg class="card-badge-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <path d="M7 4V7L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              12h+
+            </span>
+          </div>
+          <h3 class="title">Cold Brew</h3>
+          <a class="link-overlay" href="cold-brew.html" aria-label="Cold Brew"></a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="image-container">
+          <img src="https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?v=1693580220&width=800" alt="Kalita Wave" loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw">
+          <div class="card-badges">
+            <span class="card-badge badge-difficulty-medium">
+              <svg class="card-badge-icon" viewBox="0 0 14 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 0L8.5 5L14 5L9.75 8L11.25 13L7 10L2.75 13L4.25 8L0 5L5.5 5L7 0Z"/>
+              </svg>
+              Mittel
+            </span>
+            <span class="card-badge badge-time">
+              <svg class="card-badge-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <path d="M7 4V7L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              4 Min
+            </span>
+          </div>
+          <h3 class="title">Kalita Wave</h3>
+          <a class="link-overlay" href="kalita-wave.html" aria-label="Kalita Wave"></a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="image-container">
+          <img src="https://greatergoodsroasting.com/cdn/shop/files/Espresso_Square-pichi.jpg?v=1754326906&width=800" alt="Home Espresso" loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw">
+          <div class="card-badges">
+            <span class="card-badge badge-difficulty-advanced">
+              <svg class="card-badge-icon" viewBox="0 0 14 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 0L8.5 5L14 5L9.75 8L11.25 13L7 10L2.75 13L4.25 8L0 5L5.5 5L7 0Z"/>
+              </svg>
+              Fortgeschritten
+            </span>
+            <span class="card-badge badge-time">
+              <svg class="card-badge-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <path d="M7 4V7L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              2 Min
+            </span>
+          </div>
+          <h3 class="title">Home Espresso</h3>
+          <a class="link-overlay" href="home-espresso.html" aria-label="Home Espresso"></a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Storytelling Sections -->
+    <section id="brew-basics" class="wrapper storytelling-section">
+      <div class="section-header">
+        <span class="label">Grundlagen</span>
+        <h2>Die Basics des Kaffeebrühens</h2>
+        <p class="section-description">Drei entscheidende Faktoren für die perfekte Tasse</p>
+      </div>
+      <div class="brew-basics-infographic">
+        <div class="infographic-item">
+          <div class="infographic-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/>
+              <circle cx="24" cy="24" r="12" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+              <circle cx="24" cy="24" r="4" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>Mahlgrad</h3>
+          <div class="infographic-content">
+            <div class="grind-size">
+              <div class="grind-bar grind-fine">
+                <span class="grind-label">Fein</span>
+              </div>
+              <div class="grind-bar grind-medium">
+                <span class="grind-label">Mittel</span>
+              </div>
+              <div class="grind-bar grind-coarse">
+                <span class="grind-label">Grob</span>
+              </div>
+            </div>
+            <p>Je nach Brühmethode variiert der optimale Mahlgrad für beste Extraktion</p>
+          </div>
+        </div>
+        <div class="infographic-item">
+          <div class="infographic-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="12" y="16" width="24" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+              <rect x="16" y="20" width="16" height="12" fill="currentColor" opacity="0.2"/>
+              <text x="24" y="32" text-anchor="middle" font-size="10" fill="currentColor" font-weight="600">1:16</text>
+            </svg>
+          </div>
+          <h3>Verhältnis</h3>
+          <div class="infographic-content">
+            <div class="ratio-display">
+              <div class="ratio-item">
+                <span class="ratio-value">1:12</span>
+                <span class="ratio-label">Stark</span>
+              </div>
+              <div class="ratio-item ratio-recommended">
+                <span class="ratio-value">1:16</span>
+                <span class="ratio-label">Standard</span>
+              </div>
+              <div class="ratio-item">
+                <span class="ratio-value">1:18</span>
+                <span class="ratio-label">Mild</span>
+              </div>
+            </div>
+            <p>Kaffee zu Wasser Verhältnis bestimmt die Stärke und den Geschmack</p>
+          </div>
+        </div>
+        <div class="infographic-item">
+          <div class="infographic-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M24 8 L24 24 M24 24 L32 32 M24 24 L16 32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="24" cy="24" r="3" fill="currentColor"/>
+              <text x="24" y="42" text-anchor="middle" font-size="8" fill="currentColor">°C</text>
+            </svg>
+          </div>
+          <h3>Temperatur</h3>
+          <div class="infographic-content">
+            <div class="temperature-scale">
+              <div class="temp-mark temp-low">
+                <span class="temp-value">85°C</span>
+                <span class="temp-label">Kalt</span>
+              </div>
+              <div class="temp-mark temp-optimal">
+                <span class="temp-value">93-96°C</span>
+                <span class="temp-label">Optimal</span>
+              </div>
+              <div class="temp-mark temp-high">
+                <span class="temp-value">100°C+</span>
+                <span class="temp-label">Zu heiß</span>
+              </div>
+            </div>
+            <p>Ideale Wassertemperatur liegt zwischen 93°C und 96°C für beste Extraktion</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="farm-to-cup" class="wrapper storytelling-section">
+      <div class="section-header">
+        <span class="label">Unsere Reise</span>
+        <h2>Vom Feld zur Tasse</h2>
+        <p class="section-description">Der Weg unseres Kaffees von der Plantage bis zu Ihnen</p>
+      </div>
+      <div class="farm-to-cup-timeline">
+        <div class="timeline-item">
+          <div class="timeline-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M24 8 L20 20 L8 24 L20 28 L24 40 L28 28 L40 24 L28 20 Z" fill="currentColor" opacity="0.2"/>
+              <path d="M24 12 L21 20 L13 22 L21 24 L24 32 L27 24 L35 22 L27 20 Z" fill="currentColor"/>
+              <circle cx="24" cy="24" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="timeline-content">
+            <h3>Anbau</h3>
+            <p>Unsere Bohnen stammen von sorgfältig ausgewählten Kaffeeplantagen in den besten Anbaugebieten. Nachhaltiger Anbau und faire Partnerschaften stehen im Mittelpunkt.</p>
+          </div>
+        </div>
+        <div class="timeline-connector" aria-hidden="true">
+          <svg viewBox="0 0 24 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0 L12 60" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="24" cy="20" r="8" stroke="currentColor" stroke-width="2"/>
+              <ellipse cx="24" cy="28" rx="12" ry="8" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 28 Q24 32 32 28" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+          </div>
+          <div class="timeline-content">
+            <h3>Rösten</h3>
+            <p>In unserer Rösterei in Berlin bringen wir jede Bohne auf ihre perfekte Röstung. Durch präzise Kontrolle von Temperatur und Zeit entwickeln wir die einzigartigen Aromen.</p>
+          </div>
+        </div>
+        <div class="timeline-connector" aria-hidden="true">
+          <svg viewBox="0 0 24 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0 L12 60" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M24 8 Q16 12 16 20 L16 28 Q16 36 24 40 Q32 36 32 28 L32 20 Q32 12 24 8 Z" fill="currentColor" opacity="0.2"/>
+              <path d="M20 20 Q24 18 28 20" stroke="currentColor" stroke-width="2" fill="none"/>
+              <ellipse cx="24" cy="28" rx="4" ry="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="timeline-content">
+            <h3>Brühen</h3>
+            <p>Mit den richtigen Techniken und Ihrer bevorzugten Methode entfalten Sie das volle Aroma. Unsere Guides helfen Ihnen dabei, die perfekte Tasse zu kreieren.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visit Us / Location Section -->
+    <section id="visit-us" class="wrapper visit-section">
+      <div class="section-header">
+        <span class="label">Standort</span>
+        <h2>Besuchen Sie uns</h2>
+        <p class="section-description">Finden Sie uns in Charlottenburg, Berlin</p>
+      </div>
+      <div class="visit-content">
+        <div class="visit-info">
+          <div class="visit-details">
+            <h3>Hellers Kaffees</h3>
+            <p class="visit-address">
+              <svg class="visit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M10 10C11.3807 10 12.5 8.88071 12.5 7.5C12.5 6.11929 11.3807 5 10 5C8.61929 5 7.5 6.11929 7.5 7.5C7.5 8.88071 8.61929 10 10 10Z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M10 18.3333C14.1667 13.75 17.5 10.4167 17.5 7.5C17.5 4.73858 15.2614 2.5 12.5 2.5C11.1904 2.5 10.0113 3.02148 9.35169 3.82063C9.12682 4.09769 8.87318 4.09769 8.64831 3.82063C7.98868 3.02148 6.80959 2.5 5.5 2.5C2.73858 2.5 0.5 4.73858 0.5 7.5C0.5 10.4167 3.83333 13.75 8 18.3333H10Z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              Sybelstraße 19<br>
+              10629 Berlin
+            </p>
+            <div class="visit-actions">
+              <a href="https://www.google.com/maps/search/?api=1&query=Sybelstraße+19,+10629+Berlin" target="_blank" rel="noopener noreferrer" class="visit-button">
+                <span>In Google Maps öffnen</span>
+                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M7.5 4.16667L12.5 9.16667M12.5 9.16667H7.5M12.5 9.16667V4.16667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4.16667 15.8333H15.8333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.5!2d13.3059!3d52.508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851b8e7a8a7a9%3A0x0!2sSybelstra%C3%9Fe%2019%2C%2010629%20Berlin%2C%20Deutschland!5e0!3m2!1sde!2sde!4v1700000000000!5m2!1sde!2sde"
+            width="100%"
+            height="100%"
+            allowfullscreen=""
+            loading="lazy"
+            title="Karte: Hellers Kaffees, Sybelstraße 19, 10629 Berlin"
+            aria-label="Interaktive Karte mit dem Standort von Hellers Kaffees in der Sybelstraße 19, 10629 Berlin">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrapper footer-grid">
+      <div class="footer-brand">
+        <h3 class="brand">Hellers Kaffees</h3>
+        <p>Unabhängige Kaffeerösterei und Café.</p>
+      </div>
+      <div class="footer-contact">
+        <h4>Kontakt</h4>
+        <p class="address">Sybelstraße 19, 10629 Berlin</p>
+        <p class="phone">Telefon: nicht angegeben</p>
+        <p class="email">E-Mail: hello@hellerskaffees.com</p>
+      </div>
+      <div class="footer-hours">
+        <h4>Öffnungszeiten</h4>
+        <p>Mo: 08:00–17:00</p>
+        <p>Di: Geschlossen</p>
+        <p>Mi: 08:00–17:00</p>
+        <p>Do: 08:00–17:00</p>
+        <p>Fr: 08:00–17:00</p>
+        <p>Sa: 10:00–17:00</p>
+        <p>So: 10:00–17:00</p>
+      </div>
+      <div class="footer-newsletter">
+        <h4>Newsletter abonnieren</h4>
+        <form class="newsletter">
+          <input type="email" name="EMAIL" placeholder="ihre-email@beispiel.de" aria-label="E-Mail-Adresse" required disabled>
+          <button type="submit" disabled>Abonnieren</button>
+        </form>
+        <p class="newsletter-coming-soon">Bald verfügbar</p>
+      </div>
+      <div class="footer-events">
+        <h4>Veranstaltungen</h4>
+        <p>Entdecken Sie unsere Workshops und Events.</p>
+        <a href="events.html" class="footer-link">Zu den Veranstaltungen →</a>
+      </div>
+    </div>
+    <div class="wrapper footer-bottom">
+      <span>© Hellers Kaffees 2025</span>
+    </div>
+  </footer>
+  <script src="scripts/main.js" defer></script>
+</body>
+</html>

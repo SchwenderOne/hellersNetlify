@@ -1,0 +1,27 @@
+{
+  "name": "hellers-brew-guides",
+  "version": "1.0.0",
+  "description": "Static brew guides site for Hellers Kaffees with upcoming Eleventy/Vite build pipeline.",
+  "type": "module",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint .",
+    "lint:css": "stylelint \"**/*.css\"",
+    "test": "npm run build && playwright test",
+    "baseline": "npm run build && node tools/capture-baseline.mjs",
+    "preview": "npx http-server dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-plugin-vite": "^7.0.0",
+    "@playwright/test": "^1.56.1",
+    "http-server": "^14.1.1",
+    "playwright": "^1.56.1",
+    "vite": "^7.2.1"
+  }
+}

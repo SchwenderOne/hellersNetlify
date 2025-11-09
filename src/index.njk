@@ -1,0 +1,35 @@
+---
+layout: base.njk
+title: "Hellers Kaffees — Zubereitungsanleitungen"
+description: "Spezialitätenkaffee in Charlottenburg, Berlin. Entdecken Sie unsere Zubereitungsanleitungen für French Press, AeroPress, Chemex und mehr."
+canonical: "https://hellerskaffees.com/"
+skipLinkHref: "#brew-methods"
+---
+<main>
+  <section id="brew-methods" class="wrapper cards-grid">
+    <!-- Hero wide card -->
+    <article class="card card-hero">
+      <div class="image-container">
+        <img
+          src="https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?v=1693580220&width=1814"
+          srcset="https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?height=667&v=1693580220&width=1000 1000w,
+                  https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?height=867&v=1693580220&width=1300 1300w,
+                  https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?v=1693580220&width=1814 1814w"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
+          alt="Kalita Wave hero" loading="lazy">
+        <div class="hero-overlay">
+          <span class="label">Zubereitungsmethoden</span>
+          <h2>Hellers Kaffees</h2>
+          <p>Spezialitätenkaffee in Charlottenburg, Berlin</p>
+          <a href="menu.html" class="hero-cta-button">Menü</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Remaining brew method cards -->
+    {% include "brew-cards.njk" %}
+  </section>
+
+  {% include "storytelling.njk" %}
+  {% include "visit-section.njk" %}
+</main>

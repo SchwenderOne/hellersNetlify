@@ -4,13 +4,107 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hellers Kaffees — Zubereitungsanleitungen</title>
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hellerskaffees.com/">
+  <meta property="og:title" content="Hellers Kaffees — Zubereitungsanleitungen">
+  <meta property="og:description" content="Spezialitätenkaffee in Charlottenburg, Berlin. Entdecken Sie unsere Zubereitungsanleitungen für French Press, AeroPress, Chemex und mehr.">
+  <meta property="og:image" content="https://hellerskaffees.com/images/og-image.jpg">
+  <meta property="og:locale" content="de_DE">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://hellerskaffees.com/">
+  <meta name="twitter:title" content="Hellers Kaffees — Zubereitungsanleitungen">
+  <meta name="twitter:description" content="Spezialitätenkaffee in Charlottenburg, Berlin. Entdecken Sie unsere Zubereitungsanleitungen für French Press, AeroPress, Chemex und mehr.">
+  <meta name="twitter:image" content="https://hellerskaffees.com/images/og-image.jpg">
+  
+  <!-- Additional Meta -->
+  <meta name="description" content="Spezialitätenkaffee in Charlottenburg, Berlin. Entdecken Sie unsere Zubereitungsanleitungen für French Press, AeroPress, Chemex und mehr.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.typekit.net/azg8ito.css">
   <link rel="stylesheet" href="styles.css">
+  <!-- EmailJS SDK for newsletter form (Phase 4) -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  
+  <!-- Schema.org Organization Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Hellers Kaffees",
+    "url": "https://hellerskaffees.com",
+    "logo": "https://hellerskaffees.com/images/logo.png",
+    "description": "Unabhängige Kaffeerösterei und Café in Charlottenburg, Berlin. Spezialitätenkaffee und Zubereitungsanleitungen.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sybelstraße 19",
+      "addressLocality": "Berlin",
+      "postalCode": "10629",
+      "addressCountry": "DE"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "hello@hellerskaffees.com",
+      "contactType": "customer service"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday"],
+        "opens": "10:00",
+        "closes": "17:00"
+      }
+    ],
+    "sameAs": []
+  }
+  </script>
 </head>
 <body>
+  <!-- Site Header Navigation (Phase 5) -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <a href="index.html" class="header-logo">Hellers Kaffees</a>
+      
+      <nav class="main-navigation" id="main-navigation" aria-label="Hauptnavigation">
+        <a href="index.html#brew-methods" class="nav-link">Zubereitungsmethoden</a>
+        <a href="menu.html" class="nav-link">Menü</a>
+        <a href="events.html" class="nav-link">Veranstaltungen</a>
+        <a href="index.html#zahlungsmethoden" class="nav-link">Zahlungsmethoden</a>
+        <a href="index.html#visit-us" class="nav-link">Kontakt</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="header-dark-mode-toggle" id="header-dark-mode-toggle" aria-label="Dunkelmodus umschalten">
+          <svg id="dark-mode-icon" class="dark-mode-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span id="dark-mode-label">Dunkel</span>
+        </button>
+        
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menü öffnen" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+  
+  <a href="#brew-methods" class="skip-to-content">Zum Hauptinhalt springen</a>
   <main>
     <section id="brew-methods" class="wrapper cards-grid">
       <!-- Hero wide card -->
@@ -27,9 +121,8 @@
             <span class="label">Zubereitungsmethoden</span>
             <h2>Hellers Kaffees</h2>
             <p>Spezialitätenkaffee in Charlottenburg, Berlin</p>
-            <a href="#brew-methods" class="hero-cta-button" aria-label="Zu den Zubereitungsmethoden scrollen">Jetzt entdecken</a>
+            <a href="menu.html" class="hero-cta-button" aria-label="Zum Menü">Menü</a>
           </div>
-          <a class="link-overlay" href="#" aria-label="Kalita Wave hero"></a>
         </div>
       </article>
 
@@ -75,7 +168,7 @@
             </span>
           </div>
           <h3 class="title">AeroPress</h3>
-          <a class="link-overlay" href="#" aria-label="AeroPress"></a>
+          <a class="link-overlay" href="aeropress.html" aria-label="AeroPress"></a>
         </div>
       </article>
       <article class="card">
@@ -97,7 +190,7 @@
             </span>
           </div>
           <h3 class="title">Chemex</h3>
-          <a class="link-overlay" href="#" aria-label="Chemex"></a>
+          <a class="link-overlay" href="chemex.html" aria-label="Chemex"></a>
         </div>
       </article>
       <article class="card">
@@ -119,7 +212,7 @@
             </span>
           </div>
           <h3 class="title">Origami Dripper</h3>
-          <a class="link-overlay" href="#" aria-label="Origami Dripper"></a>
+          <a class="link-overlay" href="origami-dripper.html" aria-label="Origami Dripper"></a>
         </div>
       </article>
       <article class="card">
@@ -141,7 +234,7 @@
             </span>
           </div>
           <h3 class="title">V60</h3>
-          <a class="link-overlay" href="#" aria-label="V60"></a>
+          <a class="link-overlay" href="v60.html" aria-label="V60"></a>
         </div>
       </article>
       <article class="card">
@@ -163,7 +256,7 @@
             </span>
           </div>
           <h3 class="title">Drip</h3>
-          <a class="link-overlay" href="#" aria-label="Drip"></a>
+          <a class="link-overlay" href="drip.html" aria-label="Drip"></a>
         </div>
       </article>
       <article class="card">
@@ -185,7 +278,7 @@
             </span>
           </div>
           <h3 class="title">Cold Brew</h3>
-          <a class="link-overlay" href="#" aria-label="Cold Brew"></a>
+          <a class="link-overlay" href="cold-brew.html" aria-label="Cold Brew"></a>
         </div>
       </article>
       <article class="card">
@@ -207,7 +300,7 @@
             </span>
           </div>
           <h3 class="title">Kalita Wave</h3>
-          <a class="link-overlay" href="#" aria-label="Kalita Wave"></a>
+          <a class="link-overlay" href="kalita-wave.html" aria-label="Kalita Wave"></a>
         </div>
       </article>
       <article class="card">
@@ -229,9 +322,241 @@
             </span>
           </div>
           <h3 class="title">Home Espresso</h3>
-          <a class="link-overlay" href="#" aria-label="Home Espresso"></a>
+          <a class="link-overlay" href="home-espresso.html" aria-label="Home Espresso"></a>
         </div>
       </article>
+    </section>
+
+    <!-- Storytelling Sections -->
+    <section id="brew-basics" class="wrapper storytelling-section">
+      <div class="section-header">
+        <span class="label">Grundlagen</span>
+        <h2>Die Basics des Kaffeebrühens</h2>
+        <p class="section-description">Drei entscheidende Faktoren für die perfekte Tasse</p>
+      </div>
+      <div class="brew-basics-infographic">
+        <div class="infographic-item">
+          <div class="infographic-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/>
+              <circle cx="24" cy="24" r="12" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+              <circle cx="24" cy="24" r="4" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>Mahlgrad</h3>
+          <div class="infographic-content">
+            <div class="grind-size">
+              <div class="grind-bar grind-fine">
+                <span class="grind-label">Fein</span>
+              </div>
+              <div class="grind-bar grind-medium">
+                <span class="grind-label">Mittel</span>
+              </div>
+              <div class="grind-bar grind-coarse">
+                <span class="grind-label">Grob</span>
+              </div>
+            </div>
+            <p>Je nach Brühmethode variiert der optimale Mahlgrad für beste Extraktion</p>
+          </div>
+        </div>
+        <div class="infographic-item">
+          <div class="infographic-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="12" y="16" width="24" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+              <rect x="16" y="20" width="16" height="12" fill="currentColor" opacity="0.2"/>
+              <text x="24" y="32" text-anchor="middle" font-size="10" fill="currentColor" font-weight="600">1:16</text>
+            </svg>
+          </div>
+          <h3>Verhältnis</h3>
+          <div class="infographic-content">
+            <div class="ratio-display">
+              <div class="ratio-item">
+                <span class="ratio-value">1:12</span>
+                <span class="ratio-label">Stark</span>
+              </div>
+              <div class="ratio-item ratio-recommended">
+                <span class="ratio-value">1:16</span>
+                <span class="ratio-label">Standard</span>
+              </div>
+              <div class="ratio-item">
+                <span class="ratio-value">1:18</span>
+                <span class="ratio-label">Mild</span>
+              </div>
+            </div>
+            <p>Kaffee zu Wasser Verhältnis bestimmt die Stärke und den Geschmack</p>
+          </div>
+        </div>
+        <div class="infographic-item">
+          <div class="infographic-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M24 8 L24 24 M24 24 L32 32 M24 24 L16 32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="24" cy="24" r="3" fill="currentColor"/>
+              <text x="24" y="42" text-anchor="middle" font-size="8" fill="currentColor">°C</text>
+            </svg>
+          </div>
+          <h3>Temperatur</h3>
+          <div class="infographic-content">
+            <div class="temperature-scale">
+              <div class="temp-mark temp-low">
+                <span class="temp-value">85°C</span>
+                <span class="temp-label">Kalt</span>
+              </div>
+              <div class="temp-mark temp-optimal">
+                <span class="temp-value">93-96°C</span>
+                <span class="temp-label">Optimal</span>
+              </div>
+              <div class="temp-mark temp-high">
+                <span class="temp-value">100°C+</span>
+                <span class="temp-label">Zu heiß</span>
+              </div>
+            </div>
+            <p>Ideale Wassertemperatur liegt zwischen 93°C und 96°C für beste Extraktion</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="farm-to-cup" class="wrapper storytelling-section">
+      <div class="section-header">
+        <span class="label">Unsere Reise</span>
+        <h2>Vom Feld zur Tasse</h2>
+        <p class="section-description">Der Weg unseres Kaffees von der Plantage bis zu Ihnen</p>
+      </div>
+      <div class="farm-to-cup-timeline">
+        <div class="timeline-item">
+          <div class="timeline-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M24 8 L20 20 L8 24 L20 28 L24 40 L28 28 L40 24 L28 20 Z" fill="currentColor" opacity="0.2"/>
+              <path d="M24 12 L21 20 L13 22 L21 24 L24 32 L27 24 L35 22 L27 20 Z" fill="currentColor"/>
+              <circle cx="24" cy="24" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="timeline-content">
+            <h3>Anbau</h3>
+            <p>Unsere Bohnen stammen von sorgfältig ausgewählten Kaffeeplantagen in den besten Anbaugebieten. Nachhaltiger Anbau und faire Partnerschaften stehen im Mittelpunkt.</p>
+          </div>
+        </div>
+        <div class="timeline-connector" aria-hidden="true">
+          <svg viewBox="0 0 24 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0 L12 60" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="24" cy="20" r="8" stroke="currentColor" stroke-width="2"/>
+              <ellipse cx="24" cy="28" rx="12" ry="8" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 28 Q24 32 32 28" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+          </div>
+          <div class="timeline-content">
+            <h3>Rösten</h3>
+            <p>In unserer Rösterei in Berlin bringen wir jede Bohne auf ihre perfekte Röstung. Durch präzise Kontrolle von Temperatur und Zeit entwickeln wir die einzigartigen Aromen.</p>
+          </div>
+        </div>
+        <div class="timeline-connector" aria-hidden="true">
+          <svg viewBox="0 0 24 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0 L12 60" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M24 8 Q16 12 16 20 L16 28 Q16 36 24 40 Q32 36 32 28 L32 20 Q32 12 24 8 Z" fill="currentColor" opacity="0.2"/>
+              <path d="M20 20 Q24 18 28 20" stroke="currentColor" stroke-width="2" fill="none"/>
+              <ellipse cx="24" cy="28" rx="4" ry="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="timeline-content">
+            <h3>Brühen</h3>
+            <p>Mit den richtigen Techniken und Ihrer bevorzugten Methode entfalten Sie das volle Aroma. Unsere Guides helfen Ihnen dabei, die perfekte Tasse zu kreieren.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Payment Methods Section -->
+    <section id="zahlungsmethoden" class="wrapper visit-section">
+      <div class="section-header">
+        <span class="label">Zahlung</span>
+        <h2>Zahlungsmethoden</h2>
+        <p class="section-description">Wir akzeptieren verschiedene Zahlungsarten</p>
+      </div>
+      <div class="visit-content">
+        <div class="visit-info">
+          <div class="visit-details">
+            <div class="payment-methods">
+              <div class="payment-method">
+                <div class="payment-icon">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect x="2" y="6" width="20" height="12" rx="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 10h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="7" cy="14" r="1" fill="currentColor"/>
+                    <circle cx="10" cy="14" r="1" fill="currentColor"/>
+                  </svg>
+                </div>
+                <h3>Kartenzahlung</h3>
+                <p>Wir akzeptieren alle gängigen Kredit- und Debitkarten.</p>
+              </div>
+              <div class="payment-method">
+                <div class="payment-icon">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 8h8M8 12h8M8 16h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="12" cy="12" r="1" fill="currentColor"/>
+                  </svg>
+                </div>
+                <h3>Barzahlung</h3>
+                <p>Selbstverständlich können Sie auch bar bezahlen.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visit Us / Location Section -->
+    <section id="visit-us" class="wrapper visit-section">
+      <div class="section-header">
+        <span class="label">Standort</span>
+        <h2>Besuchen Sie uns</h2>
+        <p class="section-description">Finden Sie uns in Charlottenburg, Berlin</p>
+      </div>
+      <div class="visit-content">
+        <div class="visit-info">
+          <div class="visit-details">
+            <h3>Hellers Kaffees</h3>
+            <p class="visit-address">
+              <svg class="visit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M10 10C11.3807 10 12.5 8.88071 12.5 7.5C12.5 6.11929 11.3807 5 10 5C8.61929 5 7.5 6.11929 7.5 7.5C7.5 8.88071 8.61929 10 10 10Z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M10 18.3333C14.1667 13.75 17.5 10.4167 17.5 7.5C17.5 4.73858 15.2614 2.5 12.5 2.5C11.1904 2.5 10.0113 3.02148 9.35169 3.82063C9.12682 4.09769 8.87318 4.09769 8.64831 3.82063C7.98868 3.02148 6.80959 2.5 5.5 2.5C2.73858 2.5 0.5 4.73858 0.5 7.5C0.5 10.4167 3.83333 13.75 8 18.3333H10Z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              Sybelstraße 19<br>
+              10629 Berlin
+            </p>
+            <div class="visit-actions">
+              <a href="https://www.google.com/maps/search/?api=1&query=Sybelstraße+19,+10629+Berlin" target="_blank" rel="noopener noreferrer" class="visit-button">
+                <span>In Google Maps öffnen</span>
+                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M7.5 4.16667L12.5 9.16667M12.5 9.16667H7.5M12.5 9.16667V4.16667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4.16667 15.8333H15.8333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.5!2d13.3059!3d52.508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851b8e7a8a7a9%3A0x0!2sSybelstra%C3%9Fe%2019%2C%2010629%20Berlin%2C%20Deutschland!5e0!3m2!1sde!2sde!4v1700000000000!5m2!1sde!2sde"
+            width="100%"
+            height="100%"
+            allowfullscreen=""
+            loading="lazy"
+            title="Karte: Hellers Kaffees, Sybelstraße 19, 10629 Berlin"
+            aria-label="Interaktive Karte mit dem Standort von Hellers Kaffees in der Sybelstraße 19, 10629 Berlin">
+          </iframe>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -259,10 +584,16 @@
       </div>
       <div class="footer-newsletter">
         <h4>Newsletter abonnieren</h4>
-        <form class="newsletter" onsubmit="return false;">
-          <input type="email" placeholder="ihre-email@beispiel.de" aria-label="email">
-          <button type="submit">Abonnieren</button>
+        <form class="newsletter">
+          <input type="email" name="EMAIL" placeholder="ihre-email@beispiel.de" aria-label="E-Mail-Adresse" required disabled>
+          <button type="submit" disabled>Abonnieren</button>
         </form>
+        <p class="newsletter-coming-soon">Bald verfügbar</p>
+      </div>
+      <div class="footer-events">
+        <h4>Veranstaltungen</h4>
+        <p>Entdecken Sie unsere Workshops und Events.</p>
+        <a href="events.html" class="footer-link">Zu den Veranstaltungen →</a>
       </div>
     </div>
     <div class="wrapper footer-bottom">

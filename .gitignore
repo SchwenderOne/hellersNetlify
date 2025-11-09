@@ -5,3 +5,26 @@
 playwright-report/
 test-results/
 
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/
+
+# IDE
+.vscode/
+.idea/
+
+# Environment variables
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporary files
+*.tmp
+*.temp
+

@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Menü – Hellers Kaffees</title>
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hellerskaffees.com/menu.html">
+  <meta property="og:title" content="Menü – Hellers Kaffees">
+  <meta property="og:description" content="Entdecken Sie unsere Auswahl an Spezialitätenkaffee und hausgemachten Backwaren. Von Filterkaffee bis Espresso, von Croissants bis Kuchen.">
+  <meta property="og:image" content="https://hellerskaffees.com/images/menu-og.jpg">
+  <meta property="og:locale" content="de_DE">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://hellerskaffees.com/menu.html">
+  <meta name="twitter:title" content="Menü – Hellers Kaffees">
+  <meta name="twitter:description" content="Entdecken Sie unsere Auswahl an Spezialitätenkaffee und hausgemachten Backwaren. Von Filterkaffee bis Espresso, von Croissants bis Kuchen.">
+  <meta name="twitter:image" content="https://hellerskaffees.com/images/menu-og.jpg">
+  
+  <!-- Additional Meta -->
+  <meta name="description" content="Entdecken Sie unsere Auswahl an Spezialitätenkaffee und hausgemachten Backwaren. Von Filterkaffee bis Espresso, von Croissants bis Kuchen.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/azg8ito.css">
+  <link rel="stylesheet" href="styles.css">
+  <!-- EmailJS SDK for newsletter form (Phase 4) -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+  <!-- Site Header Navigation (Phase 5) -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <a href="index.html" class="header-logo">Hellers Kaffees</a>
+      
+      <nav class="main-navigation" id="main-navigation" aria-label="Hauptnavigation">
+        <a href="index.html#brew-methods" class="nav-link">Zubereitungsmethoden</a>
+        <a href="menu.html" class="nav-link active">Menü</a>
+        <a href="events.html" class="nav-link">Veranstaltungen</a>
+        <a href="index.html#visit-us" class="nav-link">Kontakt</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="header-dark-mode-toggle" id="header-dark-mode-toggle" aria-label="Dunkelmodus umschalten">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 2V4M12 20V22M4.93 4.93L6.34 6.34M17.66 17.66L19.07 19.07M2 12H4M20 12H22M6.34 17.66L4.93 19.07M19.07 4.93L17.66 6.34" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span id="dark-mode-label">Dunkel</span>
+        </button>
+        
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menü öffnen" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+  
+  <a href="#menu-content" class="skip-to-content">Zum Hauptinhalt springen</a>
+  <main>
+    <article class="menu-page">
+      <div id="menu-content" class="wrapper menu-content">
+        <header class="menu-header">
+          <span class="label">Unser Menü</span>
+          <h1>Kaffee & Backwaren</h1>
+          <p class="section-description">Entdecken Sie unsere sorgfältig ausgewählten Spezialitätenkaffees und hausgemachten Backwaren. Jede Tasse und jedes Gebäck wird mit Liebe zubereitet.</p>
+        </header>
+
+        <!-- Coffee Section -->
+        <section class="menu-section">
+          <div class="section-header">
+            <span class="label">Kaffee</span>
+            <h2>Spezialitätenkaffee</h2>
+            <p class="section-description">Alle unsere Kaffees werden täglich frisch geröstet und können nach Ihrer bevorzugten Methode zubereitet werden.</p>
+          </div>
+
+          <div class="menu-grid">
+            <article class="menu-item">
+              <div class="menu-item-image">
+                <img src="https://images.unsplash.com/photo-1705952285570-113e76f63fb0?w=800&h=600&fit=crop&q=80" alt="Espresso" loading="lazy">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h3 class="menu-item-title">Espresso</h3>
+                  <span class="menu-item-price">2,50 €</span>
+                </div>
+                <p class="menu-item-description">Intensiver, konzentrierter Kaffee mit cremiger Crema. Perfekt für den schnellen Genuss.</p>
+                <div class="menu-item-meta">
+                  <span class="menu-item-tag">Kurz</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item">
+              <div class="menu-item-image">
+                <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?w=800&h=600&fit=crop&q=80" alt="Cappuccino" loading="lazy">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h3 class="menu-item-title">Cappuccino</h3>
+                  <span class="menu-item-price">3,50 €</span>
+                </div>
+                <p class="menu-item-description">Espresso mit aufgeschäumter Milch und cremigem Milchschaum. Klassisch italienisch.</p>
+                <div class="menu-item-meta">
+                  <span class="menu-item-tag">Milch</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item">
+              <div class="menu-item-image">
+                <img src="https://images.unsplash.com/photo-1563090308-5a7889e40542?w=800&h=600&fit=crop&q=80" alt="Latte Macchiato" loading="lazy">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h3 class="menu-item-title">Latte Macchiato</h3>
+                  <span class="menu-item-price">3,80 €</span>
+                </div>
+                <p class="menu-item-description">Geschichteter Espresso mit warmer Milch und cremigem Schaum. Elegant und mild.</p>
+                <div class="menu-item-meta">
+                  <span class="menu-item-tag">Milch</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item">
+              <div class="menu-item-image">
+                <img src="https://images.unsplash.com/photo-1727080409436-356bdc609899?w=800&h=600&fit=crop&q=80" alt="Flat White" loading="lazy">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h3 class="menu-item-title">Flat White</h3>
+                  <span class="menu-item-price">3,60 €</span>
+                </div>
+                <p class="menu-item-description">Doppelter Espresso mit mikroschaumiger Milch. Intensiver Kaffeegeschmack, cremige Textur.</p>
+                <div class="menu-item-meta">
+                  <span class="menu-item-tag">Milch</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item">
+              <div class="menu-item-image">
+                <img src="https://images.unsplash.com/photo-1545665225-b23b99e4d45e?w=800&h=600&fit=crop&q=80" alt="Filterkaffee" loading="lazy">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h3 class="menu-item-title">Filterkaffee</h3>
+                  <span class="menu-item-price">3,00 €</span>
+                </div>
+                <p class="menu-item-description">Frisch gebrühter Filterkaffee aus unserer Tagesauswahl. Klar und aromatisch.</p>
+                <div class="menu-item-meta">
+                  <span class="menu-item-tag">Filter</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item">
+              <div class="menu-item-image">
+                <img src="https://images.unsplash.com/photo-1639399516047-b5598a1f721a?w=800&h=600&fit=crop&q=80" alt="Cold Brew" loading="lazy">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h3 class="menu-item-title">Cold Brew</h3>
+                  <span class="menu-item-price">4,00 €</span>
+                </div>
+                <p class="menu-item-description">24 Stunden langsam extrahierter Kaffee. Sanft, süß und erfrischend. Mit Eis serviert.</p>
+                <div class="menu-item-meta">
+                  <span class="menu-item-tag">Kalt</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item">
+              <div class="menu-item-image">
+                <img src="https://images.unsplash.com/photo-1747852221932-296571135b7b?w=800&h=600&fit=crop&q=80" alt="Cortado" loading="lazy">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h3 class="menu-item-title">Cortado</h3>
+                  <span class="menu-item-price">3,20 €</span>
+                </div>
+                <p class="menu-item-description">Espresso mit gleicher Menge warmer Milch. Ausgewogen und intensiv.</p>
+                <div class="menu-item-meta">
+                  <span class="menu-item-tag">Milch</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item">
+              <div class="menu-item-image">
+                <img src="https://images.unsplash.com/photo-1669872484166-e11b9638b50e?w=800&h=600&fit=crop&q=80" alt="Americano" loading="lazy">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h3 class="menu-item-title">Americano</h3>
+                  <span class="menu-item-price">2,80 €</span>
+                </div>
+                <p class="menu-item-description">Espresso mit heißem Wasser verlängert. Stärker als Filterkaffee, milder als Espresso.</p>
+                <div class="menu-item-meta">
+                  <span class="menu-item-tag">Schwarz</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Pastries Section -->
+        <section class="menu-section">
+          <div class="section-header">
+            <span class="label">Backwaren</span>
+            <h2>Hausgemachte Köstlichkeiten</h2>
+            <p class="section-description">Täglich frisch gebacken in unserer Küche. Perfekt zu einer Tasse Kaffee.</p>
+          </div>
+
+          <div class="menu-grid">
+            <article class="menu-item">
+              <div class="menu-item-image">
+                <img src="https://images.unsplash.com/photo-1681218079567-35aef7c8e7e4?w=800&h=600&fit=crop&q=80" alt="Butter-Croissant" loading="lazy">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h3 class="menu-item-title">Butter-Croissant</h3>
+                  <span class="menu-item-price">2,50 €</span>
+                </div>
+                <p class="menu-item-description">Klassisches französisches Croissant, luftig und buttrig. Perfekt zum Frühstück.</p>
+                <div class="menu-item-meta">
+                  <span class="menu-item-tag">Vegan verfügbar</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item">
+              <div class="menu-item-image">
+                <img src="https://images.unsplash.com/photo-1718897266472-5b7229ebdd3d?w=800&h=600&fit=crop&q=80" alt="Schokoladen-Croissant" loading="lazy">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h3 class="menu-item-title">Schokoladen-Croissant</h3>
+                  <span class="menu-item-price">3,00 €</span>
+                </div>
+                <p class="menu-item-description">Croissant gefüllt mit feinster belgischer Schokolade. Süß und verführerisch.</p>
+                <div class="menu-item-meta">
+                  <span class="menu-item-tag">Mit Schokolade</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item">
+              <div class="menu-item-image">
+                <img src="https://images.unsplash.com/photo-1696465152266-45411d28906c?w=800&h=600&fit=crop&q=80" alt="Muffin" loading="lazy">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h3 class="menu-item-title">Muffin der Saison</h3>
+                  <span class="menu-item-price">3,50 €</span>
+                </div>
+                <p class="menu-item-description">Frisch gebackener Muffin mit saisonalen Zutaten. Täglich wechselnde Sorten.</p>
+                <div class="menu-item-meta">
+                  <span class="menu-item-tag">Saisonal</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item">
+              <div class="menu-item-image">
+                <img src="https://images.unsplash.com/photo-1700448293876-07dca826c161?w=800&h=600&fit=crop&q=80" alt="Kuchenstück" loading="lazy">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h3 class="menu-item-title">Kuchenstück</h3>
+                  <span class="menu-item-price">4,50 €</span>
+                </div>
+                <p class="menu-item-description">Hausgemachter Kuchen aus unserer Tagesauswahl. Von Schokolade bis Obstkuchen.</p>
+                <div class="menu-item-meta">
+                  <span class="menu-item-tag">Täglich frisch</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item">
+              <div class="menu-item-image">
+                <img src="https://images.unsplash.com/photo-1645995575875-ea6511c9d127?w=800&h=600&fit=crop&q=80" alt="Zimtschnecke" loading="lazy">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h3 class="menu-item-title">Zimtschnecke</h3>
+                  <span class="menu-item-price">3,20 €</span>
+                </div>
+                <p class="menu-item-description">Süße Zimtschnecke mit Karamellglasur. Warm serviert auf Wunsch.</p>
+                <div class="menu-item-meta">
+                  <span class="menu-item-tag">Warm verfügbar</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item">
+              <div class="menu-item-image">
+                <img src="https://images.unsplash.com/photo-1612078960206-1709f1f0c969?w=800&h=600&fit=crop&q=80" alt="Schokoladen-Brownie" loading="lazy">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h3 class="menu-item-title">Schokoladen-Brownie</h3>
+                  <span class="menu-item-price">3,80 €</span>
+                </div>
+                <p class="menu-item-description">Dichter, schokoladiger Brownie. Mit optionaler Vanilleeis-Kugel.</p>
+                <div class="menu-item-meta">
+                  <span class="menu-item-tag">Mit Eis möglich</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <div class="menu-footer">
+          <p>Haben Sie Allergien oder spezielle Wünsche? <a href="mailto:hello@hellerskaffees.com">Kontaktieren Sie uns</a> oder sprechen Sie uns direkt im Café an.</p>
+        </div>
+
+        <div class="menu-navigation">
+          <a href="index.html" class="nav-link">← Zurück zur Übersicht</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrapper footer-grid">
+      <div class="footer-brand">
+        <h3 class="brand">Hellers Kaffees</h3>
+        <p>Unabhängige Kaffeerösterei und Café.</p>
+      </div>
+      <div class="footer-contact">
+        <h4>Kontakt</h4>
+        <p class="address">Sybelstraße 19, 10629 Berlin</p>
+        <p class="phone">Telefon: nicht angegeben</p>
+        <p class="email">E-Mail: hello@hellerskaffees.com</p>
+      </div>
+      <div class="footer-hours">
+        <h4>Öffnungszeiten</h4>
+        <p>Mo: 08:00–17:00</p>
+        <p>Di: Geschlossen</p>
+        <p>Mi: 08:00–17:00</p>
+        <p>Do: 08:00–17:00</p>
+        <p>Fr: 08:00–17:00</p>
+        <p>Sa: 10:00–17:00</p>
+        <p>So: 10:00–17:00</p>
+      </div>
+      <div class="footer-newsletter">
+        <h4>Newsletter abonnieren</h4>
+        <form class="newsletter">
+          <input type="email" name="EMAIL" placeholder="ihre-email@beispiel.de" aria-label="E-Mail-Adresse" required disabled>
+          <button type="submit" disabled>Abonnieren</button>
+        </form>
+        <p class="newsletter-coming-soon">Bald verfügbar</p>
+      </div>
+      <div class="footer-events">
+        <h4>Veranstaltungen</h4>
+        <p>Entdecken Sie unsere Workshops und Events.</p>
+        <a href="events.html" class="footer-link">Zu den Veranstaltungen →</a>
+      </div>
+    </div>
+    <div class="wrapper footer-bottom">
+      <span>© Hellers Kaffees 2025</span>
+    </div>
+  </footer>
+  <script src="scripts/main.js" defer></script>
+</body>
+</html>
+
