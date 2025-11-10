@@ -1,10 +1,11 @@
 [build]
-  command = "npm run build"
+  command = "npm run build && cp src/_redirects dist/_redirects || true"
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
 
-# Note: Redirects are handled by _redirects file in dist folder
+# Note: _redirects file is copied to dist during build
 # This ensures static assets (scripts, styles) are served correctly
+# without being intercepted by SPA redirects
 
