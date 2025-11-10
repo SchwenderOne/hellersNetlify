@@ -18,11 +18,19 @@ module.exports = async function(eleventyConfig) {
     return str.split(delimiter);
   });
 
+  eleventyConfig.addNunjucksFilter('findWhere', function(array, key, value) {
+    if (!Array.isArray(array)) return null;
+    return array.find(item => item && item[key] === value) || null;
+  });
+
   eleventyConfig.addPassthroughCopy({ 'src/styles': 'styles' });
   eleventyConfig.addPassthroughCopy({ 'src/scripts': 'scripts' });
   eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });
   eleventyConfig.addPassthroughCopy({ 'src/favicon.svg': 'favicon.svg' });
   eleventyConfig.addPassthroughCopy({ 'src/sitemap.xml': 'sitemap.xml' });
+  
+  // Copy _redirects file for Netlify (if it exists)
+  eleventyConfig.addPassthroughCopy('_redirects');
   const legacyPages = [
     'aeropress',
     'chemex',

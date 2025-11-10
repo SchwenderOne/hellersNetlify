@@ -1,0 +1,8 @@
+# Netlify automatically serves static files, so we don't need redirects for them
+# This file only handles HTML page routing
+
+# Redirect root to index
+/    /index.html   200
+
+# Note: Static assets (scripts, styles, assets) are served directly by Netlify
+# No redirects needed for /scripts/*, /styles/*, /assets/*, etc.

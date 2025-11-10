@@ -5,8 +5,6 @@
 [build.environment]
   NODE_VERSION = "20"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Note: Redirects are handled by _redirects file in dist folder
+# This ensures static assets (scripts, styles) are served correctly
 
