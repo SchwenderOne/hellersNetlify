@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "eleventy --serve",
-    "prebuild": "rm -rf .11ty-vite",
+    "prebuild": "rm -rf .11ty-vite dist",
     "build": "eleventy",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint .",
