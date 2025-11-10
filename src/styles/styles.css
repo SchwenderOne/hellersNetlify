@@ -620,9 +620,9 @@ article.card {
   height: 100vh;
   position: relative;
   /* Break out of wrapper to viewport edges - account for wrapper padding */
-  left: calc(-1 * var(--wrapper-padding, 50px));
+  /* Mirror the right-side expansion to the left */
+  margin-left: calc(-1 * var(--wrapper-padding, 50px) - 50vw + 100%);
   margin-right: calc(-1 * var(--wrapper-padding, 50px) - 50vw + 100%);
-  margin-left: calc(-1 * var(--wrapper-padding, 50px));
 }
 
 .image-container {
