@@ -260,7 +260,7 @@ body {
   padding: 12px 20px;
   background: var(--surface);
   color: var(--text);
-  border: 2px solid var(--accent-terracotta);
+  border: none;
   border-radius: 50px;
   cursor: pointer;
   font-family: var(--font-sans);
