@@ -614,15 +614,15 @@ article.card {
 }
 
 .card-hero {
-  flex: 0 0 100vw;
-  width: 100vw;
-  max-width: 100vw;
+  /* Full viewport width and height - positioned outside wrapper */
+  width: 100%;
   height: 100vh;
   position: relative;
-  /* Break out of wrapper to viewport edges - account for wrapper padding */
-  /* Mirror the right-side expansion to the left */
-  margin-left: calc(-1 * var(--wrapper-padding, 50px) - 50vw + 100%);
-  margin-right: calc(-1 * var(--wrapper-padding, 50px) - 50vw + 100%);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 
 .image-container {
