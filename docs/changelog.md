@@ -2,6 +2,15 @@
 
 Entries are reverse-chronological. Use this log to understand what shipped each session.
 
+## 2025-11-09 — Payment Methods & Deployment
+- Added Zahlungsmethoden (Payment Methods) section to landing page with Kartenzahlung and Barzahlung options.
+- Redesigned payment methods section to match storytelling sections using `.infographic-item` styling for consistency.
+- Updated navigation header to include Zahlungsmethoden link pointing to `#zahlungsmethoden` section.
+- Improved dark mode toggle icons with cleaner sun/moon SVG designs that update dynamically based on current theme.
+- Created `netlify.toml` configuration file for Netlify deployment with correct build command and publish directory.
+- Added `src/partials/payment-methods.njk` partial for Eleventy build system integration.
+- Updated Eleventy source files (`src/index.njk`) to include payment methods section in build output.
+
 ## 2025-11-Phase1 (In Progress)
 - Bootstrapped Eleventy + Vite build pipeline with `src/` structure, base layout, and header/footer partials.
 - Copied legacy HTML pages into `src/` with front matter so the new build emits pages under `dist/`.

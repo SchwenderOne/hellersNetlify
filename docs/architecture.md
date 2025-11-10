@@ -5,21 +5,28 @@
   - `index.njk` — landing page converted to Eleventy with shared layout.
   - Legacy HTML pages (recipe detail, events, menu) copied in with front‑matter headers; templates still match legacy HTML but now build through Eleventy.
   - `layouts/base.njk` and `partials/` — header/footer/head templates used by `index.njk` (other pages will adopt these in later phases).
+    - `partials/header.njk` — Global header with navigation including Zahlungsmethoden link
+    - `partials/footer.njk` — Site footer
+    - `partials/storytelling.njk` — Brew basics and farm-to-cup sections
+    - `partials/payment-methods.njk` — Payment methods section (Kartenzahlung & Barzahlung)
+    - `partials/visit-section.njk` — Visit us section with map
   - `styles/`, `scripts/`, `assets/` — direct copies of the legacy global files for now (Eleventy passes them through unchanged).
 - `legacy-static/` — frozen snapshot of the pre-refactor site kept for reference.
 - `dist/` — Eleventy build output (pages rendered into subdirectories such as `dist/events/index.html`).
+- `netlify.toml` — Netlify deployment configuration (build command and publish directory).
 - Root commands and docs remain in place (`docs/`, `package.json`, etc.).
 
 ## Shared Page Structure
-- Every page loads the same global header (`.site-header`) and footer (`.site-footer`). Header markup lives near the top of each HTML file and is styled in `styles.css:103`. The header contains the logo, primary navigation, dark-mode toggle, and mobile menu trigger. JavaScript enhances it with sticky behaviour and menu toggling (`scripts/main.js:392`).
+- Every page loads the same global header (`.site-header`) and footer (`.site-footer`). Header markup is defined in `src/partials/header.njk` and styled in `styles.css:103`. The header contains the logo, primary navigation (including Zahlungsmethoden link), dark-mode toggle with improved sun/moon icons, and mobile menu trigger. JavaScript enhances it with sticky behaviour and menu toggling (`scripts/main.js:392`).
 - A skip link is present immediately after `<body>` on each page to satisfy keyboard navigation best practices (`styles.css:71`).
 - Footer content includes contact, hours, newsletter form, and copyright notice (`styles.css:900`+).
 
 ## Landing Page (`index.html`)
 1. **Hero Card (`.card-hero`)** — Full-viewport recipe hero with parallax background and glassmorphism overlay. Layout and overflow rules reside at `styles.css:612-700`. Parallax scrolling is handled by `initParallax()` (`scripts/main.js:20`).
 2. **Brew Method Grid** — Nine recipe cards in a responsive flex layout (`styles.css:560`). Cards include difficulty/time badges and hover interactions. Each card links to its respective recipe page.
-3. **Storytelling Sections** — “Brew Basics” infographic and “Farm-to-Cup” timeline using `.storytelling-section`, `.infographic-item`, and `.timeline-item` classes (`styles.css:1240-1580`). Intersection Observer reveals them on scroll (`scripts/main.js:172`).
-4. **Visit CTA** — Map placeholder and café details at the bottom of the landing page (`styles.css:3080`).
+3. **Storytelling Sections** — "Brew Basics" infographic and "Farm-to-Cup" timeline using `.storytelling-section`, `.infographic-item`, and `.timeline-item` classes (`styles.css:1240-1580`). Intersection Observer reveals them on scroll (`scripts/main.js:172`).
+4. **Payment Methods Section** — Zahlungsmethoden section displaying Kartenzahlung and Barzahlung options. Uses `.storytelling-section` styling with `.infographic-item` cards for consistency. Located in `src/partials/payment-methods.njk` and styled with `.payment-methods-grid` (`styles.css:3216`).
+5. **Visit CTA** — Map placeholder and café details at the bottom of the landing page (`styles.css:3080`).
 
 ## Recipe Pages (`*.html`)
 - Use `.brew-guide-page` to toggle recipe-specific layout styles (`styles.css:1040`).
@@ -49,7 +56,7 @@
 - `initHeroCTA` — Smooth scrolling for hero CTA anchor links.
 - `initScrollAnimations` — Intersection Observer reveals storytelling and event cards with staggered animations.
 - `initProgressIndicator` — Global recipe progress bar.
-- `initDarkMode` — System preference detection, persisted toggle, and header icon sync.
+- `initDarkMode` — System preference detection, persisted toggle, and dynamic header icon updates (sun/moon icons that reflect the mode you'll switch TO, not the current mode).
 - `initHeaderNavigation` — Sticky header shadow, mobile menu behaviour, smooth anchor scrolling, and active-link tracking.
 - `initRecipeCalculator` — Servings-to-ingredients conversions with metric/imperial switch.
 - `initEventModal` — Accessible modal handling registration flows.

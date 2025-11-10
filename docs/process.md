@@ -3,9 +3,12 @@
 ## Working on the Project
 1. Use the Eleventy dev server for local previews: `npm run dev` spins up Eleventy with the Vite middleware on port 8080 by default.
 2. Run `npm run build` to generate the static output in `dist/`. Production assets are served from the subdirectories Eleventy creates (e.g., `dist/events/index.html`).
-3. When modifying shared structures (header, footer, calculator, timer), update the canonical Nunjucks partials in `src/partials/` (`header.njk`, `footer.njk`, etc.) and then migrate remaining pages to reuse them.
+3. When modifying shared structures (header, footer, calculator, timer, payment methods), update the canonical Nunjucks partials in `src/partials/` (`header.njk`, `footer.njk`, `payment-methods.njk`, etc.) and then migrate remaining pages to reuse them.
 4. Keep `styles.css` and `scripts/main.js` modular by extending existing sections rather than scattering duplicate rules. During the refactor, these files are still passed through unchanged; plan to break them into modules once the Eleventy foundation stabilises.
 5. Respect localisation: all visible copy remains German unless the brief changes.
+
+## Deployment
+- **Netlify:** The site is configured for automatic deployment via `netlify.toml`. Pushing to the main branch triggers a build using `npm run build` and publishes from the `dist/` directory. Ensure all changes are committed to the Eleventy source files (`src/`) rather than only the root `index.html` (which is not part of the build process).
 
 ## Testing Checklist
 - **Visual pass:** Desktop ≥1280px, tablet (~768px), and mobile (~375px). Ensure hero overflow, cards, and header remain aligned.
