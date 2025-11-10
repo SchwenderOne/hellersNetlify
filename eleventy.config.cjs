@@ -1,7 +1,6 @@
-const EleventyVitePlugin = require('@11ty/eleventy-plugin-vite').default;
-const path = require('path');
+module.exports = async function(eleventyConfig) {
+  const { default: EleventyVitePlugin } = await import('@11ty/eleventy-plugin-vite');
 
-module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(EleventyVitePlugin, {
     viteOptions: {
       appType: 'mpa',
