@@ -1,0 +1,67 @@
+<section id="tasting-wheel" class="wrapper storytelling-section tasting-wheel-section">
+  <div class="section-header">
+    <span class="label">Geschmacksprofile</span>
+    <h2>Interaktives Aromenrad</h2>
+    <p class="section-description">Entdecken Sie die vielfältigen Geschmacksnoten unserer Kaffees</p>
+  </div>
+
+  <div class="tasting-wheel-container">
+    <div class="wheel-explanation">
+      <p>Klicken Sie auf eine Geschmacksnote, um Kaffees mit diesem Profil zu entdecken</p>
+    </div>
+
+    <svg class="tasting-wheel" viewBox="0 0 400 400" aria-label="Interaktives Aromenrad">
+      <!-- Center circle -->
+      <circle cx="200" cy="200" r="40" class="wheel-center" fill="var(--surface)" stroke="var(--text)" stroke-width="2"/>
+      <text x="200" y="205" text-anchor="middle" class="wheel-center-text" fill="var(--text)" font-size="14" font-weight="600">Aroma</text>
+
+      <!-- Fruity Section (0-90 degrees) -->
+      <g class="flavor-segment" data-category="fruity">
+        <path d="M 200 200 L 340 200 A 140 140 0 0 1 200 340 Z"
+              class="segment segment-fruity"
+              data-flavors="Blackcurrant,Grapefruit,Lemon,Red Berries,Citrus,Orange,Red Fruits,Mango,Passion Fruit,White Peach,Green Apple,Peach,Red Apple"
+              fill="var(--accent-terracotta)"
+              opacity="0.7"/>
+        <text x="270" y="250" text-anchor="middle" class="segment-label" fill="var(--text)" font-size="16" font-weight="600" transform="rotate(45 270 250)">Fruchtig</text>
+      </g>
+
+      <!-- Floral Section (90-180 degrees) -->
+      <g class="flavor-segment" data-category="floral">
+        <path d="M 200 200 L 200 340 A 140 140 0 0 1 60 200 Z"
+              class="segment segment-floral"
+              data-flavors="Jasmine,Bergamot,White Flowers,Floral"
+              fill="var(--accent-sage)"
+              opacity="0.7"/>
+        <text x="130" y="250" text-anchor="middle" class="segment-label" fill="var(--text)" font-size="16" font-weight="600" transform="rotate(-45 130 250)">Blumig</text>
+      </g>
+
+      <!-- Sweet Section (180-270 degrees) -->
+      <g class="flavor-segment" data-category="sweet">
+        <path d="M 200 200 L 60 200 A 140 140 0 0 1 200 60 Z"
+              class="segment segment-sweet"
+              data-flavors="Honey,Caramel,Chocolate,Nuts"
+              fill="var(--accent-warm)"
+              opacity="0.7"/>
+        <text x="130" y="150" text-anchor="middle" class="segment-label" fill="var(--text)" font-size="16" font-weight="600" transform="rotate(45 130 150)">Süß</text>
+      </g>
+
+      <!-- Complex Section (270-360 degrees) -->
+      <g class="flavor-segment" data-category="complex">
+        <path d="M 200 200 L 200 60 A 140 140 0 0 1 340 200 Z"
+              class="segment segment-complex"
+              data-flavors="Wine,Spice,Black Tea,Tea"
+              fill="var(--accent-clay)"
+              opacity="0.7"/>
+        <text x="270" y="150" text-anchor="middle" class="segment-label" fill="var(--text)" font-size="16" font-weight="600" transform="rotate(-45 270 150)">Komplex</text>
+      </g>
+    </svg>
+
+    <div class="flavor-details" id="flavor-details">
+      <h3 id="flavor-name">Wählen Sie eine Kategorie</h3>
+      <div id="flavor-description">
+        <p>Klicken Sie auf einen Bereich des Aromenrads, um mehr über diese Geschmacksrichtung und passende Kaffees zu erfahren.</p>
+      </div>
+      <div id="matching-coffees" class="matching-coffees"></div>
+    </div>
+  </div>
+</section>

@@ -3908,3 +3908,433 @@ article.card {
     margin: 0;
   }
 }
+
+/* ==========================================
+   Tasting Wheel Styles
+   ========================================== */
+
+.tasting-wheel-section {
+  padding: 80px 0;
+}
+
+.tasting-wheel-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.wheel-explanation {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: var(--font-size-small);
+  color: var(--text);
+  opacity: 0.8;
+}
+
+.tasting-wheel {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+.flavor-segment {
+  cursor: pointer;
+  transition: opacity 300ms ease, transform 200ms ease;
+}
+
+.flavor-segment:hover .segment {
+  opacity: 0.9;
+  filter: brightness(1.1);
+}
+
+.flavor-segment:active .segment {
+  transform: scale(0.98);
+}
+
+.segment {
+  transition: opacity 300ms ease, filter 300ms ease, transform 200ms ease;
+}
+
+.segment-label {
+  pointer-events: none;
+  user-select: none;
+}
+
+.wheel-center {
+  pointer-events: none;
+}
+
+.wheel-center-text {
+  pointer-events: none;
+  user-select: none;
+}
+
+.flavor-details {
+  padding: 32px;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(14, 26, 58, 0.1);
+  min-height: 300px;
+}
+
+[data-theme="dark"] .flavor-details {
+  background: var(--surface-dark);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.flavor-details h3 {
+  font-size: var(--font-size-h3);
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.flavor-details #flavor-description {
+  margin-bottom: 24px;
+  line-height: 1.6;
+  color: var(--text);
+  opacity: 0.9;
+}
+
+.matching-coffees {
+  margin-top: 20px;
+}
+
+.matching-coffees h4 {
+  font-size: var(--font-size-base);
+  margin-bottom: 12px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.matching-coffees ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.matching-coffees li {
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  background: var(--accent-warm);
+  opacity: 0.1;
+  border-radius: 6px;
+  transition: background 200ms ease;
+}
+
+.matching-coffees li:hover {
+  opacity: 0.2;
+}
+
+.matching-coffees a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .tasting-wheel-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .tasting-wheel {
+    max-width: 320px;
+  }
+
+  .flavor-details {
+    min-height: auto;
+    padding: 24px;
+  }
+}
+
+/* ==========================================
+   Coffee Origins Map Styles
+   ========================================== */
+
+.page-hero {
+  text-align: center;
+  padding: 60px 0 40px;
+}
+
+.page-hero .label {
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.page-hero h1 {
+  font-size: var(--font-size-h1);
+  margin-bottom: 16px;
+}
+
+.page-description {
+  font-size: var(--font-size-large);
+  color: var(--text);
+  opacity: 0.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.origin-map-section {
+  padding: 60px 0;
+}
+
+.origin-map-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.map-wrapper {
+  background: var(--surface);
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(14, 26, 58, 0.1);
+}
+
+[data-theme="dark"] .map-wrapper {
+  background: var(--surface-dark);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.world-map {
+  width: 100%;
+  height: auto;
+}
+
+.origin-marker {
+  cursor: pointer;
+  transition: transform 200ms ease;
+}
+
+.origin-marker:hover {
+  transform: scale(1.15);
+}
+
+.marker-dot {
+  transition: r 200ms ease, fill 200ms ease;
+}
+
+.origin-marker:hover .marker-dot {
+  r: 10;
+  fill: var(--accent-clay);
+}
+
+.marker-label {
+  pointer-events: none;
+  user-select: none;
+}
+
+.origin-info-panel {
+  padding: 32px;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(14, 26, 58, 0.1);
+  position: sticky;
+  top: 100px;
+  min-height: 400px;
+}
+
+[data-theme="dark"] .origin-info-panel {
+  background: var(--surface-dark);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.origin-info-panel h3 {
+  font-size: var(--font-size-h3);
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+#origin-details {
+  line-height: 1.6;
+  color: var(--text);
+  opacity: 0.9;
+}
+
+.origin-altitude-info {
+  display: inline-block;
+  padding: 6px 12px;
+  background: var(--accent-sage);
+  opacity: 0.2;
+  border-radius: 6px;
+  font-size: var(--font-size-small);
+  margin: 8px 0;
+}
+
+.origin-coffees-list {
+  margin-top: 20px;
+}
+
+.origin-coffees-list h4 {
+  font-size: var(--font-size-base);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.origin-coffees-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.origin-coffees-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--text);
+  opacity: 0.1;
+}
+
+.origin-coffees-list a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 200ms ease;
+}
+
+.origin-coffees-list a:hover {
+  color: var(--accent-terracotta);
+}
+
+/* Origin Cards Grid */
+.origin-data-section {
+  padding: 80px 0;
+  background: var(--accent-warm);
+  opacity: 0.05;
+}
+
+.origin-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.origin-card {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 12px rgba(14, 26, 58, 0.1);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+[data-theme="dark"] .origin-card {
+  background: var(--surface-dark);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.origin-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(14, 26, 58, 0.15);
+}
+
+.origin-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--accent-terracotta);
+  opacity: 0.2;
+}
+
+.origin-card-header h3 {
+  font-size: var(--font-size-h3);
+  color: var(--text);
+  margin: 0;
+}
+
+.origin-altitude {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--accent-sage);
+  opacity: 0.2;
+  color: var(--text);
+  border-radius: 6px;
+  font-size: var(--font-size-small);
+  font-weight: 600;
+}
+
+.origin-characteristics h4,
+.origin-coffees h4 {
+  font-size: var(--font-size-base);
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.origin-desc {
+  line-height: 1.6;
+  color: var(--text);
+  opacity: 0.8;
+  margin-bottom: 24px;
+}
+
+.origin-coffees ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.origin-coffees li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--text);
+  opacity: 0.1;
+}
+
+.origin-coffees li:last-child {
+  border-bottom: none;
+}
+
+.origin-coffees a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 200ms ease;
+}
+
+.origin-coffees a:hover {
+  color: var(--accent-terracotta);
+}
+
+.coffee-process {
+  font-size: var(--font-size-small);
+  color: var(--text);
+  opacity: 0.6;
+  font-style: italic;
+}
+
+@media (max-width: 1024px) {
+  .origin-map-container {
+    grid-template-columns: 1fr;
+  }
+
+  .origin-info-panel {
+    position: static;
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 40px 0 20px;
+  }
+
+  .map-wrapper {
+    padding: 20px;
+  }
+
+  .origin-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .origin-card {
+    padding: 24px;
+  }
+}
