@@ -28,9 +28,7 @@ module.exports = async function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });
   eleventyConfig.addPassthroughCopy({ 'src/favicon.svg': 'favicon.svg' });
   eleventyConfig.addPassthroughCopy({ 'src/sitemap.xml': 'sitemap.xml' });
-  
-  // Copy _redirects file for Netlify (if it exists)
-  eleventyConfig.addPassthroughCopy('_redirects');
+  eleventyConfig.addPassthroughCopy({ 'src/_redirects': '_redirects' });
   const legacyPages = [
     'aeropress',
     'chemex',
