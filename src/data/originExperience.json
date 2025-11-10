@@ -1,0 +1,195 @@
+{
+  "hero": {
+    "label": "Kaffeegürtel",
+    "title": "Die Reise unserer Bohnen",
+    "description": "Vom gleißenden Hochland Äthiopiens bis zu den nebeligen Bergen Panamas – jede Bohne erzählt eine Geschichte von Handwerk, Klima und Terroir.",
+    "stats": [
+      { "label": "Ursprungsländer", "value": 8, "suffix": "+" },
+      { "label": "Produzenten", "value": 12, "suffix": "+" },
+      { "label": "Kontinente", "value": 3, "suffix": "" }
+    ]
+  },
+  "beltChapters": [
+    {
+      "id": "americas",
+      "title": "Anden & Amazonas",
+      "lede": "Sonnengereifte Süße trifft auf elegante Säure. Unsere Kaffees aus Brasilien, Kolumbien, Peru und Honduras balancieren Kakao, rote Früchte und Zitrus perfekt aus.",
+      "altitude": "900–2.100 m",
+      "flavors": ["Papaya", "Karamell", "Blutorange"],
+      "origins": ["Brazil", "Colombia", "Peru", "Honduras"],
+      "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1800&q=80"
+    },
+    {
+      "id": "africa",
+      "title": "Ostafrika",
+      "lede": "Die Wiege des Kaffees liefert florale Tiefe und funkelnde Säure. Äthiopien und Kenia bringen Bergamotte, Schwarze Johannisbeere und teeartige Klarheit mit.",
+      "altitude": "1.700–2.200 m",
+      "flavors": ["Bergamotte", "Johannisbeere", "Jasmin"],
+      "origins": ["Ethiopia", "Kenya"],
+      "image": "https://images.unsplash.com/photo-1476610182048-b716b8518aae?auto=format&fit=crop&w=1800&q=80"
+    },
+    {
+      "id": "asia",
+      "title": "Inselwelten",
+      "lede": "Indonesien und Panama vereinen vulkanische Böden mit Nebelwäldern. Von würzigen Gayo-Noten bis zu leuchtenden Geisha-Kaffees aus Boquete.",
+      "altitude": "1.100–1.900 m",
+      "flavors": ["Kakao", "Mango", "Gewürznelke"],
+      "origins": ["Indonesia", "Panama"],
+      "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80"
+    }
+  ],
+  "origins": [
+    {
+      "country": "Brazil",
+      "displayName": "Brasilien",
+      "headline": "Samtige Süße aus dem Cerrado",
+      "summary": "Nussige Süße, cremiger Körper und eine Prise Kakaopulver – perfekt für moderne Espresso-Profile.",
+      "region": "Minas Gerais, Cerrado Mineiro",
+      "altitude": "800–1.200 m",
+      "flavors": ["Schokolade", "Karamell", "Haselnuss"],
+      "processing": ["Natural", "Pulped Natural"],
+      "lat": -14.235,
+      "lng": -51.9253,
+      "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80",
+      "featuredCoffees": ["garcia-family"]
+    },
+    {
+      "country": "Colombia",
+      "displayName": "Kolumbien",
+      "headline": "Huila & Cauca in Stereo",
+      "summary": "Saftige Tropenfrucht und florale Klarheit mit butterweicher Textur.",
+      "region": "Huila & Cauca",
+      "altitude": "1.400–2.000 m",
+      "flavors": ["Pfirsich", "Honig", "Jasmin"],
+      "processing": ["Washed", "Anaerobic"],
+      "lat": 4.5709,
+      "lng": -74.2973,
+      "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
+      "featuredCoffees": ["inmaculada-geisha-signature", "ivan-villaquira"]
+    },
+    {
+      "country": "Peru",
+      "displayName": "Peru",
+      "headline": "Andenlicht",
+      "summary": "Zarte Zitrus und honigartige Süße aus biodiversen Waldgärten.",
+      "region": "Cajamarca & Cusco",
+      "altitude": "1.500–1.900 m",
+      "flavors": ["Orange", "Honig", "Kakao"],
+      "processing": ["Washed"],
+      "lat": -9.19,
+      "lng": -75.0152,
+      "image": "https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=1200&q=80",
+      "featuredCoffees": ["james-gonzales"]
+    },
+    {
+      "country": "Honduras",
+      "displayName": "Honduras",
+      "headline": "Nebelige Bergketten",
+      "summary": "Schokoladige Basis mit Gewürzblitzen und roter Frucht.",
+      "region": "Santa Bárbara & Marcala",
+      "altitude": "1.200–1.700 m",
+      "flavors": ["Schokolade", "Rote Früchte", "Gewürz"],
+      "processing": ["Washed"],
+      "lat": 15.2,
+      "lng": -86.2419,
+      "image": "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1200&q=80",
+      "featuredCoffees": ["roberto-martinez"]
+    },
+    {
+      "country": "Panama",
+      "displayName": "Panama",
+      "headline": "Boquete Nebel",
+      "summary": "Leuchtende Geisha-Lavine – florale High-Notes und tropische Süße.",
+      "region": "Boquete, Chiriquí",
+      "altitude": "1.500–1.900 m",
+      "flavors": ["Jasmin", "Bergamotte", "Mango"],
+      "processing": ["Washed", "Fermented"],
+      "lat": 8.5379,
+      "lng": -80.7821,
+      "image": "https://images.unsplash.com/photo-1507133750040-4a8f57021571?auto=format&fit=crop&w=1200&q=80",
+      "featuredCoffees": ["finca-deborah-vivid"]
+    },
+    {
+      "country": "Ethiopia",
+      "displayName": "Äthiopien",
+      "headline": "Die Wiege des Kaffees",
+      "summary": "Ätherische Blüten, Bergamotte und Pfirsiche mit teeartigem Körper.",
+      "region": "Sidamo & Guji",
+      "altitude": "1.800–2.200 m",
+      "flavors": ["Bergamotte", "Pfirsich", "Lavendel"],
+      "processing": ["Washed", "Natural"],
+      "lat": 9.145,
+      "lng": 40.4897,
+      "image": "https://images.unsplash.com/photo-1438260483147-811560c1ce8e?auto=format&fit=crop&w=1200&q=80",
+      "featuredCoffees": ["bishan-wate"]
+    },
+    {
+      "country": "Kenya",
+      "displayName": "Kenia",
+      "headline": "Johannisbeer-Blitz",
+      "summary": "Präzision, Saftigkeit und vibrierende Säure von den Hängen des Mount Kenya.",
+      "region": "Nyeri & Kirinyaga",
+      "altitude": "1.600–2.100 m",
+      "flavors": ["Johannisbeere", "Grapefruit", "Melasse"],
+      "processing": ["Washed"],
+      "lat": -0.0236,
+      "lng": 37.9062,
+      "image": "https://images.unsplash.com/photo-1501426026826-31c667bdf23d?auto=format&fit=crop&w=1200&q=80",
+      "featuredCoffees": ["getuya-aa"]
+    },
+    {
+      "country": "Indonesia",
+      "displayName": "Indonesien",
+      "headline": "Gayo Spice",
+      "summary": "Kräuter, Kakao und cremiger Körper aus vulkanischen Böden.",
+      "region": "Aceh, Gayo Highlands",
+      "altitude": "1.100–1.600 m",
+      "flavors": ["Kakao", "Gewürz", "Brauner Zucker"],
+      "processing": ["Washed", "Honey"],
+      "lat": -0.7893,
+      "lng": 113.9213,
+      "image": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80",
+      "featuredCoffees": ["hendra-maulizar"]
+    }
+  ],
+  "producerSpotlights": [
+    {
+      "name": "Hendra Maulizar",
+      "origin": "Indonesia",
+      "quote": "Wir arbeiten mit 70 Familien in Gayo zusammen, um jede Kirsche perfekt zu fermentieren.",
+      "image": "https://images.unsplash.com/photo-1439396087961-98bc12c21176?auto=format&fit=crop&w=800&q=80",
+      "link": "/hendra-maulizar/"
+    },
+    {
+      "name": "Garcia Family",
+      "origin": "Brazil",
+      "quote": "Unsere natürliche Aufbereitung bringt die Süße des Cerrado auf die Bühne.",
+      "image": "https://images.unsplash.com/photo-1437435409766-a478cc6da81a?auto=format&fit=crop&w=800&q=80",
+      "link": "/garcia-family/"
+    },
+    {
+      "name": "Bishan Wate",
+      "origin": "Ethiopia",
+      "quote": "Ernten im Morgengrauen schützen die floralen Aromen vor der Sonne.",
+      "image": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80",
+      "link": "/bishan-wate/"
+    }
+  ],
+  "metrics": {
+    "processing": [
+      { "label": "Washed", "value": 48 },
+      { "label": "Natural", "value": 32 },
+      { "label": "Experimental", "value": 20 }
+    ],
+    "altitude": {
+      "min": 900,
+      "max": 2200,
+      "average": 1650
+    },
+    "harvestSeasons": [
+      { "window": "Jan–Apr", "region": "Mittelamerika", "notes": "Honigsüße Luft & Blüten" },
+      { "window": "Mai–Aug", "region": "Afrika", "notes": "Frische Pfirsiche & Tee" },
+      { "window": "Sep–Dez", "region": "Asien", "notes": "Würzige Fülle" }
+    ]
+  }
+}

@@ -1,16 +1,4 @@
-module.exports = async function(eleventyConfig) {
-  const { default: EleventyVitePlugin } = await import('@11ty/eleventy-plugin-vite');
-
-  eleventyConfig.addPlugin(EleventyVitePlugin, {
-    viteOptions: {
-      appType: 'mpa',
-      server: { middlewareMode: true },
-      build: {
-        outDir: 'dist',
-        emptyOutDir: false
-      }
-    }
-  });
+module.exports = function(eleventyConfig) {
 
   // Add custom Nunjucks filters
   eleventyConfig.addNunjucksFilter('split', function(str, delimiter) {
@@ -29,6 +17,9 @@ module.exports = async function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ 'src/favicon.svg': 'favicon.svg' });
   eleventyConfig.addPassthroughCopy({ 'src/sitemap.xml': 'sitemap.xml' });
   eleventyConfig.addPassthroughCopy({ 'src/_redirects': '_redirects' });
+
+  // MapLibre GL JS CSS
+  eleventyConfig.addPassthroughCopy({ 'node_modules/maplibre-gl/dist/maplibre-gl.css': 'styles/maplibre-gl.css' });
   const legacyPages = [
     'aeropress',
     'chemex',

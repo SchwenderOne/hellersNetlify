@@ -1,0 +1,111 @@
+{
+  "origins": [
+    {
+      "country": "Indonesia",
+      "coordinates": [96.75, 4.695],
+      "displayName": "Indonesien",
+      "region": "Aceh, Gayo Highlands",
+      "elevation": "1.100–1.600 m",
+      "coffeeSlug": "hendra-maulizar",
+      "flavorProfile": ["Blackcurrant", "White Peach", "Green Apple", "White Flowers"],
+      "processing": "Washed",
+      "climate": "Tropisches Klima mit vulkanischem Boden. Die Gayo-Hochebene in Aceh bietet ideale Bedingungen für komplexe, fruchtbetonte Kaffees.",
+      "thumbnail": "https://rozalicoffee.de/cdn/shop/files/hendra-maulizar_product_retail_1800x1800.png?v=1754980110"
+    },
+    {
+      "country": "Brazil",
+      "coordinates": [-47.0, -19.0],
+      "displayName": "Brasilien",
+      "region": "Minas Gerais, Cerrado Mineiro",
+      "elevation": "800–1.200 m",
+      "coffeeSlug": "garcia-family",
+      "flavorProfile": ["Chocolate", "Caramel", "Nuts"],
+      "processing": "Natural",
+      "climate": "Gemäßigtes Klima mit ausgeprägten Trocken- und Regenzeiten. Der nährstoffreiche Boden des Cerrado verleiht dem Kaffee seine charakteristische Süße.",
+      "thumbnail": "https://rozalicoffee.de/cdn/shop/files/garcia-family_product_retail_1800x1800.png?v=1754980110"
+    },
+    {
+      "country": "Colombia",
+      "coordinates": [-75.6, 4.5],
+      "displayName": "Kolumbien",
+      "region": "Huila & Cauca",
+      "elevation": "1.400–2.000 m",
+      "coffeeSlug": "ivan-villaquira",
+      "flavorProfile": ["Red Berries", "Wine", "Floral", "Caramel"],
+      "processing": "Washed",
+      "climate": "Äquatoriales Hochgebirgsklima mit zwei Erntezeiten jährlich. Die vulkanischen Anden-Böden und das ausgeglichene Klima schaffen komplexe Geschmacksprofile.",
+      "thumbnail": "https://rozalicoffee.de/cdn/shop/files/ivan-villaquira_product_retail_1800x1800.png?v=1754980110"
+    },
+    {
+      "country": "Peru",
+      "coordinates": [-75.5, -9.5],
+      "displayName": "Peru",
+      "region": "Cajamarca",
+      "elevation": "1.200–1.800 m",
+      "coffeeSlug": "james-gonzales",
+      "flavorProfile": ["Citrus", "Orange", "Honey", "Caramel"],
+      "processing": "Washed",
+      "climate": "Bergklima mit kühlen Nächten und warmen Tagen. Die abgelegenen Anbaugebiete in den Anden produzieren saubere, helle Kaffees mit lebendiger Säure.",
+      "thumbnail": "https://rozalicoffee.de/cdn/shop/files/james-gonzales_product_retail_1800x1800.png?v=1754980110"
+    },
+    {
+      "country": "Honduras",
+      "coordinates": [-87.5, 14.5],
+      "displayName": "Honduras",
+      "region": "Montecillos",
+      "elevation": "1.200–1.600 m",
+      "coffeeSlug": "roberto-martinez",
+      "flavorProfile": ["Chocolate", "Red Fruits", "Spice", "Caramel"],
+      "processing": "Washed",
+      "climate": "Tropisches Bergklima mit reichlich Niederschlag. Die mineralreichen Vulkanböden und das Mikroklima der Bergregionen schaffen ausgewogene, würzige Aromen.",
+      "thumbnail": "https://rozalicoffee.de/cdn/shop/files/roberto-martinez_product_retail_1800x1800.png?v=1754980110"
+    },
+    {
+      "country": "Panama",
+      "coordinates": [-82.4, 8.5],
+      "displayName": "Panama",
+      "region": "Volcán Barú",
+      "elevation": "1.600–1.900 m",
+      "coffeeSlug": "finca-deborah-vivid",
+      "flavorProfile": ["Jasmine", "Bergamot", "Mango", "Passion Fruit"],
+      "processing": "Washed",
+      "climate": "Hochland-Mikroklima mit konstantem Nebel ('Bajareque'). Die Hänge des Vulkans Barú bieten perfekte Bedingungen für exquisite Geisha-Varietäten.",
+      "thumbnail": "https://rozalicoffee.de/cdn/shop/files/finca-deborah-front-retail_1800x1800.png?v=1734118065"
+    },
+    {
+      "country": "Kenya",
+      "coordinates": [36.8, -0.4],
+      "displayName": "Kenia",
+      "region": "Nyeri County",
+      "elevation": "1.500–2.100 m",
+      "coffeeSlug": "getuya-aa",
+      "flavorProfile": ["Blackcurrant", "Grapefruit", "Lemon", "Black Tea"],
+      "processing": "Washed",
+      "climate": "Hochland-Klima nahe dem Äquator mit reichhaltigen, vulkanischen Rotböden. Die intensive Sonneneinstrahlung und kühle Nachttemperaturen erzeugen lebendige Säure.",
+      "thumbnail": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=1800&h=1800&fit=crop&q=80"
+    },
+    {
+      "country": "Ethiopia",
+      "coordinates": [38.0, 9.0],
+      "displayName": "Äthiopien",
+      "region": "Sidamo, Yirgacheffe",
+      "elevation": "1.700–2.200 m",
+      "coffeeSlug": "bishan-wate",
+      "flavorProfile": ["Jasmine", "Bergamot", "Lemon", "Tea"],
+      "processing": "Washed",
+      "climate": "Die Geburtsstätte des Kaffees bietet einzigartige Höhenlagen und uralte Kaffeewälder. Das äthiopische Hochland produziert die komplexesten und floralsten Aromen der Welt.",
+      "thumbnail": "https://rozalicoffee.de/cdn/shop/files/bishan-wate_product_retail_1800x1800.png?v=1754980110"
+    }
+  ],
+  "roastery": {
+    "city": "Berlin",
+    "coordinates": [13.332, 52.516],
+    "displayName": "Hellers Kaffees Berlin",
+    "address": "Sybelstraße 19, 10629 Berlin"
+  },
+  "coffeeBelt": {
+    "north": 23.5,
+    "south": -23.5,
+    "description": "Der Kaffeegürtel erstreckt sich rund um den Äquator zwischen dem 23. Breitengrad nördlich und südlich. Diese tropische Zone bietet die idealen klimatischen Bedingungen für den Kaffeeanbau."
+  }
+}
