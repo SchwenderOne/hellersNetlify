@@ -1,12 +1,12 @@
 ---
 layout: base.njk
-title: "Hellers Kaffees — Zubereitungsanleitungen"
-description: "Spezialitätenkaffee in Charlottenburg, Berlin. Entdecken Sie unsere Zubereitungsanleitungen für French Press, AeroPress, Chemex und mehr."
+title: "Hellers Kaffees — Spezialitätenkaffee in Charlottenburg"
+description: "Spezialitätenkaffee in Charlottenburg, Berlin. Entdecken Sie unsere Kaffees, Zubereitungsanleitungen und mehr."
 canonical: "https://hellerskaffees.com/"
-skipLinkHref: "#brew-methods"
+skipLinkHref: "#brew-basics"
 ---
 <main>
-  <section id="brew-methods" class="wrapper cards-grid">
+  <section class="wrapper">
     <!-- Hero wide card -->
     <article class="card card-hero">
       <div class="image-container">
@@ -16,18 +16,18 @@ skipLinkHref: "#brew-methods"
                   https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?height=867&v=1693580220&width=1300 1300w,
                   https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?v=1693580220&width=1814 1814w"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
-          alt="Kalita Wave hero" loading="lazy">
+          alt="Hellers Kaffees" loading="eager">
         <div class="hero-overlay">
-          <span class="label">Zubereitungsmethoden</span>
-          <h2>Hellers Kaffees</h2>
+          <span class="label">Willkommen</span>
+          <h1>Hellers Kaffees</h1>
           <p>Spezialitätenkaffee in Charlottenburg, Berlin</p>
-          <a href="menu.html" class="hero-cta-button">Menü</a>
+          <div class="hero-cta-buttons">
+            <a href="brew-methods.html" class="hero-cta-button">Zubereitungsmethoden</a>
+            <a href="menu.html" class="hero-cta-button">Menü</a>
+          </div>
         </div>
       </div>
     </article>
-
-    <!-- Remaining brew method cards -->
-    {% include "brew-cards.njk" %}
   </section>
 
   {% include "storytelling.njk" %}

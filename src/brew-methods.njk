@@ -1,0 +1,63 @@
+---
+layout: base.njk
+title: "Zubereitungsmethoden – Hellers Kaffees"
+description: "Entdecken Sie unsere vollständige Sammlung an Zubereitungsmethoden – inklusive Schritt-für-Schritt-Anleitungen, Rechnern und Timern."
+canonical: "https://hellerskaffees.com/brew-methods.html"
+permalink: "brew-methods.html"
+skipLinkHref: "#all-guides-heading"
+bodyClass: "brew-guides-page"
+---
+<main>
+  <article class="brew-methods-page">
+    <section class="wrapper brew-methods-section" id="brew-guides" aria-labelledby="all-guides-heading">
+      <div class="section-header">
+        <span class="label">Alle Methoden</span>
+        <h2 id="all-guides-heading">Wählen Sie Ihre Lieblingsmethode</h2>
+        <p class="section-description">Jede Karte öffnet einen vollständigen Guide mit Zutaten, Mahlgrad, Rechner und Timer. Speichern Sie die Seite als Lesezeichen oder drucken Sie sie für Ihre nächste Session aus.</p>
+      </div>
+      <div class="cards-grid brew-methods-grid">
+        {% include "brew-cards.njk" %}
+      </div>
+    </section>
+
+    <section class="wrapper brew-support-section">
+      <div class="section-header">
+        <span class="label">Werkzeuge & Inhalte</span>
+        <h2>Alles was Sie zum Brühen brauchen</h2>
+      </div>
+      <div class="brew-support-grid">
+        <article class="support-card">
+          <div class="support-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 24H32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M24 16V32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Rezeptrechner</h3>
+          <p>Passen Sie Tassenanzahl, Maßeinheiten und Verhältnisse in Echtzeit an – alle Guides besitzen die gleiche Oberfläche.</p>
+        </article>
+        <article class="support-card">
+          <div class="support-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 12V24L31 31" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Brew Timer</h3>
+          <p>Geführte Timer mit Schritt-für-Schritt-Hinweisen, Pausenfunktion und optionalen Audio-Hinweisen.</p>
+        </article>
+        <article class="support-card">
+          <div class="support-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="10" width="28" height="28" rx="6" stroke="currentColor" stroke-width="2"/>
+              <path d="M18 20H30V32" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Druckversionen</h3>
+          <p>Unsere Print-Styles entfernen interaktive Elemente, damit Sie jeden Guide als Arbeitsblatt nutzen können.</p>
+        </article>
+      </div>
+    </section>
+  </article>
+</main>

@@ -13,6 +13,12 @@ module.exports = function(eleventyConfig) {
     }
   });
 
+  // Add custom Nunjucks filters
+  eleventyConfig.addNunjucksFilter('split', function(str, delimiter) {
+    if (!str) return [];
+    return str.split(delimiter);
+  });
+
   eleventyConfig.addPassthroughCopy({ 'src/styles': 'styles' });
   eleventyConfig.addPassthroughCopy({ 'src/scripts': 'scripts' });
   eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });

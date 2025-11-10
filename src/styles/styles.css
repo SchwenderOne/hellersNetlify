@@ -876,6 +876,18 @@ article.card {
   outline-offset: 3px;
 }
 
+/* Hero CTA Buttons Container */
+.hero-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.hero-cta-buttons .hero-cta-button {
+  margin-top: 0;
+}
+
 /* Respect reduced motion for CTA */
 [data-reduced-motion="true"] .hero-cta-button {
   transition: background 200ms ease;
@@ -3083,6 +3095,173 @@ article.card {
 
   .menu-footer {
     padding: 24px 20px;
+  }
+}
+
+/* Brew Methods Page */
+.brew-guides-page {
+  background: var(--bg);
+}
+
+.brew-methods-page {
+  padding-bottom: 80px;
+}
+
+.brew-methods-hero {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px;
+  padding-top: 72px;
+  padding-bottom: 48px;
+}
+
+.brew-methods-hero .label {
+  color: var(--accent-sage);
+  margin-bottom: 12px;
+}
+
+.brew-methods-hero h1 {
+  margin-bottom: 16px;
+}
+
+.brew-methods-hero p {
+  font-size: var(--font-size-lg);
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.hero-actions {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.method-stat-card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: 0 6px 18px rgba(14, 26, 58, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat-value {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--accent-terracotta);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.method-stat-card p {
+  margin: 0;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.brew-methods-section {
+  padding-top: 32px;
+  padding-bottom: 64px;
+}
+
+.brew-methods-grid {
+  margin-top: 40px;
+}
+
+.brew-support-section {
+  padding-top: 32px;
+}
+
+.brew-support-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.support-card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: 0 6px 18px rgba(14, 26, 58, 0.08);
+}
+
+.support-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(37, 92, 77, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--accent-sage);
+}
+
+.support-card h3 {
+  margin-bottom: 8px;
+}
+
+.support-card p {
+  color: var(--text);
+  margin: 0;
+}
+
+[data-theme="dark"] .brew-guides-page {
+  background: var(--bg-dark);
+}
+
+[data-theme="dark"] .method-stat-card,
+[data-theme="dark"] .support-card {
+  background: var(--surface-dark);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .stat-label {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+[data-theme="dark"] .support-icon {
+  background: rgba(223, 188, 140, 0.12);
+  color: var(--accent-beige);
+}
+
+@media (max-width: 1024px) {
+  .brew-methods-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .brew-support-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
   }
 }
 

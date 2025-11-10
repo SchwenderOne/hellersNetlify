@@ -485,17 +485,26 @@
 
       navLinks.forEach(link => {
         link.classList.remove('active');
-        const linkPath = new URL(link.href).pathname;
-        const linkHash = new URL(link.href).hash;
+        try {
+          // Use link.href which is always absolute, or construct URL with current origin
+          const linkUrl = link.href ? new URL(link.href, window.location.origin) : null;
+          if (!linkUrl) return;
+          
+          const linkPath = linkUrl.pathname;
+          const linkHash = linkUrl.hash;
 
-        // Check if link matches current page
-        if (linkPath === currentPath || (linkPath.endsWith('index.html') && (currentPath.endsWith('/') || currentPath.endsWith('index.html')))) {
-          // For anchor links, check if hash matches
-          if (linkHash && currentHash === linkHash) {
-            link.classList.add('active');
-          } else if (!linkHash && !currentHash) {
-            link.classList.add('active');
+          // Check if link matches current page
+          if (linkPath === currentPath || (linkPath.endsWith('index.html') && (currentPath.endsWith('/') || currentPath.endsWith('index.html')))) {
+            // For anchor links, check if hash matches
+            if (linkHash && currentHash === linkHash) {
+              link.classList.add('active');
+            } else if (!linkHash && !currentHash) {
+              link.classList.add('active');
+            }
           }
+        } catch (e) {
+          // If URL parsing fails, skip this link
+          console.warn('Failed to parse link URL:', link.href, e);
         }
       });
     };

@@ -1,0 +1,85 @@
+---
+layout: base.njk
+---
+{% set coffee = pagination.items[0] %}
+<main>
+  <div class="guide-hero-image">
+    <img src="{{ coffee.image }}" alt="{{ coffee.name }}" loading="eager">
+  </div>
+
+  <div class="wrapper guide-content">
+    <div class="guide-header">
+      <span class="label">{{ coffee.origin }}</span>
+      <h1 class="guide-title">{{ coffee.name }}</h1>
+      {% if coffee.category %}
+        <p class="guide-meta">{{ coffee.category }}</p>
+      {% endif %}
+    </div>
+
+    <div class="guide-main">
+      <div class="guide-intro">
+        <p>{{ coffee.description }}</p>
+        <div class="coffee-price-info">
+          <p class="coffee-price">{{ coffee.price }}{% if coffee.pricePerKg %} <span class="price-per-kg">{{ coffee.pricePerKg }}</span>{% endif %}</p>
+        </div>
+      </div>
+
+      {% if coffee.flavourProfile and coffee.flavourProfile.length > 0 %}
+        <section class="coffee-flavour-profile">
+          <h2>Geschmacksprofil</h2>
+          <div class="flavour-tags">
+            {% for flavour in coffee.flavourProfile %}
+              <span class="flavour-tag">{{ flavour }}</span>
+            {% endfor %}
+          </div>
+          <div class="flavour-attributes">
+            {% if coffee.roastLevel %}
+              <div class="flavour-attr">
+                <strong>Röstung:</strong> {{ coffee.roastLevel }}
+              </div>
+            {% endif %}
+            {% if coffee.flavourType %}
+              <div class="flavour-attr">
+                <strong>Geschmack:</strong> {{ coffee.flavourType }}
+              </div>
+            {% endif %}
+            {% if coffee.acidity %}
+              <div class="flavour-attr">
+                <strong>Säure:</strong> {{ coffee.acidity }}
+              </div>
+            {% endif %}
+          </div>
+        </section>
+      {% endif %}
+
+      {% if coffee.producerStory %}
+        <section class="coffee-producer-story storytelling-section">
+          <h2>{{ coffee.producerStory.title }}</h2>
+          {% if coffee.producerStory.subtitle %}
+            <p class="producer-subtitle">{{ coffee.producerStory.subtitle }}</p>
+          {% endif %}
+          {% if coffee.producerStory.content %}
+            <div class="producer-content">
+              {% set paragraphs = coffee.producerStory.content | split("\n\n") %}
+              {% for paragraph in paragraphs %}
+                <p>{{ paragraph | replace("\n", "<br>") | safe }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </section>
+      {% endif %}
+
+      {% if coffee.processingMethod %}
+        <section class="coffee-details">
+          <h3>Verarbeitung</h3>
+          <p>{{ coffee.processingMethod }}</p>
+        </section>
+      {% endif %}
+    </div>
+
+    <div class="guide-navigation">
+      <a href="../index.html" class="nav-link">← Zurück zur Übersicht</a>
+    </div>
+  </div>
+</main>
+

@@ -1,0 +1,30 @@
+{% for coffee in coffees %}
+  <article class="card">
+    <div class="image-container">
+      <img 
+        src="{{ coffee.image }}" 
+        alt="{{ coffee.name }}" 
+        loading="lazy" 
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw">
+      {% if coffee.soldOut or coffee.isNew %}
+        <div class="card-badges">
+          {% if coffee.soldOut %}
+            <span class="card-badge badge-sold-out">
+              Ausverkauft
+            </span>
+          {% endif %}
+          {% if coffee.isNew %}
+            <span class="card-badge badge-new">
+              NEU
+            </span>
+          {% endif %}
+        </div>
+      {% endif %}
+      <a class="link-overlay" href="{{ coffee.slug }}/" aria-label="{{ coffee.name }}"></a>
+    </div>
+    <h3 class="title">{{ coffee.name }}</h3>
+    <p class="origin">{{ coffee.origin }}</p>
+    <p class="price">{{ coffee.price }}{% if coffee.pricePerKg %} <span class="price-per-kg">{{ coffee.pricePerKg }}</span>{% endif %}</p>
+  </article>
+{% endfor %}
+
