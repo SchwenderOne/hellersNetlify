@@ -997,29 +997,57 @@
       return `${mins}:${String(secs).padStart(2, '0')}`;
     };
 
+    // Audio context (created after user interaction)
+    let audioContext = null;
+    
+    // Initialize audio context after user interaction
+    const initAudioContext = () => {
+      if (!audioContext) {
+        try {
+          audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        } catch (e) {
+          // Audio not supported
+          audioContext = null;
+        }
+      }
+      return audioContext;
+    };
+
     // Play sound notification (if enabled)
     const playSound = () => {
       if (soundToggle && !soundToggle.checked) {
         return;
       }
       
-      // Create audio context for beep sound
+      // Ensure audio context is initialized (after user interaction)
+      const ctx = initAudioContext();
+      if (!ctx) {
+        return;
+      }
+      
+      // Resume audio context if suspended (required by some browsers)
+      if (ctx.state === 'suspended') {
+        ctx.resume().catch(() => {
+          // Ignore if resume fails
+        });
+      }
+      
+      // Create beep sound
       try {
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        const oscillator = audioContext.createOscillator();
-        const gainNode = audioContext.createGain();
+        const oscillator = ctx.createOscillator();
+        const gainNode = ctx.createGain();
         
         oscillator.connect(gainNode);
-        gainNode.connect(audioContext.destination);
+        gainNode.connect(ctx.destination);
         
         oscillator.frequency.value = 800; // 800 Hz beep
         oscillator.type = 'sine';
         
-        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+        gainNode.gain.setValueAtTime(0.3, ctx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
         
-        oscillator.start(audioContext.currentTime);
-        oscillator.stop(audioContext.currentTime + 0.2);
+        oscillator.start(ctx.currentTime);
+        oscillator.stop(ctx.currentTime + 0.2);
       } catch (e) {
         // Fallback: silent notification (works even if audio fails)
         console.log('Sound notification');
@@ -1091,6 +1119,9 @@
 
     // Start timer
     const startTimer = () => {
+      // Initialize audio context on user interaction (required by browsers)
+      initAudioContext();
+      
       if (isRunning && !isPaused) {
         return;
       }
