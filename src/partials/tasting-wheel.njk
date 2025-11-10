@@ -6,62 +6,318 @@
   </div>
 
   <div class="tasting-wheel-container">
-    <div class="wheel-explanation">
-      <p>Klicken Sie auf eine Geschmacksnote, um Kaffees mit diesem Profil zu entdecken</p>
+    <div class="wheel-wrapper">
+      <div class="wheel-explanation">
+        <p>Bewegen Sie die Maus über eine Kategorie oder ein Aroma, um mehr zu erfahren</p>
+      </div>
+
+      <svg class="tasting-wheel" viewBox="0 0 500 500" aria-label="Interaktives Aromenrad">
+        <defs>
+          <!-- Gradients for each category -->
+          <radialGradient id="gradient-fruity">
+            <stop offset="0%" style="stop-color:var(--accent-terracotta);stop-opacity:0.9" />
+            <stop offset="100%" style="stop-color:var(--accent-terracotta);stop-opacity:0.7" />
+          </radialGradient>
+          <radialGradient id="gradient-floral">
+            <stop offset="0%" style="stop-color:var(--accent-sage);stop-opacity:0.9" />
+            <stop offset="100%" style="stop-color:var(--accent-sage);stop-opacity:0.7" />
+          </radialGradient>
+          <radialGradient id="gradient-sweet">
+            <stop offset="0%" style="stop-color:var(--accent-warm);stop-opacity:0.9" />
+            <stop offset="100%" style="stop-color:var(--accent-warm);stop-opacity:0.7" />
+          </radialGradient>
+          <radialGradient id="gradient-complex">
+            <stop offset="0%" style="stop-color:var(--accent-clay);stop-opacity:0.9" />
+            <stop offset="100%" style="stop-color:var(--accent-clay);stop-opacity:0.7" />
+          </radialGradient>
+
+          <!-- Drop shadow filter -->
+          <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+            <feOffset dx="0" dy="2" result="offsetblur"/>
+            <feComponentTransfer>
+              <feFuncA type="linear" slope="0.2"/>
+            </feComponentTransfer>
+            <feMerge>
+              <feMergeNode/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Center circle with logo/text -->
+        <g class="wheel-center-group">
+          <circle cx="250" cy="250" r="60" class="wheel-center" fill="var(--surface)" stroke="var(--text)" stroke-width="2" filter="url(#shadow)"/>
+          <text x="250" y="245" text-anchor="middle" class="wheel-center-text" fill="var(--text)" font-size="18" font-weight="700">Aroma</text>
+          <text x="250" y="265" text-anchor="middle" class="wheel-center-subtext" fill="var(--text)" font-size="12" font-weight="400" opacity="0.7">Rad</text>
+        </g>
+
+        <!-- FRUITY CATEGORY (0-90 degrees) -->
+        <g class="flavor-category" data-category="fruity">
+          <!-- Inner ring - Category label -->
+          <path d="M 250 250 L 370 250 A 120 120 0 0 1 250 370 Z"
+                class="category-segment"
+                data-flavors="Blackcurrant,Grapefruit,Lemon,Red Berries,Citrus,Orange,Red Fruits,Mango,Passion Fruit,White Peach,Green Apple,Peach,Red Apple"
+                fill="url(#gradient-fruity)"
+                stroke="var(--surface)"
+                stroke-width="2"/>
+          <text x="310" y="260" text-anchor="middle" class="category-label" fill="var(--text)" font-size="16" font-weight="700" transform="rotate(45 310 260)">Fruchtig</text>
+
+          <!-- Outer ring - Individual flavors -->
+          <g class="flavor-items">
+            <!-- Citrus subcategory -->
+            <path d="M 370 250 L 430 250 A 180 180 0 0 1 413.4 286.6 L 353.4 266.6 A 120 120 0 0 0 370 250 Z"
+                  class="flavor-segment"
+                  data-flavor="Citrus"
+                  data-subcategory="Zitrus"
+                  fill="var(--accent-terracotta)"
+                  opacity="0.6"
+                  stroke="var(--surface)"
+                  stroke-width="1"/>
+            <text x="398" y="258" text-anchor="middle" class="flavor-label" fill="var(--text)" font-size="9" font-weight="600" transform="rotate(10 398 258)">Zitrus</text>
+
+            <!-- Berry subcategory -->
+            <path d="M 413.4 286.6 L 473.4 306.6 A 180 180 0 0 1 450 350 L 350 300 A 120 120 0 0 0 353.4 266.6 Z"
+                  class="flavor-segment"
+                  data-flavor="Red Berries,Blackcurrant"
+                  data-subcategory="Beeren"
+                  fill="var(--accent-terracotta)"
+                  opacity="0.65"
+                  stroke="var(--surface)"
+                  stroke-width="1"/>
+            <text x="410" y="290" text-anchor="middle" class="flavor-label" fill="var(--text)" font-size="9" font-weight="600" transform="rotate(30 410 290)">Beeren</text>
+
+            <!-- Stone Fruit -->
+            <path d="M 450 350 L 500 400 A 180 180 0 0 1 400 500 L 300 350 A 120 120 0 0 0 350 300 Z"
+                  class="flavor-segment"
+                  data-flavor="Peach,White Peach"
+                  data-subcategory="Steinobst"
+                  fill="var(--accent-terracotta)"
+                  opacity="0.7"
+                  stroke="var(--surface)"
+                  stroke-width="1"/>
+            <text x="385" y="345" text-anchor="middle" class="flavor-label" fill="var(--text)" font-size="9" font-weight="600" transform="rotate(60 385 345)">Steinobst</text>
+
+            <!-- Tropical -->
+            <path d="M 400 500 L 350 550 A 180 180 0 0 1 306.6 473.4 L 266.6 353.4 A 120 120 0 0 0 300 350 Z"
+                  class="flavor-segment"
+                  data-flavor="Mango,Passion Fruit"
+                  data-subcategory="Tropisch"
+                  fill="var(--accent-terracotta)"
+                  opacity="0.75"
+                  stroke="var(--surface)"
+                  stroke-width="1"/>
+            <text x="310" y="395" text-anchor="middle" class="flavor-label" fill="var(--text)" font-size="9" font-weight="600" transform="rotate(75 310 395)">Tropisch</text>
+
+            <!-- Pome Fruit -->
+            <path d="M 306.6 473.4 L 286.6 413.4 A 180 180 0 0 1 250 430 L 250 370 A 120 120 0 0 0 266.6 353.4 Z"
+                  class="flavor-segment"
+                  data-flavor="Green Apple,Red Apple"
+                  data-subcategory="Kernobst"
+                  fill="var(--accent-terracotta)"
+                  opacity="0.8"
+                  stroke="var(--surface)"
+                  stroke-width="1"/>
+            <text x="268" y="385" text-anchor="middle" class="flavor-label" fill="var(--text)" font-size="9" font-weight="600" transform="rotate(85 268 385)">Kernobst</text>
+          </g>
+        </g>
+
+        <!-- FLORAL CATEGORY (90-180 degrees) -->
+        <g class="flavor-category" data-category="floral">
+          <!-- Inner ring -->
+          <path d="M 250 250 L 250 370 A 120 120 0 0 1 130 250 Z"
+                class="category-segment"
+                data-flavors="Jasmine,Bergamot,White Flowers,Floral"
+                fill="url(#gradient-floral)"
+                stroke="var(--surface)"
+                stroke-width="2"/>
+          <text x="190" y="260" text-anchor="middle" class="category-label" fill="var(--text)" font-size="16" font-weight="700" transform="rotate(-45 190 260)">Blumig</text>
+
+          <!-- Outer ring -->
+          <g class="flavor-items">
+            <!-- White Flowers -->
+            <path d="M 250 370 L 250 430 A 180 180 0 0 1 213.4 413.4 L 233.4 353.4 A 120 120 0 0 0 250 370 Z"
+                  class="flavor-segment"
+                  data-flavor="Jasmine,White Flowers"
+                  data-subcategory="Weiße Blüten"
+                  fill="var(--accent-sage)"
+                  opacity="0.6"
+                  stroke="var(--surface)"
+                  stroke-width="1"/>
+            <text x="238" y="398" text-anchor="middle" class="flavor-label" fill="var(--text)" font-size="9" font-weight="600" transform="rotate(95 238 398)">Weiße Blüten</text>
+
+            <!-- Aromatic Flowers -->
+            <path d="M 213.4 413.4 L 193.4 473.4 A 180 180 0 0 1 150 450 L 200 350 A 120 120 0 0 0 233.4 353.4 Z"
+                  class="flavor-segment"
+                  data-flavor="Bergamot,Floral"
+                  data-subcategory="Aromatisch"
+                  fill="var(--accent-sage)"
+                  opacity="0.65"
+                  stroke="var(--surface)"
+                  stroke-width="1"/>
+            <text x="188" y="385" text-anchor="middle" class="flavor-label" fill="var(--text)" font-size="9" font-weight="600" transform="rotate(115 188 385)">Aromatisch</text>
+
+            <!-- Herbal -->
+            <path d="M 150 450 L 100 500 A 180 180 0 0 1 50 400 L 150 300 A 120 120 0 0 0 200 350 Z"
+                  class="flavor-segment"
+                  data-flavor="Tea,Black Tea"
+                  data-subcategory="Kräuterig"
+                  fill="var(--accent-sage)"
+                  opacity="0.7"
+                  stroke="var(--surface)"
+                  stroke-width="1"/>
+            <text x="125" y="360" text-anchor="middle" class="flavor-label" fill="var(--text)" font-size="9" font-weight="600" transform="rotate(135 125 360)">Kräuterig</text>
+
+            <!-- Tea-like -->
+            <path d="M 50 400 L 26.6 350 A 180 180 0 0 1 26.6 306.6 L 86.6 286.6 A 120 120 0 0 0 150 300 Z"
+                  class="flavor-segment"
+                  data-flavor="Tea"
+                  data-subcategory="Tee"
+                  fill="var(--accent-sage)"
+                  opacity="0.75"
+                  stroke="var(--surface)"
+                  stroke-width="1"/>
+            <text x="85" y="315" text-anchor="middle" class="flavor-label" fill="var(--text)" font-size="9" font-weight="600" transform="rotate(160 85 315)">Tee</text>
+          </g>
+        </g>
+
+        <!-- SWEET CATEGORY (180-270 degrees) -->
+        <g class="flavor-category" data-category="sweet">
+          <!-- Inner ring -->
+          <path d="M 250 250 L 130 250 A 120 120 0 0 1 250 130 Z"
+                class="category-segment"
+                data-flavors="Honey,Caramel,Chocolate,Nuts"
+                fill="url(#gradient-sweet)"
+                stroke="var(--surface)"
+                stroke-width="2"/>
+          <text x="190" y="240" text-anchor="middle" class="category-label" fill="var(--text)" font-size="16" font-weight="700" transform="rotate(45 190 240)">Süß</text>
+
+          <!-- Outer ring -->
+          <g class="flavor-items">
+            <!-- Sugar -->
+            <path d="M 130 250 L 70 250 A 180 180 0 0 1 86.6 213.4 L 146.6 233.4 A 120 120 0 0 0 130 250 Z"
+                  class="flavor-segment"
+                  data-flavor="Honey,Caramel"
+                  data-subcategory="Zucker"
+                  fill="var(--accent-warm)"
+                  opacity="0.6"
+                  stroke="var(--surface)"
+                  stroke-width="1"/>
+            <text x="102" y="242" text-anchor="middle" class="flavor-label" fill="var(--text)" font-size="9" font-weight="600" transform="rotate(170 102 242)">Zucker</text>
+
+            <!-- Chocolate -->
+            <path d="M 86.6 213.4 L 26.6 193.4 A 180 180 0 0 1 50 150 L 150 200 A 120 120 0 0 0 146.6 233.4 Z"
+                  class="flavor-segment"
+                  data-flavor="Chocolate"
+                  data-subcategory="Schokolade"
+                  fill="var(--accent-warm)"
+                  opacity="0.65"
+                  stroke="var(--surface)"
+                  stroke-width="1"/>
+            <text x="88" y="195" text-anchor="middle" class="flavor-label" fill="var(--text)" font-size="9" font-weight="600" transform="rotate(200 88 195)">Schokolade</text>
+
+            <!-- Nutty -->
+            <path d="M 50 150 L 0 100 A 180 180 0 0 1 100 0 L 200 150 A 120 120 0 0 0 150 200 Z"
+                  class="flavor-segment"
+                  data-flavor="Nuts"
+                  data-subcategory="Nussig"
+                  fill="var(--accent-warm)"
+                  opacity="0.7"
+                  stroke="var(--surface)"
+                  stroke-width="1"/>
+            <text x="115" y="140" text-anchor="middle" class="flavor-label" fill="var(--text)" font-size="9" font-weight="600" transform="rotate(240 115 140)">Nussig</text>
+
+            <!-- Caramelized -->
+            <path d="M 100 0 L 150 -50 A 180 180 0 0 1 193.4 26.6 L 213.4 146.6 A 120 120 0 0 0 200 150 Z"
+                  class="flavor-segment"
+                  data-flavor="Caramel"
+                  data-subcategory="Karamell"
+                  fill="var(--accent-warm)"
+                  opacity="0.75"
+                  stroke="var(--surface)"
+                  stroke-width="1"/>
+            <text x="168" y="115" text-anchor="middle" class="flavor-label" fill="var(--text)" font-size="9" font-weight="600" transform="rotate(255 168 115)">Karamell</text>
+          </g>
+        </g>
+
+        <!-- COMPLEX CATEGORY (270-360 degrees) -->
+        <g class="flavor-category" data-category="complex">
+          <!-- Inner ring -->
+          <path d="M 250 250 L 250 130 A 120 120 0 0 1 370 250 Z"
+                class="category-segment"
+                data-flavors="Wine,Spice,Black Tea,Tea"
+                fill="url(#gradient-complex)"
+                stroke="var(--surface)"
+                stroke-width="2"/>
+          <text x="310" y="240" text-anchor="middle" class="category-label" fill="var(--text)" font-size="16" font-weight="700" transform="rotate(-45 310 240)">Komplex</text>
+
+          <!-- Outer ring -->
+          <g class="flavor-items">
+            <!-- Wine-like -->
+            <path d="M 250 130 L 250 70 A 180 180 0 0 1 286.6 86.6 L 266.6 146.6 A 120 120 0 0 0 250 130 Z"
+                  class="flavor-segment"
+                  data-flavor="Wine"
+                  data-subcategory="Weinartig"
+                  fill="var(--accent-clay)"
+                  opacity="0.6"
+                  stroke="var(--surface)"
+                  stroke-width="1"/>
+            <text x="262" y="102" text-anchor="middle" class="flavor-label" fill="var(--text)" font-size="9" font-weight="600" transform="rotate(265 262 102)">Weinartig</text>
+
+            <!-- Spicy -->
+            <path d="M 286.6 86.6 L 306.6 26.6 A 180 180 0 0 1 350 50 L 300 150 A 120 120 0 0 0 266.6 146.6 Z"
+                  class="flavor-segment"
+                  data-flavor="Spice"
+                  data-subcategory="Würzig"
+                  fill="var(--accent-clay)"
+                  opacity="0.65"
+                  stroke="var(--surface)"
+                  stroke-width="1"/>
+            <text x="298" y="115" text-anchor="middle" class="flavor-label" fill="var(--text)" font-size="9" font-weight="600" transform="rotate(295 298 115)">Würzig</text>
+
+            <!-- Fermented -->
+            <path d="M 350 50 L 400 0 A 180 180 0 0 1 500 100 L 350 200 A 120 120 0 0 0 300 150 Z"
+                  class="flavor-segment"
+                  data-flavor="Wine,Tea"
+                  data-subcategory="Fermentiert"
+                  fill="var(--accent-clay)"
+                  opacity="0.7"
+                  stroke="var(--surface)"
+                  stroke-width="1"/>
+            <text x="360" y="140" text-anchor="middle" class="flavor-label" fill="var(--text)" font-size="9" font-weight="600" transform="rotate(315 360 140)">Fermentiert</text>
+
+            <!-- Dark Tea -->
+            <path d="M 500 100 L 550 150 A 180 180 0 0 1 473.4 193.4 L 353.4 213.4 A 120 120 0 0 0 350 200 Z"
+                  class="flavor-segment"
+                  data-flavor="Black Tea"
+                  data-subcategory="Schwarztee"
+                  fill="var(--accent-clay)"
+                  opacity="0.75"
+                  stroke="var(--surface)"
+                  stroke-width="1"/>
+            <text x="395" y="175" text-anchor="middle" class="flavor-label" fill="var(--text)" font-size="9" font-weight="600" transform="rotate(340 395 175)">Schwarztee</text>
+          </g>
+        </g>
+      </svg>
+
+      <button class="reset-wheel-btn" id="reset-wheel-btn" aria-label="Aromenrad zurücksetzen">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C15.3019 3 18.1885 4.77814 19.7545 7.42909M12 7V12L15 15"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Zurücksetzen
+      </button>
     </div>
 
-    <svg class="tasting-wheel" viewBox="0 0 400 400" aria-label="Interaktives Aromenrad">
-      <!-- Center circle -->
-      <circle cx="200" cy="200" r="40" class="wheel-center" fill="var(--surface)" stroke="var(--text)" stroke-width="2"/>
-      <text x="200" y="205" text-anchor="middle" class="wheel-center-text" fill="var(--text)" font-size="14" font-weight="600">Aroma</text>
-
-      <!-- Fruity Section (0-90 degrees) -->
-      <g class="flavor-segment" data-category="fruity">
-        <path d="M 200 200 L 340 200 A 140 140 0 0 1 200 340 Z"
-              class="segment segment-fruity"
-              data-flavors="Blackcurrant,Grapefruit,Lemon,Red Berries,Citrus,Orange,Red Fruits,Mango,Passion Fruit,White Peach,Green Apple,Peach,Red Apple"
-              fill="var(--accent-terracotta)"
-              opacity="0.7"/>
-        <text x="270" y="250" text-anchor="middle" class="segment-label" fill="var(--text)" font-size="16" font-weight="600" transform="rotate(45 270 250)">Fruchtig</text>
-      </g>
-
-      <!-- Floral Section (90-180 degrees) -->
-      <g class="flavor-segment" data-category="floral">
-        <path d="M 200 200 L 200 340 A 140 140 0 0 1 60 200 Z"
-              class="segment segment-floral"
-              data-flavors="Jasmine,Bergamot,White Flowers,Floral"
-              fill="var(--accent-sage)"
-              opacity="0.7"/>
-        <text x="130" y="250" text-anchor="middle" class="segment-label" fill="var(--text)" font-size="16" font-weight="600" transform="rotate(-45 130 250)">Blumig</text>
-      </g>
-
-      <!-- Sweet Section (180-270 degrees) -->
-      <g class="flavor-segment" data-category="sweet">
-        <path d="M 200 200 L 60 200 A 140 140 0 0 1 200 60 Z"
-              class="segment segment-sweet"
-              data-flavors="Honey,Caramel,Chocolate,Nuts"
-              fill="var(--accent-warm)"
-              opacity="0.7"/>
-        <text x="130" y="150" text-anchor="middle" class="segment-label" fill="var(--text)" font-size="16" font-weight="600" transform="rotate(45 130 150)">Süß</text>
-      </g>
-
-      <!-- Complex Section (270-360 degrees) -->
-      <g class="flavor-segment" data-category="complex">
-        <path d="M 200 200 L 200 60 A 140 140 0 0 1 340 200 Z"
-              class="segment segment-complex"
-              data-flavors="Wine,Spice,Black Tea,Tea"
-              fill="var(--accent-clay)"
-              opacity="0.7"/>
-        <text x="270" y="150" text-anchor="middle" class="segment-label" fill="var(--text)" font-size="16" font-weight="600" transform="rotate(-45 270 150)">Komplex</text>
-      </g>
-    </svg>
-
     <div class="flavor-details" id="flavor-details">
-      <h3 id="flavor-name">Wählen Sie eine Kategorie</h3>
-      <div id="flavor-description">
-        <p>Klicken Sie auf einen Bereich des Aromenrads, um mehr über diese Geschmacksrichtung und passende Kaffees zu erfahren.</p>
+      <div class="detail-content">
+        <h3 id="flavor-name">Wählen Sie eine Kategorie</h3>
+        <div id="flavor-description">
+          <p>Bewegen Sie die Maus über einen Bereich des Aromenrads, um mehr über diese Geschmacksrichtung zu erfahren. Klicken Sie für Details.</p>
+        </div>
+        <div id="flavor-tags" class="flavor-tags"></div>
+        <div id="matching-coffees" class="matching-coffees"></div>
       </div>
-      <div id="matching-coffees" class="matching-coffees"></div>
     </div>
   </div>
 </section>
