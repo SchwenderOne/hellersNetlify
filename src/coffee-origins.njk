@@ -1,0 +1,184 @@
+---
+layout: base.njk
+title: "Kaffeeherkunft – Hellers Kaffees"
+description: "Entdecken Sie die Herkunft unserer Spezialitätenkaffees auf einer interaktiven Weltkarte. Von Äthiopien bis Kolumbien – lernen Sie die Regionen und Produzenten kennen."
+canonical: "https://hellerskaffees.com/coffee-origins/"
+skipLinkHref: "#origin-map"
+---
+<main>
+  <section class="wrapper">
+    <div class="page-hero">
+      <span class="label">Unsere Kaffees</span>
+      <h1>Kaffeeherkunft</h1>
+      <p class="page-description">Entdecken Sie, woher unsere Spezialitätenkaffees stammen und lernen Sie die Regionen und Produzenten kennen</p>
+    </div>
+  </section>
+
+  <section id="origin-map" class="wrapper origin-map-section">
+    <div class="origin-map-container">
+      <div class="map-wrapper">
+        <svg class="world-map" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" aria-label="Interaktive Weltkarte der Kaffeeherkunft">
+          <!-- Simplified world map with coffee belt highlighted -->
+          <defs>
+            <linearGradient id="oceanGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:var(--accent-sage);stop-opacity:0.1" />
+              <stop offset="100%" style="stop-color:var(--accent-sage);stop-opacity:0.2" />
+            </linearGradient>
+          </defs>
+
+          <!-- Ocean background -->
+          <rect width="1000" height="500" fill="url(#oceanGradient)"/>
+
+          <!-- Coffee Belt Band (Tropic of Cancer to Tropic of Capricorn) -->
+          <rect x="0" y="150" width="1000" height="200" fill="var(--accent-warm)" opacity="0.15" />
+          <text x="20" y="170" font-size="12" fill="var(--text)" opacity="0.6">Kaffeegürtel (Coffee Belt)</text>
+
+          <!-- Simplified continents -->
+          <!-- South America -->
+          <path d="M 200 200 L 250 180 L 280 200 L 290 250 L 270 320 L 240 300 L 220 280 Z"
+                fill="var(--surface)" stroke="var(--text)" stroke-width="1" opacity="0.8"/>
+
+          <!-- Central America -->
+          <path d="M 150 180 L 180 175 L 190 185 L 180 195 L 160 190 Z"
+                fill="var(--surface)" stroke="var(--text)" stroke-width="1" opacity="0.8"/>
+
+          <!-- Africa -->
+          <path d="M 450 150 L 500 160 L 520 200 L 510 280 L 480 300 L 460 290 L 450 250 Z"
+                fill="var(--surface)" stroke="var(--text)" stroke-width="1" opacity="0.8"/>
+
+          <!-- Southeast Asia -->
+          <path d="M 700 220 L 750 210 L 770 240 L 750 260 L 720 250 Z"
+                fill="var(--surface)" stroke="var(--text)" stroke-width="1" opacity="0.8"/>
+
+          <!-- Coffee Origin Markers -->
+
+          <!-- Brazil -->
+          <g class="origin-marker" data-origin="Brazil" data-country="Brazil">
+            <circle cx="260" cy="260" r="8" fill="var(--accent-terracotta)" stroke="white" stroke-width="2" class="marker-dot"/>
+            <text x="260" y="245" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text)" class="marker-label">Brazil</text>
+          </g>
+
+          <!-- Colombia -->
+          <g class="origin-marker" data-origin="Colombia" data-country="Colombia">
+            <circle cx="220" cy="215" r="8" fill="var(--accent-terracotta)" stroke="white" stroke-width="2" class="marker-dot"/>
+            <text x="220" y="200" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text)" class="marker-label">Colombia</text>
+          </g>
+
+          <!-- Peru -->
+          <g class="origin-marker" data-origin="Peru" data-country="Peru">
+            <circle cx="230" cy="250" r="8" fill="var(--accent-terracotta)" stroke="white" stroke-width="2" class="marker-dot"/>
+            <text x="230" y="270" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text)" class="marker-label">Peru</text>
+          </g>
+
+          <!-- Honduras -->
+          <g class="origin-marker" data-origin="Honduras" data-country="Honduras">
+            <circle cx="170" cy="185" r="8" fill="var(--accent-terracotta)" stroke="white" stroke-width="2" class="marker-dot"/>
+            <text x="170" y="170" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text)" class="marker-label">Honduras</text>
+          </g>
+
+          <!-- Panama -->
+          <g class="origin-marker" data-origin="Panama" data-country="Panama">
+            <circle cx="200" cy="205" r="8" fill="var(--accent-terracotta)" stroke="white" stroke-width="2" class="marker-dot"/>
+            <text x="200" y="190" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text)" class="marker-label">Panama</text>
+          </g>
+
+          <!-- Ethiopia -->
+          <g class="origin-marker" data-origin="Ethiopia" data-country="Ethiopia">
+            <circle cx="510" cy="210" r="8" fill="var(--accent-terracotta)" stroke="white" stroke-width="2" class="marker-dot"/>
+            <text x="510" y="195" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text)" class="marker-label">Ethiopia</text>
+          </g>
+
+          <!-- Kenya -->
+          <g class="origin-marker" data-origin="Kenya" data-country="Kenya">
+            <circle cx="500" cy="240" r="8" fill="var(--accent-terracotta)" stroke="white" stroke-width="2" class="marker-dot"/>
+            <text x="500" y="260" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text)" class="marker-label">Kenya</text>
+          </g>
+
+          <!-- Indonesia -->
+          <g class="origin-marker" data-origin="Indonesia" data-country="Indonesia">
+            <circle cx="740" cy="245" r="8" fill="var(--accent-terracotta)" stroke="white" stroke-width="2" class="marker-dot"/>
+            <text x="740" y="230" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text)" class="marker-label">Indonesia</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="origin-info-panel" id="origin-info-panel">
+        <h3 id="origin-country-name">Wählen Sie ein Herkunftsland</h3>
+        <div id="origin-details">
+          <p>Klicken Sie auf einen Marker auf der Karte, um mehr über die Kaffeeregion und unsere Kaffees aus diesem Land zu erfahren.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrapper origin-data-section">
+    <div class="section-header">
+      <span class="label">Detaillierte Informationen</span>
+      <h2>Unsere Kaffeeregionen</h2>
+      <p class="section-description">Erfahren Sie mehr über die einzigartigen Eigenschaften jeder Herkunft</p>
+    </div>
+
+    <div class="origin-cards-grid">
+      {% for coffee in coffees %}
+        {% set originProcessed = [] %}
+        {% if coffee.origin not in originProcessed %}
+          <article class="origin-card" data-country="{{ coffee.origin }}">
+            <div class="origin-card-header">
+              <h3>{{ coffee.origin }}</h3>
+              <span class="origin-altitude">
+                {% if coffee.origin == "Indonesia" %}1,100-1,600m
+                {% elif coffee.origin == "Brazil" %}500-1,200m
+                {% elif coffee.origin == "Colombia" %}1,200-2,000m
+                {% elif coffee.origin == "Peru" %}1,200-2,000m
+                {% elif coffee.origin == "Honduras" %}1,000-1,700m
+                {% elif coffee.origin == "Panama" %}1,400-1,900m
+                {% elif coffee.origin == "Kenya" %}1,500-2,100m
+                {% elif coffee.origin == "Ethiopia" %}1,200-2,100m
+                {% endif %}
+              </span>
+            </div>
+            <div class="origin-card-content">
+              <div class="origin-characteristics">
+                <h4>Typische Merkmale</h4>
+                <p class="origin-desc">
+                  {% if coffee.origin == "Indonesia" %}
+                    Vollmundig, erdige Untertöne mit kräutigem und würzigem Charakter. Cremige Textur durch vulkanischen Boden.
+                  {% elif coffee.origin == "Brazil" %}
+                    Ausgewogen und süß mit Noten von Schokolade, Karamell und Nüssen. Niedrige Säure, ideal für Espresso.
+                  {% elif coffee.origin == "Colombia" %}
+                    Ausgewogen mit heller Säure, blumigen Noten und fruchtiger Komplexität. Vielseitig und konsistent.
+                  {% elif coffee.origin == "Peru" %}
+                    Hell und sauber mit Zitrustönen. Sanfter Abgang mit honigartiger Süße.
+                  {% elif coffee.origin == "Honduras" %}
+                    Ausgewogen mit Schokoladennoten, roten Früchten und einem Hauch Gewürz. Mittlere Säure.
+                  {% elif coffee.origin == "Panama" %}
+                    Exquisite Geisha-Varietät mit lebendigen floralen Noten und tropischer Fruchtkomplexität.
+                  {% elif coffee.origin == "Kenya" %}
+                    Helle Säure mit schwarzen Johannisbeeren, Grapefruit und sauberer Abgang. Kraftvoll und lebendig.
+                  {% elif coffee.origin == "Ethiopia" %}
+                    Klassisch äthiopisch mit floralen Noten, Bergamotte und teeähnlichem Körper. Birthplace of Coffee.
+                  {% endif %}
+                </p>
+              </div>
+
+              <div class="origin-coffees">
+                <h4>Kaffees aus {{ coffee.origin }}</h4>
+                <ul>
+                  {% for c in coffees %}
+                    {% if c.origin == coffee.origin %}
+                      <li>
+                        <a href="/{{ c.slug }}/">{{ c.name }}</a>
+                        <span class="coffee-process">{{ c.processingMethod }}</span>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </article>
+          {% set originProcessed = (originProcessed.push(coffee.origin), originProcessed) %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+</main>
