@@ -1294,8 +1294,48 @@ article.card {
   margin: 0 auto;
 }
 
+/* Coffee Detail Page Layout - Side-by-side Image & Content */
+.coffee-detail-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.coffee-detail-image {
+  flex: 0 0 40%;
+  position: sticky;
+  top: calc(var(--header-height, 70px) + 20px);
+  max-height: calc(100vh - var(--header-height, 70px) - 40px);
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.coffee-detail-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.coffee-detail-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.coffee-header {
+  text-align: left;
+  align-items: flex-start;
+  margin-bottom: 36px;
+}
+
+.coffee-header .label {
+  display: block;
+}
+
 .guide-intro {
-  text-align: center;
+  text-align: left;
   margin-bottom: 40px;
 }
 
@@ -1311,6 +1351,10 @@ article.card {
   line-height: var(--line-height-body);
   max-width: 800px;
   margin: 0 auto;
+}
+
+.coffee-detail-content .guide-intro p {
+  margin: 0;
 }
 
 .guide-secondary-image {
@@ -5985,6 +6029,17 @@ article.card {
 }
 
 @media (max-width: 768px) {
+  .coffee-detail-container {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .coffee-detail-image {
+    flex: 1;
+    position: static;
+    max-height: none;
+  }
+
   .origin-map-section {
     padding: 60px 0;
   }

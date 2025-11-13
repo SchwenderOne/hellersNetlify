@@ -12,20 +12,21 @@ eleventyComputed:
 ---
 {%- set coffee = pagination.items[0] -%}
 <main>
-  <div class="guide-hero-image">
-    <img src="{{ coffee.image }}" alt="{{ coffee.name }}" loading="eager">
-  </div>
-
-  <div class="wrapper guide-content">
-    <div class="guide-header">
-      <span class="label">{{ coffee.origin }}</span>
-      <h1 class="guide-title">{{ coffee.name }}</h1>
-      {% if coffee.category %}
-        <p class="guide-meta">{{ coffee.category }}</p>
-      {% endif %}
+  <div class="wrapper coffee-detail-container">
+    <div class="coffee-detail-image">
+      <img src="{{ coffee.image }}" alt="{{ coffee.name }}" loading="eager">
     </div>
 
-    <div class="guide-main">
+    <div class="coffee-detail-content">
+      <div class="guide-header coffee-header">
+        <span class="label">{{ coffee.origin }}</span>
+        <h1 class="guide-title">{{ coffee.name }}</h1>
+        {% if coffee.category %}
+          <p class="guide-meta">{{ coffee.category }}</p>
+        {% endif %}
+      </div>
+
+      <div class="guide-main">
       <div class="guide-intro">
         <p>{{ coffee.description }}</p>
         <div class="coffee-price-info">
@@ -86,8 +87,9 @@ eleventyComputed:
       {% endif %}
     </div>
 
-    <div class="guide-navigation">
-      <a href="../index.html" class="nav-link">← Zurück zur Übersicht</a>
+      <div class="guide-navigation">
+        <a href="../index.html" class="nav-link">← Zurück zur Übersicht</a>
+      </div>
     </div>
   </div>
 </main>
