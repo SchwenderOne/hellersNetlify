@@ -6,32 +6,32 @@ canonical: "https://hellerskaffees.com/"
 skipLinkHref: "#brew-basics"
 ---
 <main>
-  <section class="wrapper">
-    <!-- Hero wide card -->
-    <article class="card card-hero">
-      <div class="image-container">
-        <img
-          src="https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?v=1693580220&width=1814"
-          srcset="https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?height=667&v=1693580220&width=1000 1000w,
-                  https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?height=867&v=1693580220&width=1300 1300w,
-                  https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?v=1693580220&width=1814 1814w"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
-          alt="Hellers Kaffees" loading="eager">
-        <div class="hero-overlay">
-          <span class="label">Willkommen</span>
-          <h1>Hellers Kaffees</h1>
-          <p>Spezialitätenkaffee in Charlottenburg, Berlin</p>
-          <div class="hero-cta-buttons">
-            <a href="brew-methods.html" class="hero-cta-button">Zubereitungsmethoden</a>
-            <a href="menu/" class="hero-cta-button">Menü</a>
-          </div>
+  <!-- Hero wide card (positioned outside wrapper for full-width bleed) -->
+  <article class="card card-hero">
+    <div class="image-container">
+      <img
+        src="https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?v=1693580220&width=1814"
+        srcset="https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?height=667&v=1693580220&width=1000 1000w,
+                https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?height=867&v=1693580220&width=1300 1300w,
+                https://greatergoodsroasting.com/cdn/shop/files/KALITA_WAVE_1.jpg?v=1693580220&width=1814 1814w"
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
+        alt="Hellers Kaffees" loading="eager">
+      <div class="hero-overlay">
+        <span class="label">Willkommen</span>
+        <h1>Hellers Kaffees</h1>
+        <p>Spezialitätenkaffee in Charlottenburg, Berlin</p>
+        <div class="hero-cta-buttons">
+          <a href="brew-methods.html" class="hero-cta-button">Zubereitungsmethoden</a>
+          <a href="menu/" class="hero-cta-button">Menü</a>
         </div>
       </div>
-    </article>
-  </section>
+    </div>
+  </article>
 
-  {% include "coffee-section.njk" %}
-  {% include "storytelling.njk" %}
-  {% include "payment-methods.njk" %}
-  {% include "visit-section.njk" %}
+  <section class="wrapper">
+    {% include "coffee-section.njk" %}
+    {% include "storytelling.njk" %}
+    {% include "payment-methods.njk" %}
+    {% include "visit-section.njk" %}
+  </section>
 </main>
