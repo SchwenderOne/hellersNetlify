@@ -1,48 +1,263 @@
 ---
 layout: base.njk
 title: "Kaffeeherkunft – Hellers Kaffees"
-description: "Entdecken Sie die Herkunft unserer Spezialitätenkaffees auf einer interaktiven Weltkarte mit 8 Ursprungsländern."
+description: "Entdecken Sie die Herkunft unserer Spezialitätenkaffees auf einer interaktiven Weltkarte mit 8 Ursprungsländern. Erfahren Sie mehr über Terroir, Produzenten und die Reise unserer Bohnen."
 canonical: "https://hellerskaffees.com/coffee-origins/"
-skipLinkHref: "#coffee-map"
-bodyClass: "page-coffee-map"
+skipLinkHref: "#coffee-hero"
+bodyClass: "page-coffee-origins"
 ---
 
-<main class="map-page">
-  <section class="map-experience" aria-labelledby="map-title">
-    <h2 id="map-title" class="sr-only">Interaktive Kaffeeherkunftskarte</h2>
+<main class="coffee-origins-page">
+  <!-- Hero Section -->
+  <section id="coffee-hero" class="coffee-hero" aria-labelledby="coffee-hero-title">
+    <div class="hero-content wrapper">
+      <span class="label">{{ originExperience.hero.label }}</span>
+      <h1 id="coffee-hero-title" class="hero-title">{{ originExperience.hero.title }}</h1>
+      <p class="hero-description">{{ originExperience.hero.description }}</p>
 
-    <div id="coffee-map" class="map-container" role="application" aria-label="Interaktive Karte der Kaffeeherkunftsländer">
-      <div class="map-loading">
-        <div class="loading-spinner"></div>
-        <p>Karte wird geladen...</p>
+      <div class="hero-stats">
+        {% for stat in originExperience.hero.stats %}
+          <div class="stat-card">
+            <div class="stat-value">{{ stat.value }}<span class="stat-suffix">{{ stat.suffix }}</span></div>
+            <div class="stat-label">{{ stat.label }}</div>
+          </div>
+        {% endfor %}
       </div>
     </div>
-
-    <aside id="map-details" class="map-panel" aria-live="polite">
-      <div class="panel-placeholder">
-        <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-          <ellipse cx="30" cy="30" rx="18" ry="22" fill="#D9755B" opacity="0.2"/>
-          <path d="M 30 12 Q 34 30 30 48" stroke="#D9755B" stroke-width="2" fill="none" opacity="0.3"/>
-        </svg>
-        <p>Wählen Sie ein Ursprungsland auf der Karte</p>
-      </div>
-    </aside>
   </section>
 
-  <section class="map-legend">
-    <div class="legend-content">
-      <h3>Legende</h3>
-      <div class="legend-items">
-        <div class="legend-item">
-          <svg width="20" height="25" viewBox="0 0 20 25">
-            <ellipse cx="10" cy="10" rx="6" ry="7.5" fill="#D9755B"/>
+  <!-- Interactive Map Section -->
+  <section id="coffee-map-section" class="coffee-map-section" aria-labelledby="map-title">
+    <h2 id="map-title" class="sr-only">Interaktive Kaffeeherkunftskarte</h2>
+
+    <div class="map-experience">
+      <div id="coffee-map" class="map-container" role="application" aria-label="Interaktive Karte der Kaffeeherkunftsländer">
+        <div class="map-loading">
+          <div class="loading-spinner"></div>
+          <p>Karte wird geladen...</p>
+        </div>
+      </div>
+
+      <aside id="map-details" class="map-panel" aria-live="polite">
+        <div class="panel-placeholder">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <ellipse cx="30" cy="30" rx="18" ry="22" fill="#D9755B" opacity="0.2"/>
+            <path d="M 30 12 Q 34 30 30 48" stroke="#D9755B" stroke-width="2" fill="none" opacity="0.3"/>
           </svg>
-          <span>Kaffeeherkunft</span>
+          <p>Wählen Sie ein Ursprungsland auf der Karte</p>
         </div>
-        <div class="legend-item">
-          <div class="legend-line"></div>
-          <span>Kaffeegürtel (23°N - 23°S)</span>
+      </aside>
+    </div>
+
+    <div class="map-legend">
+      <div class="legend-content wrapper">
+        <h3>Legende</h3>
+        <div class="legend-items">
+          <div class="legend-item">
+            <svg width="20" height="25" viewBox="0 0 20 25">
+              <ellipse cx="10" cy="10" rx="6" ry="7.5" fill="#D9755B"/>
+            </svg>
+            <span>Kaffeeherkunft</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-line"></div>
+            <span>Kaffeegürtel (23°N - 23°S)</span>
+          </div>
+          <div class="legend-item">
+            <svg width="16" height="16" viewBox="0 0 16 16">
+              <circle cx="8" cy="8" r="6" fill="#E6DCCF" stroke="#0E1A3A" stroke-width="1.5"/>
+            </svg>
+            <span>Rösterei Berlin</span>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Regional Chapters Section -->
+  <section id="coffee-regions" class="coffee-regions" aria-labelledby="regions-title">
+    <div class="wrapper">
+      <div class="section-header">
+        <h2 id="regions-title">Die Welt des Kaffees</h2>
+        <p class="section-subtitle">Entdecken Sie die unterschiedlichen Charaktere unserer Herkunftsregionen</p>
+      </div>
+
+      <div class="regions-grid">
+        {% for chapter in originExperience.beltChapters %}
+          <article class="region-card storytelling-section">
+            <div class="region-image">
+              <img src="{{ chapter.image }}" alt="{{ chapter.title }}" loading="lazy">
+              <div class="region-overlay">
+                <h3>{{ chapter.title }}</h3>
+              </div>
+            </div>
+            <div class="region-content">
+              <div class="region-meta">
+                <span class="region-altitude">🏔️ {{ chapter.altitude }}</span>
+              </div>
+              <p class="region-lede">{{ chapter.lede }}</p>
+              <div class="region-flavors">
+                {% for flavor in chapter.flavors %}
+                  <span class="flavor-tag">{{ flavor }}</span>
+                {% endfor %}
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Producer Spotlights Section -->
+  <section id="producer-spotlights" class="producer-spotlights storytelling-section" aria-labelledby="producers-title">
+    <div class="wrapper">
+      <div class="section-header">
+        <h2 id="producers-title">Produzenten im Fokus</h2>
+        <p class="section-subtitle">Die Geschichten hinter den Bohnen</p>
+      </div>
+
+      <div class="spotlights-grid">
+        {% for spotlight in originExperience.producerSpotlights %}
+          <article class="spotlight-card">
+            <div class="spotlight-image">
+              <img src="{{ spotlight.image }}" alt="{{ spotlight.name }}" loading="lazy">
+            </div>
+            <div class="spotlight-content">
+              <h3>{{ spotlight.name }}</h3>
+              <p class="spotlight-origin">{{ spotlight.origin }}</p>
+              <blockquote class="spotlight-quote">
+                <p>{{ spotlight.quote }}</p>
+              </blockquote>
+              <a href="{{ spotlight.link }}" class="spotlight-link">Zum Kaffee →</a>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Harvest Calendar Section -->
+  <section id="harvest-calendar" class="harvest-calendar" aria-labelledby="harvest-title">
+    <div class="wrapper">
+      <div class="section-header">
+        <h2 id="harvest-title">Erntekalender – Das ganze Jahr Frische</h2>
+        <p class="section-subtitle">Wann und wo unsere Bohnen gepflückt werden</p>
+      </div>
+
+      <div class="harvest-timeline">
+        {% for season in originExperience.metrics.harvestSeasons %}
+          <div class="harvest-season">
+            <div class="season-marker">
+              <div class="season-dot"></div>
+            </div>
+            <div class="season-content">
+              <h3>{{ season.window }}</h3>
+              <p class="season-region">{{ season.region }}</p>
+              <p class="season-notes">{{ season.notes }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Processing Methods Section -->
+  <section id="processing-methods" class="processing-methods" aria-labelledby="processing-title">
+    <div class="wrapper">
+      <div class="section-header">
+        <h2 id="processing-title">Verarbeitungsmethoden</h2>
+        <p class="section-subtitle">Wie die Aufbereitung den Geschmack prägt</p>
+      </div>
+
+      <div class="processing-grid">
+        {% for method in originExperience.metrics.processing %}
+          <div class="processing-card">
+            <div class="processing-bar">
+              <div class="processing-fill" style="--percentage: {{ method.value }}%"></div>
+            </div>
+            <h3>{{ method.label }}</h3>
+            <p class="processing-percentage">{{ method.value }}%</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Origin Details Grid -->
+  <section id="coffee-origins-detail" class="coffee-origins-detail" aria-labelledby="origins-detail-title">
+    <div class="wrapper">
+      <div class="section-header">
+        <h2 id="origins-detail-title">Alle Herkunftsländer</h2>
+        <p class="section-subtitle">Detaillierte Profile aller Anbauregionen</p>
+      </div>
+
+      <div class="origins-cards-grid">
+        {% for origin in originExperience.origins %}
+          <article class="origin-card">
+            <div class="origin-image">
+              <img src="{{ origin.image }}" alt="{{ origin.displayName }}" loading="lazy">
+            </div>
+            <div class="origin-card-content">
+              <h3>{{ origin.headline }}</h3>
+              <p class="origin-summary">{{ origin.summary }}</p>
+
+              <div class="origin-specs">
+                <div class="spec">
+                  <strong>Region:</strong> {{ origin.region }}
+                </div>
+                <div class="spec">
+                  <strong>Höhenlage:</strong> {{ origin.altitude }}
+                </div>
+              </div>
+
+              <div class="origin-flavors">
+                <strong>Geschmack:</strong>
+                <div class="flavor-tags">
+                  {% for flavor in origin.flavors %}
+                    <span class="flavor-tag small">{{ flavor }}</span>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <div class="origin-processing">
+                <strong>Aufbereitung:</strong>
+                <div class="processing-tags">
+                  {% for proc in origin.processing %}
+                    <span class="processing-tag">{{ proc }}</span>
+                  {% endfor %}
+                </div>
+              </div>
+
+              {% if origin.featuredCoffees and origin.featuredCoffees.length > 0 %}
+                <div class="origin-featured-coffees">
+                  <strong>Kaffees aus dieser Region:</strong>
+                  <ul class="featured-coffee-list">
+                    {% for coffeeSlug in origin.featuredCoffees %}
+                      {% set coffee = coffees | selectattr("slug", "equalto", coffeeSlug) | first %}
+                      {% if coffee %}
+                        <li><a href="/{{ coffee.slug }}/">{{ coffee.name }}</a></li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Coffee Products Grid -->
+  <section id="coffee-products" class="coffee-products-browse" aria-labelledby="products-title">
+    <div class="wrapper">
+      <div class="section-header">
+        <h2 id="products-title">Alle Kaffees durchstöbern</h2>
+        <p class="section-subtitle">Finden Sie Ihren Lieblingskaffee</p>
+      </div>
+
+      <div class="cards-grid">
+        {% include "coffee-cards.njk" %}
       </div>
     </div>
   </section>

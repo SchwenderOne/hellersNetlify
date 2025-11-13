@@ -413,7 +413,7 @@ class CoffeeMap {
     element.classList.add('active');
     this.activeMarker = countryCode;
 
-    // Pan map to origin with offset for detail panel
+    // Pan map to origin
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isMobile = window.innerWidth < 1024;
 
@@ -421,8 +421,7 @@ class CoffeeMap {
       center: data.coordinates,
       zoom: isMobile ? 4 : 5,
       duration: prefersReducedMotion ? 0 : 1500,
-      essential: true,
-      offset: isMobile ? [0, -100] : [200, 0]
+      essential: true
     });
 
     // Update detail panel
