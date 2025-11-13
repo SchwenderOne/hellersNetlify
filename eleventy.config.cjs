@@ -20,22 +20,10 @@ module.exports = function(eleventyConfig) {
 
   // MapLibre GL JS CSS
   eleventyConfig.addPassthroughCopy({ 'node_modules/maplibre-gl/dist/maplibre-gl.css': 'styles/maplibre-gl.css' });
-  const legacyPages = [
-    'aeropress',
-    'chemex',
-    'cold-brew',
-    'drip',
-    'events',
-    'french-press',
-    'home-espresso',
-    'kalita-wave',
-    'menu',
-    'origami-dripper',
-    'v60',
-  ];
-  for (const page of legacyPages) {
-    eleventyConfig.addPassthroughCopy({ [`legacy-static/${page}.html`]: `${page}.html` });
-  }
+
+  // NOTE: Legacy static page copies removed (Nov 2025)
+  // Pages are now properly templated in src/*.html and output to subdirectories with correct absolute CSS paths.
+  // Previously, legacy-static copies were created at root level with relative CSS paths that broke on deployment.
 
   return {
     dir: {
