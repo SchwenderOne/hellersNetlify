@@ -46,6 +46,15 @@
     uiStore.showEdit(contentType, id);
   }
 
+  function handleDuplicate(id: string) {
+    const duplicated = contentStore.duplicateEntry(contentType, id);
+    if (duplicated) {
+      uiStore.notify('success', 'Eintrag erfolgreich dupliziert.');
+      // Reload entries to show the duplicate
+      entries = contentStore.getEntriesByType(contentType);
+    }
+  }
+
   function confirmDelete(id: string) {
     entryToDelete = id;
     showDeleteConfirm = true;
@@ -166,6 +175,17 @@
                 <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
               </svg>
               Bearbeiten
+            </button>
+            <button
+              onclick={() => handleDuplicate(entry.id)}
+              class="btn btn-secondary text-sm py-2 px-3"
+              aria-label="Duplizieren"
+              title="Duplizieren"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+                <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+              </svg>
             </button>
             <button
               onclick={() => confirmDelete(entry.id)}

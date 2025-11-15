@@ -5,6 +5,7 @@
   import Dashboard from '$lib/components/Dashboard.svelte';
   import EntryList from '$lib/components/EntryList.svelte';
   import DynamicForm from '$lib/components/Forms/DynamicForm.svelte';
+  import ExportModal from '$lib/components/ExportModal.svelte';
   import { uiStore } from '$lib/stores/ui';
 
   function handleFormSave() {
@@ -19,6 +20,10 @@
     if ($uiStore.currentContentType) {
       uiStore.showList($uiStore.currentContentType);
     }
+  }
+
+  function handleCloseExportModal() {
+    uiStore.closeExportModal();
   }
 </script>
 
@@ -50,3 +55,9 @@
     </MainContent>
   </div>
 </div>
+
+<!-- Export Modal -->
+<ExportModal
+  show={$uiStore.showExportModal}
+  onClose={handleCloseExportModal}
+/>

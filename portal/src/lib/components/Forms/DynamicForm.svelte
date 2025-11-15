@@ -569,7 +569,132 @@
       </div>
     {/if}
 
-    <!-- Business Info & Media will be added similarly... -->
+    <!-- Business Information Fields -->
+    {#if contentType === 'businessInfo'}
+      <FieldText
+        label="Geschäftsname"
+        value={formData.businessName || 'Hellers Kaffees'}
+        onchange={(val) => handleFieldChange('businessName', val)}
+        placeholder="Hellers Kaffees"
+      />
+
+      <FieldText
+        label="Straße"
+        value={formData.street || ''}
+        onchange={(val) => handleFieldChange('street', val)}
+        required
+        error={errors.street}
+        placeholder="z.B. Musterstraße 123"
+      />
+
+      <div class="grid grid-cols-2 gap-4">
+        <FieldText
+          label="Postleitzahl"
+          value={formData.postalCode || ''}
+          onchange={(val) => handleFieldChange('postalCode', val)}
+          required
+          error={errors.postalCode}
+          placeholder="z.B. 10115"
+        />
+
+        <FieldText
+          label="Stadt"
+          value={formData.city || ''}
+          onchange={(val) => handleFieldChange('city', val)}
+          required
+          error={errors.city}
+          placeholder="z.B. Berlin"
+        />
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <FieldText
+          label="Telefon"
+          value={formData.phone || ''}
+          onchange={(val) => handleFieldChange('phone', val)}
+          placeholder="+49 30 ..."
+        />
+
+        <FieldText
+          label="E-Mail"
+          value={formData.email || ''}
+          onchange={(val) => handleFieldChange('email', val)}
+          required
+          error={errors.email}
+          placeholder="info@hellerskaffees.de"
+        />
+      </div>
+
+      <FieldRepeater
+        label="Öffnungszeiten"
+        value={formData.openingHours || []}
+        onchange={(val) => handleFieldChange('openingHours', val)}
+        subFields={[
+          { name: 'day', label: 'Tag', type: 'text', placeholder: 'z.B. Mo' },
+          { name: 'hours', label: 'Uhrzeiten', type: 'text', placeholder: 'z.B. 08:00-17:00 oder Geschlossen' }
+        ]}
+        itemLabel="Öffnungszeit"
+      />
+
+      <div class="grid grid-cols-2 gap-4">
+        <FieldText
+          label="Instagram"
+          value={formData.instagram || ''}
+          onchange={(val) => handleFieldChange('instagram', val)}
+          placeholder="@hellerskaffees"
+        />
+
+        <FieldText
+          label="Facebook"
+          value={formData.facebook || ''}
+          onchange={(val) => handleFieldChange('facebook', val)}
+          placeholder="HellersKaffees"
+        />
+      </div>
+
+      <FieldTextarea
+        label="Über uns Text"
+        value={formData.aboutText || ''}
+        onchange={(val) => handleFieldChange('aboutText', val)}
+        maxLength={500}
+        rows={4}
+        placeholder="Beschreiben Sie Ihr Café..."
+      />
+    {/if}
+
+    <!-- Media & Branding Fields -->
+    {#if contentType === 'mediaBranding'}
+      <FieldSelect
+        label="Typ"
+        value={formData.type || ''}
+        options={['Hero Image', 'Logo', 'Favicon', 'OG Image']}
+        onchange={(val) => handleFieldChange('type', val)}
+        required
+        error={errors.type}
+      />
+
+      <FieldText
+        label="Verwendungszweck"
+        value={formData.purpose || ''}
+        onchange={(val) => handleFieldChange('purpose', val)}
+        placeholder="z.B. Homepage Hero, Events OG Image"
+      />
+
+      <FieldImage
+        label="Datei"
+        value={formData.file || ''}
+        onchange={(val) => handleFieldChange('file', val)}
+        required
+        error={errors.file}
+      />
+
+      <FieldText
+        label="Alt-Text"
+        value={formData.altText || ''}
+        onchange={(val) => handleFieldChange('altText', val)}
+        placeholder="Beschreibung für Barrierefreiheit"
+      />
+    {/if}
 
     <!-- Form Actions -->
     <div class="flex items-center justify-between pt-6 border-t border-gray-200">

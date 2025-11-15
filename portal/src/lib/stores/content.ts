@@ -135,6 +135,55 @@ function createContentStore() {
         return state;
       });
     },
+
+    /**
+     * Duplicate an entry
+     */
+    duplicateEntry: (type: string, id: string): ContentEntry | null => {
+      const entries = getEntriesByType(type);
+      const originalEntry = entries.find(e => e.id === id);
+
+      if (!originalEntry) {
+        return null;
+      }
+
+      // Create a duplicate with a new ID and updated title/name
+      const duplicatedData = { ...originalEntry.data };
+
+      // Append "(Kopie)" to title or name
+      if (duplicatedData.title) {
+        duplicatedData.title = `${duplicatedData.title} (Kopie)`;
+      } else if (duplicatedData.name) {
+        duplicatedData.name = `${duplicatedData.name} (Kopie)`;
+      }
+
+      // Generate new slug if it exists
+      if (duplicatedData.slug) {
+        duplicatedData.slug = `${duplicatedData.slug}-kopie`;
+      }
+
+      const newEntry: ContentEntry = {
+        id: uuidv4(),
+        type,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        data: duplicatedData,
+      };
+
+      update(state => {
+        if (!state.entries[type]) {
+          state.entries[type] = [];
+        }
+        state.entries[type].push(newEntry);
+        scheduleAutoSave(state);
+        return state;
+      });
+
+      // Immediate save
+      saveEntryToStorage(newEntry);
+
+      return newEntry;
+    },
   };
 }
 
