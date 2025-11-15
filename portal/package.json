@@ -26,6 +26,8 @@
 		"vite": "^7.1.10"
 	},
 	"dependencies": {
+		"browser-image-compression": "^2.0.2",
+		"date-fns": "^4.1.0",
 		"uuid": "^13.0.0",
 		"zod": "^4.1.12"
 	}
