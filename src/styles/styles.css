@@ -616,13 +616,10 @@ article.card {
 .card-hero {
   flex: 0 0 100vw;
   width: 100vw;
-  max-width: 100vw;
   height: 100vh;
   position: relative;
-  /* Break out of wrapper to viewport edges - account for wrapper padding */
-  left: calc(-1 * var(--wrapper-padding, 50px));
-  margin-right: calc(-1 * var(--wrapper-padding, 50px) - 50vw + 100%);
-  margin-left: calc(-1 * var(--wrapper-padding, 50px));
+  margin-left: calc(-1 * ((100vw - 100%) / 2));
+  margin-right: calc(-1 * ((100vw - 100%) / 2));
 }
 
 .image-container {
@@ -4007,13 +4004,10 @@ article.card {
   .card-hero {
     flex: 0 0 100vw;
     width: 100vw;
-    max-width: 100vw;
     height: 100vh;
     position: relative;
-    /* Break out of wrapper to viewport edges - account for wrapper padding */
-    left: calc(-1 * var(--wrapper-padding, 20px));
-    margin-right: calc(-1 * var(--wrapper-padding, 20px) - 50vw + 100%);
-    margin-left: 0;
+    margin-left: calc(-1 * ((100vw - 100%) / 2));
+    margin-right: calc(-1 * ((100vw - 100%) / 2));
   }
   
   .card-hero .image-container {
