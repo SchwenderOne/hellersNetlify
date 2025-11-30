@@ -7653,3 +7653,494 @@ article.card {
     border-right-color: #D9755B;
   }
 }
+
+/* ===========================================
+   AUTH OVERLAY STYLES
+   =========================================== */
+.auth-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 300ms ease, visibility 300ms ease;
+}
+
+.auth-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+.auth-overlay-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.auth-overlay-content {
+  position: relative;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  width: 90%;
+  max-width: 440px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  padding: 40px;
+  margin: 20px;
+  transform: scale(0.95);
+  transition: transform 300ms ease;
+}
+
+.auth-overlay.is-open .auth-overlay-content {
+  transform: scale(1);
+}
+
+.auth-overlay-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  transition: background 200ms ease;
+  z-index: 2;
+}
+
+.auth-overlay-close:hover,
+.auth-overlay-close:focus-visible {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Auth Tabs */
+.auth-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 24px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body);
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 200ms ease;
+  position: relative;
+}
+
+.auth-tab::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-terracotta);
+  transform: scaleX(0);
+  transition: transform 200ms ease;
+}
+
+.auth-tab:hover {
+  color: var(--text);
+}
+
+.auth-tab.active {
+  color: var(--accent-terracotta);
+}
+
+.auth-tab.active::after {
+  transform: scaleX(1);
+}
+
+/* Auth Form */
+.auth-form {
+  margin-bottom: 0;
+}
+
+.auth-title {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-h3);
+  margin: 0 0 8px 0;
+  color: var(--text);
+}
+
+.auth-subtitle {
+  font-size: var(--font-size-small);
+  color: var(--text-muted);
+  margin: 0 0 24px 0;
+}
+
+.auth-form-group {
+  margin-bottom: 16px;
+}
+
+.auth-form-label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.auth-form-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body);
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.auth-form-input:focus {
+  outline: none;
+  border-color: var(--accent-terracotta);
+  box-shadow: 0 0 0 3px rgba(201, 122, 92, 0.1);
+}
+
+.auth-form-actions {
+  margin-top: 24px;
+}
+
+.auth-form-submit {
+  width: 100%;
+  padding: 14px 24px;
+  background: var(--accent-terracotta);
+  color: var(--surface);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--font-size-body);
+  cursor: pointer;
+  transition: background 200ms ease, transform 200ms ease;
+}
+
+.auth-form-submit:hover,
+.auth-form-submit:focus-visible {
+  background: #dd8a68;
+  transform: translateY(-1px);
+}
+
+.auth-form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.auth-form-message {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-small);
+  display: none;
+}
+
+.auth-form-message.success {
+  background: rgba(126, 156, 135, 0.1);
+  color: var(--accent-sage);
+  border: 1px solid var(--accent-sage);
+  display: block;
+}
+
+.auth-form-message.error {
+  background: rgba(201, 122, 92, 0.1);
+  color: var(--accent-terracotta);
+  border: 1px solid var(--accent-terracotta);
+  display: block;
+}
+
+/* ===========================================
+   ENHANCED COMMENT STYLES (with avatars)
+   =========================================== */
+
+/* Comment User Bar */
+.comment-user-bar {
+  padding: 16px 20px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: var(--radius-md);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.comment-user-bar .user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.comment-user-bar .user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.comment-user-bar .user-name {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.comment-user-bar .user-logout-btn {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-small);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+
+.comment-user-bar .user-logout-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.comment-user-bar .login-prompt {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--font-size-body);
+}
+
+.comment-user-bar .login-link {
+  background: none;
+  border: none;
+  color: var(--accent-terracotta);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.comment-user-bar .login-link:hover {
+  color: #dd8a68;
+}
+
+/* Comment Preview with Avatar */
+.comment-preview-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.comment-preview-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.comment-preview-count {
+  margin-top: 12px;
+  font-size: var(--font-size-small);
+  color: var(--text-muted);
+}
+
+/* Comment Item with Avatar */
+.comment-item-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.comment-item-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.comment-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.comment-delete-btn {
+  padding: 6px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: color 200ms ease, background 200ms ease;
+  flex-shrink: 0;
+}
+
+.comment-delete-btn:hover {
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.1);
+}
+
+/* Character Count */
+.comment-char-count {
+  text-align: right;
+  font-size: var(--font-size-small);
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ===========================================
+   DARK MODE AUTH STYLES
+   =========================================== */
+[data-theme="dark"] .auth-overlay-content {
+  background: var(--surface-dark);
+}
+
+[data-theme="dark"] .auth-overlay-close {
+  color: var(--text-dark);
+}
+
+[data-theme="dark"] .auth-overlay-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .auth-tabs {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .auth-tab {
+  color: var(--text-muted-dark);
+}
+
+[data-theme="dark"] .auth-tab:hover,
+[data-theme="dark"] .auth-tab.active {
+  color: var(--accent-terracotta-dark);
+}
+
+[data-theme="dark"] .auth-tab.active::after {
+  background: var(--accent-terracotta-dark);
+}
+
+[data-theme="dark"] .auth-title {
+  color: var(--text-dark);
+}
+
+[data-theme="dark"] .auth-subtitle {
+  color: var(--text-muted-dark);
+}
+
+[data-theme="dark"] .auth-form-label {
+  color: var(--text-dark);
+}
+
+[data-theme="dark"] .auth-form-input {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--text-dark);
+}
+
+[data-theme="dark"] .auth-form-input:focus {
+  border-color: var(--accent-terracotta-dark);
+  box-shadow: 0 0 0 3px rgba(224, 154, 122, 0.2);
+}
+
+[data-theme="dark"] .auth-form-message.success {
+  background: rgba(148, 194, 168, 0.15);
+  border-color: var(--accent-sage-dark);
+  color: var(--accent-sage-dark);
+}
+
+[data-theme="dark"] .auth-form-message.error {
+  background: rgba(224, 154, 122, 0.15);
+  border-color: var(--accent-terracotta-dark);
+  color: var(--accent-terracotta-dark);
+}
+
+[data-theme="dark"] .comment-user-bar {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .comment-user-bar .user-name {
+  color: var(--text-dark);
+}
+
+[data-theme="dark"] .comment-user-bar .user-logout-btn {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-dark);
+}
+
+[data-theme="dark"] .comment-user-bar .user-logout-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .comment-user-bar .login-prompt {
+  color: var(--text-muted-dark);
+}
+
+[data-theme="dark"] .comment-user-bar .login-link {
+  color: var(--accent-terracotta-dark);
+}
+
+[data-theme="dark"] .comment-delete-btn {
+  color: var(--text-muted-dark);
+}
+
+/* ===========================================
+   RESPONSIVE AUTH STYLES
+   =========================================== */
+@media (max-width: 768px) {
+  .auth-overlay-content {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    max-height: 100vh;
+    padding: 24px 20px;
+  }
+
+  .auth-tabs {
+    margin-bottom: 20px;
+  }
+
+  .comment-user-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .comment-user-bar.logged-in {
+    flex-direction: row;
+    align-items: center;
+  }
+}
