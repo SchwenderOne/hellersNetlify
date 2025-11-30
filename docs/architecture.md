@@ -35,6 +35,11 @@
   2. **Timer (`.recipe-timer`)** — Countdown with step cues, pause/reset, and optional sound (`scripts/main.js:938`). Styles at `styles.css:1360`.
   3. **Progress Indicator** — Fixed top progress bar created dynamically by `initProgressIndicator()` (`scripts/main.js:214`) and styled in `styles.css:2217`.
 - Recipe instructions share common markup (specs, steps, tips). Each page has a back link via `.guide-navigation` to reduce dead ends.
+- **Supabase-Kommentare** — Jeder Guide bindet `src/scripts/supabase-comments.js` ein (siehe `<script src="/scripts/supabase-comments.js" defer>` am Ende der Seiten). Das Modul initialisiert den Supabase JS Client (Projekt `huwlvkqrnboerbghzsqo`) mit E-Mail/Passwort-Auth, lädt Benutzerprofile aus `public.profiles` und Kommentare aus `public.comments`, und rendert zwei Overlays:
+  - *Kommentar-Vorschau* innerhalb `.comment-preview-card`, die den neuesten Beitrag anzeigt oder ein Placeholder-Label rendert.
+  - *Kommentar-Overlay* (`.comment-overlay`) mit Auth-Workflow, Formular (2000 Zeichen Limit), Löschfunktion für eigene Beiträge sowie Moderationsstatus-Hinweisen. Auth-Overlays (`.auth-overlay`) nutzen DiceBear-Avatare als Fallback.
+  - Datenfluss: `loadComments()` fragt zuerst `comments`, sammelt zugehörige `user_id`s, lädt dann `profiles` und merged sie clientseitig (da `comments.user_id` auf `auth.users` verweist). Neue Kommentare werden optimistisch zur lokalen Liste hinzugefügt und serverseitig durch Trigger (`check_suspicious_content`, `moderate_comment`) geprüft.
+  - Styles leben am Ende von `src/styles/styles.css` unter den Blöcken `/* Auth Modal */` und `/* Comments */` (~Zeilen 7600+). Beide Overlays verwenden `backdrop-filter` und z-index 1050+, damit sie über Hero/Timer-Widgets schweben.
 
 ## Events Page (`events.html`)
 - Displays `.event-card` grid, styled around `styles.css:2440`.

@@ -11,6 +11,9 @@
   // ===========================================
   const SUPABASE_URL = 'https://huwlvkqrnboerbghzsqo.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh1d2x2a3FybmJvZXJiZ2h6c3FvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ0NDA5ODYsImV4cCI6MjA4MDAxNjk4Nn0.dkKIjJMGUT6v-5iMjzkt8qBn9ZveYcQiBq_fuLYUCHs';
+  
+  // Owner/Admin email - has access to moderation dashboard
+  const OWNER_EMAIL = 'unotuscha@gmail.com';
 
   // ===========================================
   // STATE
@@ -30,32 +33,14 @@
   // ===========================================
   const init = async () => {
     try {
-      // Check if we're on a page with comments
-      const commentPreview = document.querySelector('.comment-preview');
-      if (!commentPreview) return;
-
-      currentPageId = commentPreview.dataset.commentPageId;
-      if (!currentPageId) {
-        console.warn('Comments: No page ID found');
-        return;
-      }
-
       // Wait for Supabase to be available
       if (typeof window.supabase === 'undefined') {
         console.error('Comments: Supabase client not loaded');
-        showPlaceholderMessage('Kommentarsystem wird geladen...');
         return;
       }
 
       // Initialize Supabase client
       supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-      // Create UI elements
-      createAuthOverlay();
-      createCommentOverlay();
-
-      // Set up event listeners FIRST (before async operations)
-      setupEventListeners();
 
       // Check for existing session
       const { data: { session } } = await supabase.auth.getSession();
@@ -64,8 +49,31 @@
         await loadUserProfile();
       }
 
-      // Set up auth state listener (after initial session check)
+      // Set up auth state listener
       supabase.auth.onAuthStateChange(handleAuthStateChange);
+
+      // Always update header profile icon (for owner access on any page)
+      updateHeaderProfileIcon();
+
+      // Check if we're on a page with comments
+      const commentPreview = document.querySelector('.comment-preview');
+      if (!commentPreview) {
+        console.log('Auth initialized (no comments on this page)');
+        return;
+      }
+
+      currentPageId = commentPreview.dataset.commentPageId;
+      if (!currentPageId) {
+        console.warn('Comments: No page ID found');
+        return;
+      }
+
+      // Create UI elements for comment pages
+      createAuthOverlay();
+      createCommentOverlay();
+
+      // Set up event listeners
+      setupEventListeners();
 
       // Update UI based on auth state
       updateAuthUI();
@@ -76,7 +84,10 @@
       console.log('Comments system initialized');
     } catch (error) {
       console.error('Comments init error:', error);
-      showPlaceholderMessage('Fehler beim Laden der Kommentare.');
+      const commentPreview = document.querySelector('.comment-preview');
+      if (commentPreview) {
+        showPlaceholderMessage('Fehler beim Laden der Kommentare.');
+      }
     }
   };
 
@@ -95,6 +106,77 @@
     }
     
     updateAuthUI();
+    updateHeaderProfileIcon();
+  };
+
+  // ===========================================
+  // OWNER/ADMIN FUNCTIONS
+  // ===========================================
+  const isOwner = () => {
+    return currentUser && currentUser.email === OWNER_EMAIL;
+  };
+
+  const updateHeaderProfileIcon = () => {
+    const headerActions = document.querySelector('.header-actions');
+    if (!headerActions) return;
+
+    // Remove existing profile icon if present
+    const existingIcon = document.getElementById('header-profile-icon');
+    if (existingIcon) {
+      existingIcon.remove();
+    }
+
+    // Only show for owner
+    if (!isOwner()) return;
+
+    // Create profile icon button
+    const profileBtn = document.createElement('a');
+    profileBtn.id = 'header-profile-icon';
+    profileBtn.href = '/admin/';
+    profileBtn.className = 'header-profile-btn';
+    profileBtn.setAttribute('aria-label', 'Admin-Bereich');
+    profileBtn.innerHTML = `
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="header-profile-badge"></span>
+    `;
+
+    // Insert before dark mode toggle
+    const darkModeToggle = document.getElementById('header-dark-mode-toggle');
+    if (darkModeToggle) {
+      headerActions.insertBefore(profileBtn, darkModeToggle);
+    } else {
+      headerActions.prepend(profileBtn);
+    }
+
+    // Load pending count for badge
+    loadPendingCount();
+  };
+
+  const loadPendingCount = async () => {
+    if (!supabase || !isOwner()) return;
+
+    try {
+      const { count, error } = await supabase
+        .from('comments')
+        .select('*', { count: 'exact', head: true })
+        .eq('status', 'pending');
+
+      if (error) {
+        console.error('Error loading pending count:', error);
+        return;
+      }
+
+      const badge = document.querySelector('.header-profile-badge');
+      if (badge && count > 0) {
+        badge.textContent = count > 9 ? '9+' : count;
+        badge.classList.add('has-count');
+      }
+    } catch (error) {
+      console.error('Error loading pending count:', error);
+    }
   };
 
   const loadUserProfile = async () => {

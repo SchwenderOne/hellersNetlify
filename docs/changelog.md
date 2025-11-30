@@ -2,6 +2,13 @@
 
 Entries are reverse-chronological. Use this log to understand what shipped each session.
 
+## 2025-11-30 — Supabase Kommentar-System
+- Erstellt `public.profiles` und `public.comments` Tabellen inkl. RLS, Moderations-Funktionen und Auto-Profil-Triggers.
+- Implementierte `src/scripts/supabase-comments.js` (Auth Overlay, Kommentar-Overlay, DiceBear-Avatare, Moderationshinweise) und ersetzte das alte Cusdis Script auf allen Rezeptseiten.
+- Ergänzte umfangreiche CSS-Blöcke für Auth- und Kommentar-Overlays innerhalb von `src/styles/styles.css`.
+- Führte Browser-Tests durch (`npm run dev`, Supabase Anmeldung/Registrierung, Kommentar posten/ löschen) und bestätigte Auto-Approve/Flagging-Flow.
+- Aktualisierte Dokumentation (`README.md`, `architecture.md`, `process.md`) mit Supabase-spezifischen Hinweisen.
+
 ## 2025-11-09 — Payment Methods & Deployment
 - Added Zahlungsmethoden (Payment Methods) section to landing page with Kartenzahlung and Barzahlung options.
 - Redesigned payment methods section to match storytelling sections using `.infographic-item` styling for consistency.

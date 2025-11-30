@@ -23,12 +23,14 @@ This repository contains the static website for the Hellers Kaffees brew guides.
 - Recipe calculator (metric/imperial), brew timer with step cues, and scroll progress indicator on guide pages.
 - Scroll-triggered animations, storytelling sections, payment methods section, visit CTA, and events registration modal.
 - Dark mode palette, responsive layouts down to 320px, print stylesheet, and accessibility affordances (skip links, ARIA labels, focus traps).
+- Supabase-basierte Kommentarfunktion auf allen Zubereitungsseiten mit E-Mail/Passwort-Anmeldung, Profilen (Displayname/Avatar) und Moderations-Workflow für verdächtige Beiträge.
 
 ## Tech Stack
 - Eleventy 3.x with `@11ty/eleventy-plugin-vite` for the build pipeline.
 - Vite handles bundling (currently pass-through for legacy assets until JS modularisation lands).
 - Global CSS in `src/styles/styles.css` and JavaScript in `src/scripts/main.js` (still plain scripts; warnings about missing `type="module"` are pending resolution).
 - External assets (recipe photography, fonts) remain on the reference CDN for now; favicon stored locally as `src/favicon.svg`.
+- Supabase JS SDK (via CDN) powers the comment/auth overlay in `src/scripts/supabase-comments.js`. The project references project ID `huwlvkqrnboerbghzsqo` and anon key directly; rotate credentials if deploying elsewhere and update the constants at the top of that file.
 
 ## Deployment
 - **Netlify:** Configured via `netlify.toml` with build command `npm run build` and publish directory `dist/`. The site builds automatically on push to the main branch.

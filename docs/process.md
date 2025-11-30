@@ -16,12 +16,14 @@
   - Dark-mode toggle switches themes and persists reload.
   - Calculator and timer operate on at least one recipe page.
   - Event modal opens from each workshop card, validates required fields, and traps focus.
+  - Supabase-Kommentare laden auf den Rezeptseiten, Anmeldung/Registrierung funktioniert, und das Formular liefert einen Erfolg oder Fehler (Konsole auf 400er achten). Testnutzer nach Bedarf in Supabase `auth.users` bestätigen.
 - **Accessibility:** Verify skip link, keyboard-only navigation, focus states, and reduced-motion mode (`window.matchMedia`).
 - **Playwright CLI workflow:**
   - `npm test` now runs `npm run build` first and then executes the smoke suite against the `dist/` output served via `http-server`.
   - `npm run baseline` rebuilds and captures screenshots for index/events/french-press (light & dark) into `docs/baseline/`.
 - **Manual MCP usage:** When taking ad-hoc screenshots via Playwright MCP, point to files inside `dist/` to match production paths.
 - **Regression smoke tests:** Watch console output for EmailJS placeholder warnings. Pending work: resolve Vite warnings about `scripts/main.js` lacking `type="module"` once the JS modularisation phase begins.
+- **Supabase:** Frontend nutzt das Projekt `huwlvkqrnboerbghzsqo` samt Anon-Key aus `src/scripts/supabase-comments.js`. Sollte der Schlüssel rotiert werden, aktualisiere die Konstanten dort und passe ggf. `.env`/Netlify-Umgebungen an.
 
 ## Documentation Maintenance
 - Update `docs/architecture.md` whenever structure, styling sections, or JS modules change meaningfully. Include file paths/line references to speed cross-session onboarding.
