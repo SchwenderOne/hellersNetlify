@@ -8786,3 +8786,125 @@ article.card {
     justify-content: center;
   }
 }
+
+/* Admin Access Section */
+.admin-access-form {
+  margin-bottom: 24px;
+}
+
+.admin-access-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  color: var(--text-muted);
+}
+
+.admin-access-input-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.admin-access-input-group input {
+  flex: 1;
+  min-width: 240px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.admin-access-input-group button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent-terracotta);
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 200ms ease, transform 150ms ease;
+}
+
+.admin-access-input-group button:hover {
+  transform: translateY(-2px);
+  background: var(--accent-terracotta-hover, #b96447);
+}
+
+.admin-access-message {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.admin-access-message.success {
+  color: var(--accent-sage);
+}
+
+.admin-access-message.error {
+  color: var(--accent-terracotta);
+}
+
+.admin-access-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-access-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.admin-access-meta {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.admin-access-remove {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.admin-access-remove:hover {
+  background: rgba(220, 38, 38, 0.1);
+  border-color: #dc2626;
+  color: #dc2626;
+}
+
+[data-theme="dark"] .admin-access-input-group input {
+  border-color: var(--border-dark);
+  background: var(--surface-dark);
+  color: var(--text-dark);
+}
+
+[data-theme="dark"] .admin-access-item {
+  border-color: var(--border-dark);
+  background: var(--surface-dark);
+}
+
+[data-theme="dark"] .admin-access-remove {
+  border-color: var(--border-dark);
+  color: var(--text-dark);
+}
+
+[data-theme="dark"] .admin-access-remove:hover {
+  background: rgba(220, 38, 38, 0.2);
+  color: #f87171;
+}

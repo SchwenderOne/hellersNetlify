@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hero Prototype · Origin Atlas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #060b12;
+      --bg-secondary: #0d1624;
+      --ink: #f7f5f4;
+      --muted: rgba(247, 245, 244, 0.66);
+      --terracotta: #e09a7a;
+      --sage: #94c2a8;
+      --gridline: rgba(255, 255, 255, 0.08);
+      --shadow: 0 40px 120px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: stretch;
+      padding: clamp(32px, 6vw, 96px);
+      gap: clamp(32px, 5vw, 72px);
+    }
+
+    .content-stack {
+      flex: 0 0 38%;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .label {
+      font-size: 0.8rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', 'Times New Roman', serif;
+      margin: 0;
+      font-size: clamp(2.8rem, 4vw, 4.5rem);
+      line-height: 1.1;
+    }
+
+    p {
+      margin: 0;
+      line-height: 1.7;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .cta-group a {
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 18px;
+      border: 1px solid rgba(247, 245, 244, 0.25);
+      color: var(--ink);
+      transition: transform 200ms ease, background 200ms ease;
+    }
+
+    .cta-group a.primary {
+      background: linear-gradient(120deg, var(--terracotta), #b45f41);
+      border: none;
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-group a:hover {
+      transform: translateY(-3px);
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .atlas-panel {
+      flex: 1;
+      position: relative;
+      border-radius: clamp(32px, 5vw, 48px);
+      background: radial-gradient(circle at 20% 30%, rgba(148, 194, 168, 0.18), transparent 60%),
+                  radial-gradient(circle at 80% 70%, rgba(224, 154, 122, 0.25), transparent 65%),
+                  var(--bg-secondary);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      isolation: isolate;
+      display: flex;
+    }
+
+    .atlas-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(transparent 95%, var(--gridline) 95%),
+                        linear-gradient(90deg, transparent 95%, var(--gridline) 95%);
+      background-size: 120px 120px;
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .path-line {
+      stroke: var(--sage);
+      stroke-width: 2;
+      stroke-dasharray: 6 10;
+      fill: none;
+      opacity: 0.5;
+      animation: dash 6s linear infinite;
+    }
+
+    @keyframes dash {
+      to {
+        stroke-dashoffset: -160;
+      }
+    }
+
+    .origin-chip {
+      position: absolute;
+      display: inline-flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 14px 18px;
+      background: rgba(6, 11, 18, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      cursor: pointer;
+      transition: transform 200ms ease, border-color 200ms ease;
+    }
+
+    .origin-chip span:first-child {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .origin-chip strong {
+      font-size: 1.2rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .origin-chip:hover,
+    .origin-chip[data-active="true"] {
+      border-color: rgba(224, 154, 122, 0.9);
+      transform: translateY(-6px);
+    }
+
+    .chip-ethiopia { top: 18%; left: 32%; }
+    .chip-colombia { top: 45%; right: 18%; }
+    .chip-panama { bottom: 22%; left: 48%; }
+
+    .info-panel {
+      position: absolute;
+      right: clamp(16px, 4vw, 48px);
+      bottom: clamp(16px, 4vw, 48px);
+      width: min(320px, 80%);
+      background: rgba(6, 11, 18, 0.85);
+      border-radius: 24px;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 3;
+    }
+
+    .info-panel h2 {
+      margin: 0;
+      font-size: 1.4rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .info-panel p {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.98rem;
+    }
+
+    .info-panel .note {
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    @media (max-width: 960px) {
+      .hero {
+        flex-direction: column;
+      }
+
+      .content-stack,
+      .atlas-panel {
+        flex: unset;
+        width: 100%;
+      }
+
+      .atlas-panel {
+        min-height: 460px;
+      }
+
+      .chip-colombia {
+        right: 10%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="content-stack">
+      <p class="label">Kaffeegürtel · Kartenwerkstatt</p>
+      <h1 id="hero-title">Jede Bohne entsteht entlang eines Lichtbogens.</h1>
+      <p>Wir projizieren unsere Lieblings-Microlots direkt auf den Kaffeeatlas. Tippen Sie die Marker an, um Herkunft, Höhe und Geschmacksprofil zu sehen – und springen Sie direkt in die passende Zubereitung.</p>
+      <div class="cta-group">
+        <a class="primary" href="#origin-guides">Zubereitungsmethoden</a>
+        <a href="#anreise">Besuch planen</a>
+      </div>
+      <div class="label" style="margin-top: 18px;">Live aktualisiert · 08 Single Origins · 3 Kontinente</div>
+    </div>
+
+    <div class="atlas-panel" role="presentation">
+      <div class="atlas-grid" aria-hidden="true"></div>
+      <svg viewBox="0 0 800 600" aria-hidden="true">
+        <path class="path-line" d="M180 220 Q 320 140 420 260 T 650 310" />
+        <path class="path-line" d="M200 420 Q 360 360 520 420 Q 620 450 700 420" />
+      </svg>
+
+      <button class="origin-chip chip-ethiopia" data-origin="Äthiopien">
+        <span>Herkunft</span>
+        <strong>Äthiopien</strong>
+      </button>
+      <button class="origin-chip chip-colombia" data-origin="Kolumbien">
+        <span>Herkunft</span>
+        <strong>Kolumbien</strong>
+      </button>
+      <button class="origin-chip chip-panama" data-origin="Panama">
+        <span>Herkunft</span>
+        <strong>Panama</strong>
+      </button>
+
+      <aside class="info-panel" aria-live="polite">
+        <p class="note">Aktuelle Auswahl</p>
+        <h2>Äthiopien · Bombe G1</h2>
+        <p>1.920 m · Natural · Noten von Bergamotte, Walderdbeere, Kakao. Aufgegossen mit 1:16 Ratio im Origami.</p>
+        <div class="cta-group">
+          <a class="primary" href="brew-methods.html">Guide öffnen</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <script>
+    const infoPanel = document.querySelector('.info-panel');
+    const chips = document.querySelectorAll('.origin-chip');
+    const infoData = {
+      'Äthiopien': {
+        title: 'Äthiopien · Bombe G1',
+        copy: '1.920 m · Natural · Noten von Bergamotte, Walderdbeere, Kakao. Aufgegossen mit 1:16 Ratio im Origami.'
+      },
+      'Kolumbien': {
+        title: 'Kolumbien · El Vergel',
+        copy: '1.850 m · Anaerob · Schwarze Johannisbeere, Nougat, getoastete Kokoschips. Ideal für V60 mit 92°.'
+      },
+      'Panama': {
+        title: 'Panama · Carmen Estate',
+        copy: '1.650 m · Gewaschener Geisha · Jasmin, Honigmelone, Limettenschale. Am besten als Espresso Flight.'
+      }
+    };
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const key = chip.dataset.origin;
+        chips.forEach(c => c.dataset.active = 'false');
+        chip.dataset.active = 'true';
+        const data = infoData[key];
+        infoPanel.querySelector('h2').textContent = data.title;
+        infoPanel.querySelector('p:nth-of-type(2)')?.remove();
+        const body = document.createElement('p');
+        body.textContent = data.copy;
+        infoPanel.insertBefore(body, infoPanel.querySelector('.cta-group'));
+      });
+    });
+  </script>
+</body>
+</html>

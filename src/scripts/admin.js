@@ -20,6 +20,8 @@
   let currentUser = null;
   let allComments = [];
   let pendingComments = [];
+  let adminAccessList = [];
+  let isOwnerUser = false;
 
   // ===========================================
   // INITIALIZATION
@@ -38,12 +40,15 @@
       // Check for existing session
       const { data: { session } } = await supabase.auth.getSession();
       
-      if (session && session.user.email === OWNER_EMAIL) {
+      if (session) {
         currentUser = session.user;
-        showDashboard();
-        await loadAllData();
-      } else if (session) {
-        showAuthStatus('Sie haben keinen Zugriff auf diesen Bereich.');
+        isOwnerUser = session.user.email === OWNER_EMAIL;
+        if (await determineAdminAccess()) {
+          showDashboard();
+          await loadAllData();
+        } else {
+          showAuthStatus('Sie haben keinen Zugriff auf diesen Bereich.');
+        }
       } else {
         showAuthStatus('Bitte melden Sie sich auf einer Rezeptseite an.');
       }
@@ -66,23 +71,47 @@
   const handleAuthStateChange = async (event, session) => {
     console.log('Admin auth state changed:', event);
     
-    if (session && session.user.email === OWNER_EMAIL) {
+    if (session) {
       currentUser = session.user;
-      showDashboard();
-      await loadAllData();
+      isOwnerUser = session.user.email === OWNER_EMAIL;
+      if (await determineAdminAccess()) {
+        showDashboard();
+        await loadAllData();
+      } else {
+        hideDashboard();
+        showAuthStatus('Sie haben keinen Zugriff auf diesen Bereich.');
+      }
     } else {
       currentUser = null;
+      isOwnerUser = false;
       hideDashboard();
-      if (session) {
-        showAuthStatus('Sie haben keinen Zugriff auf diesen Bereich.');
-      } else {
-        showAuthStatus('Bitte melden Sie sich auf einer Rezeptseite an.');
-      }
+      showAuthStatus('Bitte melden Sie sich auf einer Rezeptseite an.');
     }
   };
 
-  const isOwner = () => {
-    return currentUser && currentUser.email === OWNER_EMAIL;
+  const isOwner = () => currentUser && currentUser.email === OWNER_EMAIL;
+
+  const determineAdminAccess = async () => {
+    if (!currentUser) return false;
+    if (isOwner()) return true;
+
+    try {
+      const { data, error } = await supabase
+        .from('admin_access')
+        .select('email')
+        .eq('email', currentUser.email)
+        .maybeSingle();
+
+      if (error) {
+        console.error('Error checking admin access:', error);
+        return false;
+      }
+
+      return !!data;
+    } catch (error) {
+      console.error('Error checking admin access:', error);
+      return false;
+    }
   };
 
   // ===========================================
@@ -147,6 +176,14 @@
       }));
 
       pendingComments = allComments.filter(c => c.status === 'pending');
+
+      // Load admin access list if owner
+      if (isOwnerUser) {
+        await loadAdminAccessList();
+        toggleAdminAccessSection(true);
+      } else {
+        toggleAdminAccessSection(false);
+      }
 
       // Update UI
       updateStats();
@@ -314,6 +351,32 @@
     `;
   };
 
+  const renderAdminAccessList = () => {
+    const container = document.getElementById('admin-access-list');
+    if (!container) return;
+
+    if (adminAccessList.length === 0) {
+      container.innerHTML = '<div class="admin-empty">Noch keine weiteren Administratoren.</div>';
+      return;
+    }
+
+    container.innerHTML = adminAccessList.map(entry => `
+      <div class="admin-access-item" data-email="${entry.email}">
+        <div>
+          <strong>${entry.email}</strong>
+          <span class="admin-access-meta">hinzugefügt am ${formatDate(entry.created_at)}</span>
+        </div>
+        <button type="button" class="admin-access-remove" data-email="${entry.email}">
+          Entfernen
+        </button>
+      </div>
+    `).join('');
+
+    container.querySelectorAll('.admin-access-remove').forEach(btn => {
+      btn.addEventListener('click', () => handleRemoveAdminEmail(btn.dataset.email));
+    });
+  };
+
   const populatePageFilter = () => {
     const select = document.getElementById('filter-page');
     if (!select) return;
@@ -335,6 +398,40 @@
     const container = document.getElementById(containerId);
     if (container) {
       container.innerHTML = `<div class="admin-error">${escapeHtml(message)}</div>`;
+    }
+  };
+
+  const toggleAdminAccessSection = (visible) => {
+    const section = document.getElementById('admin-access-section');
+    if (!section) return;
+    section.style.display = visible ? 'block' : 'none';
+  };
+
+  const showAdminAccessMessage = (text, isError = false) => {
+    const message = document.getElementById('admin-access-message');
+    if (!message) return;
+    message.textContent = text;
+    message.classList.toggle('error', isError);
+    message.classList.toggle('success', !isError);
+  };
+
+  const loadAdminAccessList = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('admin_access')
+        .select('*')
+        .order('created_at', { ascending: true });
+
+      if (error) throw error;
+
+      adminAccessList = data || [];
+      renderAdminAccessList();
+    } catch (error) {
+      console.error('Error loading admin access list:', error);
+      const container = document.getElementById('admin-access-list');
+      if (container) {
+        container.innerHTML = '<div class="admin-error">Fehler beim Laden der Liste.</div>';
+      }
     }
   };
 
@@ -428,6 +525,57 @@
     }
   };
 
+  const handleAddAdminEmail = async (event) => {
+    event.preventDefault();
+    if (!isOwnerUser) return;
+
+    const input = document.getElementById('admin-access-input');
+    if (!input) return;
+
+    const email = input.value.trim().toLowerCase();
+    if (!email) {
+      showAdminAccessMessage('Bitte E-Mail-Adresse eingeben.', true);
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+        .from('admin_access')
+        .insert({ email, added_by: currentUser.id });
+
+      if (error) throw error;
+
+      showAdminAccessMessage('Zugriff hinzugefügt.', false);
+      input.value = '';
+      await loadAdminAccessList();
+    } catch (error) {
+      console.error('Error adding admin email:', error);
+      showAdminAccessMessage('Fehler beim Hinzufügen.', true);
+    }
+  };
+
+  const handleRemoveAdminEmail = async (email) => {
+    if (!isOwnerUser || !email) return;
+
+    if (!confirm(`Zugriff für ${email} entfernen?`)) {
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+        .from('admin_access')
+        .delete()
+        .eq('email', email);
+
+      if (error) throw error;
+
+      await loadAdminAccessList();
+    } catch (error) {
+      console.error('Error removing admin email:', error);
+      alert('Fehler beim Entfernen.');
+    }
+  };
+
   const handleLogout = async () => {
     try {
       await supabase.auth.signOut();
@@ -455,6 +603,9 @@
     // Filter changes
     document.getElementById('filter-status')?.addEventListener('change', renderAllComments);
     document.getElementById('filter-page')?.addEventListener('change', renderAllComments);
+
+    // Admin access form
+    document.getElementById('admin-access-form')?.addEventListener('submit', handleAddAdminEmail);
   };
 
   // ===========================================

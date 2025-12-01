@@ -88,6 +88,31 @@ permalink: admin/index.html
         </div>
       </div>
 
+      <!-- Admin Access Management (Owner only) -->
+      <div class="admin-section admin-access-section" id="admin-access-section" style="display: none;">
+        <h2 class="admin-section-title">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Admin-Zugriff verwalten
+        </h2>
+        <p class="admin-section-desc">Gewähre weiteren Teammitgliedern Zugriff auf das Moderations-Dashboard.</p>
+
+        <form class="admin-access-form" id="admin-access-form">
+          <label for="admin-access-input" class="admin-access-label">E-Mail-Adresse hinzufügen</label>
+          <div class="admin-access-input-group">
+            <input type="email" id="admin-access-input" placeholder="person@beispiel.de" required />
+            <button type="submit">Zugriff gewähren</button>
+          </div>
+          <p class="admin-access-message" id="admin-access-message" role="alert" aria-live="polite"></p>
+        </form>
+
+        <div class="admin-access-list" id="admin-access-list">
+          <div class="admin-loading">Lade Administratoren...</div>
+        </div>
+      </div>
+
       <!-- Logout Button -->
       <div class="admin-logout-section">
         <button type="button" class="admin-logout-btn" id="admin-logout-btn">

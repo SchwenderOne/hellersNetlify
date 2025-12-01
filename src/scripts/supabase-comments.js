@@ -15,6 +15,23 @@
   // Owner/Admin email - has access to moderation dashboard
   const OWNER_EMAIL = 'unotuscha@gmail.com';
 
+  const getEmailRedirectTarget = () => {
+    const productionUrl = 'https://hellers-kaffees.netlify.app/';
+
+    if (typeof window === 'undefined') {
+      return productionUrl;
+    }
+
+    const { origin, hostname, pathname, search } = window.location;
+    const isLocalhost = hostname.includes('localhost') || hostname.includes('127.0.0.1');
+
+    if (isLocalhost) {
+      return productionUrl;
+    }
+
+    return `${origin}${pathname}${search}`;
+  };
+
   // ===========================================
   // STATE
   // ===========================================
@@ -23,6 +40,11 @@
   let currentProfile = null;
   let currentPageId = null;
   let comments = [];
+  let isAdminUser = false;
+
+  const resetAdminState = () => {
+    isAdminUser = false;
+  };
 
   // DOM Elements (initialized later)
   let commentOverlay = null;
@@ -47,6 +69,7 @@
       if (session) {
         currentUser = session.user;
         await loadUserProfile();
+        await determineAdminStatus();
       }
 
       // Set up auth state listener
@@ -100,9 +123,11 @@
     if (session) {
       currentUser = session.user;
       await loadUserProfile();
+      await determineAdminStatus();
     } else {
       currentUser = null;
       currentProfile = null;
+      resetAdminState();
     }
     
     updateAuthUI();
@@ -112,8 +137,37 @@
   // ===========================================
   // OWNER/ADMIN FUNCTIONS
   // ===========================================
-  const isOwner = () => {
-    return currentUser && currentUser.email === OWNER_EMAIL;
+  const isOwner = () => currentUser && currentUser.email === OWNER_EMAIL;
+
+  const determineAdminStatus = async () => {
+    if (!currentUser) {
+      resetAdminState();
+      return;
+    }
+
+    if (isOwner()) {
+      isAdminUser = true;
+      return;
+    }
+
+    try {
+      const { data, error } = await supabase
+        .from('admin_access')
+        .select('email')
+        .eq('email', currentUser.email)
+        .maybeSingle();
+
+      if (error) {
+        console.error('Error checking admin access:', error);
+        isAdminUser = false;
+        return;
+      }
+
+      isAdminUser = !!data;
+    } catch (error) {
+      console.error('Error checking admin access:', error);
+      isAdminUser = false;
+    }
   };
 
   const updateHeaderProfileIcon = () => {
@@ -127,7 +181,7 @@
     }
 
     // Only show for owner
-    if (!isOwner()) return;
+    if (!isAdminUser) return;
 
     // Create profile icon button
     const profileBtn = document.createElement('a');
@@ -156,7 +210,7 @@
   };
 
   const loadPendingCount = async () => {
-    if (!supabase || !isOwner()) return;
+    if (!supabase || !isAdminUser) return;
 
     try {
       const { count, error } = await supabase
@@ -204,6 +258,7 @@
       email,
       password,
       options: {
+        emailRedirectTo: getEmailRedirectTarget(),
         data: {
           display_name: displayName
         }

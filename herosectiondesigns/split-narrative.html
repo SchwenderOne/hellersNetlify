@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hero Prototype · Split Narrative</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f7f5f4;
+      --ink: #0e1a3a;
+      --terracotta: #c97a5c;
+      --sage: #7e9c87;
+      --beige: #e6dccf;
+      --shadow: 0 35px 80px rgba(14, 26, 58, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(280px, 1fr) minmax(380px, 1.2fr);
+      gap: clamp(32px, 5vw, 80px);
+      padding: clamp(32px, 6vw, 100px);
+      min-height: 100vh;
+    }
+
+    .story-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+    }
+
+    .label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      color: rgba(14, 26, 58, 0.6);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', 'Times New Roman', serif;
+      font-size: clamp(2.8rem, 4.5vw, 4.8rem);
+      margin: 0;
+      line-height: 1.05;
+    }
+
+    .lede {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: rgba(14, 26, 58, 0.7);
+      margin: 0;
+    }
+
+    .hero-actions {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .hero-actions a {
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 600;
+      padding: 14px 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(14, 26, 58, 0.15);
+      color: var(--ink);
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+
+    .hero-actions a.primary {
+      background: var(--terracotta);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 15px 40px rgba(201, 122, 92, 0.25);
+    }
+
+    .hero-actions a:hover {
+      transform: translateY(-4px);
+    }
+
+    .ritual-column {
+      position: relative;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 24px;
+      background: #fff;
+      border-radius: 40px;
+      padding: clamp(24px, 4vw, 48px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .ritual-column::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, rgba(126, 156, 135, 0.2), transparent 60%);
+      z-index: 0;
+    }
+
+    .status-ticker {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: rgba(14, 26, 58, 0.5);
+    }
+
+    .ticker-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--sage);
+      box-shadow: 0 0 0 6px rgba(126, 156, 135, 0.25);
+    }
+
+    .ritual-track {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      align-content: start;
+      max-height: 70vh;
+      overflow-y: auto;
+      padding-right: 8px;
+      scroll-snap-type: y mandatory;
+    }
+
+    .ritual-card {
+      scroll-snap-align: start;
+      border-radius: 28px;
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(14, 26, 58, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform 250ms ease;
+    }
+
+    .ritual-card:hover {
+      transform: translateX(8px);
+    }
+
+    .card-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .card-heading span {
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(14, 26, 58, 0.5);
+    }
+
+    .card-heading strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+    }
+
+    .card-body {
+      margin: 0;
+      color: rgba(14, 26, 58, 0.75);
+      line-height: 1.7;
+    }
+
+    .card-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(14, 26, 58, 0.5);
+    }
+
+    .card-meta span::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      margin-right: 6px;
+    }
+
+    .timeline-hint {
+      margin: 0;
+      font-size: 0.85rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(14, 26, 58, 0.4);
+      text-align: center;
+    }
+
+    @media (max-width: 960px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        min-height: initial;
+      }
+
+      .ritual-column {
+        max-height: 80vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-layout">
+      <div class="story-panel">
+        <p class="label">Berliner Kaffeeszene</p>
+        <h1 id="hero-title">Der Morgen gehört dem Aufguss. Der Abend der Extraktion.</h1>
+        <p class="lede">Zwischen 07:00 und 22:00 Uhr kuratieren wir Rituale, keine Rezepte. Von handaufgegossenen Filterproben bis zum Espresso Flight mit Nougat-Finish.</p>
+        <div class="hero-actions">
+          <a class="primary" href="#rituale">Rituale entdecken</a>
+          <a href="#menue">Menü öffnen</a>
+        </div>
+      </div>
+
+      <div class="ritual-column" aria-label="Tagesablauf">
+        <div class="status-ticker">
+          <span>Heute</span>
+          <div class="ticker-dot" aria-hidden="true"></div>
+          <span>Charlottenburg</span>
+        </div>
+        <div class="ritual-track" id="rituale">
+          <article class="ritual-card" aria-label="Pour-over Session">
+            <div class="card-heading">
+              <span>07:15</span>
+              <strong>Pour-over Session</strong>
+            </div>
+            <p class="card-body">Lot Bamb Wush Wush · Honig &amp; Aprikose · 92° infundiert · serviert mit kandierter Orange.</p>
+            <div class="card-meta">
+              <span>Einfach</span>
+              <span>6 Minuten</span>
+            </div>
+          </article>
+
+          <article class="ritual-card" aria-label="Cold Bloom">
+            <div class="card-heading">
+              <span>11:30</span>
+              <strong>Cold Bloom</strong>
+            </div>
+            <p class="card-body">Slow-drip mit Sake-Hefe, serviert auf crushed ice &amp; Thymianblüte. Perfekt für Mittags-sessions.</p>
+            <div class="card-meta">
+              <span>Mittel</span>
+              <span>14 Stunden</span>
+            </div>
+          </article>
+
+          <article class="ritual-card" aria-label="Tasting Flight">
+            <div class="card-heading">
+              <span>18:45</span>
+              <strong>Tasting Flight</strong>
+            </div>
+            <p class="card-body">Drei Espressi, drei Kontinente. Noten von Brombeere, Kakao und rosa Pfeffer.</p>
+            <div class="card-meta">
+              <span>Fortgeschritten</span>
+              <span>25 Minuten</span>
+            </div>
+          </article>
+        </div>
+        <p class="timeline-hint">Scroll · Hellers Studio</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
