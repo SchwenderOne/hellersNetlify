@@ -55,7 +55,7 @@ permalink: admin/index.html
           </svg>
           Ausstehende Kommentare
         </h2>
-        <p class="admin-section-desc">Kommentare, die auf Freigabe warten. Markierte Kommentare werden nach 24h automatisch freigegeben.</p>
+        <p class="admin-section-desc">Kommentare, die auf Freigabe warten. Markierte Kommentare werden nach <span id="review-time-display">24</span>h automatisch freigegeben.</p>
         
         <div class="admin-comments-list" id="pending-comments">
           <div class="admin-loading">Lade Kommentare...</div>
@@ -110,6 +110,31 @@ permalink: admin/index.html
 
         <div class="admin-access-list" id="admin-access-list">
           <div class="admin-loading">Lade Administratoren...</div>
+        </div>
+      </div>
+
+      <!-- Settings Section (Owner only) -->
+      <div class="admin-section admin-settings-section" id="admin-settings-section" style="display: none;">
+        <h2 class="admin-section-title">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Einstellungen
+        </h2>
+        <p class="admin-section-desc">Konfiguriere die Moderationseinstellungen.</p>
+
+        <div class="admin-settings-group">
+          <label for="review-time-input" class="admin-settings-label">
+            <strong>Auto-Freigabe Zeit</strong>
+            <span class="admin-settings-hint">Zeit bis markierte Kommentare automatisch freigegeben werden</span>
+          </label>
+          <div class="admin-settings-input-group">
+            <input type="number" id="review-time-input" min="1" max="168" value="24" />
+            <span class="admin-settings-unit">Stunden</span>
+            <button type="button" id="save-review-time-btn" class="admin-settings-save-btn">Speichern</button>
+          </div>
+          <p class="admin-settings-message" id="review-time-message" role="alert" aria-live="polite"></p>
         </div>
       </div>
 

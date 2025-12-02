@@ -2,6 +2,12 @@
 
 Entries are reverse-chronological. Use this log to understand what shipped each session.
 
+## 2025-12-02 — Admin Dashboard Fixes & Review Settings
+- Ermöglichte allen Administratoren (nicht nur Owner) den Zugriff auf das Moderations-Dashboard, indem `admin.js` nun `is_admin()`-basierte Checks verwendet.
+- Erstellt `public.settings` Tabelle inkl. RLS-Policies sowie eine konfigurierbare Auto-Freigabe-Zeit, die vom Trigger `moderate_comment()` gelesen wird.
+- Ergänzte Einstellungen-Panel im Admin-UI (Owner-only) mit Eingabefeld und Speichern-Action sowie aktualisierten Pending-Hinweisen.
+- Dokumentation (README, architecture) um Admin-Dashboard Beschreibung und neue Fähigkeiten ergänzt.
+
 ## 2025-11-30 — Supabase Kommentar-System
 - Erstellt `public.profiles` und `public.comments` Tabellen inkl. RLS, Moderations-Funktionen und Auto-Profil-Triggers.
 - Implementierte `src/scripts/supabase-comments.js` (Auth Overlay, Kommentar-Overlay, DiceBear-Avatare, Moderationshinweise) und ersetzte das alte Cusdis Script auf allen Rezeptseiten.

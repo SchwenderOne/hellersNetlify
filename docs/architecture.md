@@ -1,3 +1,8 @@
+- **Supabase-Kommentare** — Jeder Guide bindet `src/scripts/supabase-comments.js` ein (siehe `<script src="/scripts/supabase-comments.js" defer>` am Ende der Seiten). Das Modul initialisiert den Supabase JS Client (Projekt `huwlvkqrnboerbghzsqo`) mit E-Mail/Passwort-Auth, lädt Benutzerprofile aus `public.profiles` und Kommentare aus `public.comments`, und rendert zwei Overlays:
+- *Kommentar-Vorschau* innerhalb `.comment-preview-card`, die den neuesten Beitrag anzeigt oder ein Placeholder-Label rendert.
+- *Kommentar-Overlay* (`.comment-overlay`) mit Auth-Workflow, Formular (2000 Zeichen Limit), Löschfunktion für eigene Beiträge sowie Moderationsstatus-Hinweisen. Auth-Overlays (`.auth-overlay`) nutzen DiceBear-Avatare als Fallback.
+- Datenfluss: `loadComments()` fragt zuerst `comments`, sammelt zugehörige `user_id`s, lädt dann `profiles` und merged sie clientseitig (da `comments.user_id` auf `auth.users` verweist). Neue Kommentare werden optimistisch zur lokalen Liste hinzugefügt und serverseitig durch Trigger (`check_suspicious_content`, `moderate_comment`) geprüft.
+- Styles leben am Ende von `src/styles/styles.css` unter den Blöcken `/* Auth Modal */` und `/* Comments */` (~Zeilen 7600+). Beide Overlays verwenden `backdrop-filter` und z-index 1050+, damit sie über Hero/Timer-Widgets schweben.
 # Architecture & Implementation Details
 
 ## Repository Layout
@@ -68,6 +73,22 @@
 - `initNewsletter` — EmailJS integration scaffold; enables inputs and surfaces configuration errors.
 - `initRecipeTimer` — Countdown timer with step highlights and optional chime.
 - All modules run on `DOMContentLoaded` (or immediately if the DOM is already ready) to keep pages interactive without build tooling (`scripts/main.js:1016`). Current Eleventy build serves the same script without bundling; Vite warns that the script lacks `type="module"`. Resolving this warning is part of the Phase 4 JavaScript modularisation.
+
+## Admin Dashboard (`/admin/`)
+- Separate Eleventy page (`src/admin.njk`) backed by `src/scripts/admin.js` and `src/styles/styles.css` components.
+- Uses the same Supabase project (`huwlvkqrnboerbghzsqo`). Auth is handled via the publicly included Supabase JS SDK and email/password sign-in.
+- **Access model:**
+  - Owner check via hard-coded `OWNER_EMAIL`.
+  - Additional admins managed through the `public.admin_access` table (email list). Client fetches entries to render the access list and enforce owner-only screens.
+  - Supabase RLS relies on the `public.is_admin()` helper function so that both owner and invited admins can `SELECT/UPDATE/DELETE` any `public.comments` row.
+- **Settings:**
+  - Configurable auto-review time stored in `public.settings` with key `review_time_hours` (integer hours, default 24).
+  - `public.moderate_comment()` trigger reads the stored value to set `comments.auto_approve_at` dynamically.
+  - UI shows the current value to all admins; only the owner can edit and persist changes (upsert guarded by `is_admin()` policies limited to owner context in the client).
+- **UI sections:**
+  - Stats (pending, flagged, total), pending queue, all-comments list with filters, admin access manager (owner only), settings panel (owner only), logout CTA.
+  - Each comment card renders avatar (DiceBear fallback), metadata, flagged reason, auto-approve countdown, and provides Approve/Ablehnen/Löschen buttons wired to Supabase mutations.
+- **Event handling:** `loadAllData()` fetches comments, profiles, settings, and (for owners) the access list before rendering; action handlers optimistically update local arrays to keep the UI in sync without a full refetch.
 
 ## Accessibility & UX Considerations
 - Skip links, ARIA roles/labels, and focus management for modals (`events.html:462`+).

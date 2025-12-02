@@ -22,6 +22,8 @@
   let pendingComments = [];
   let adminAccessList = [];
   let isOwnerUser = false;
+  let isAdminUser = false;  // True if owner OR in admin_access list
+  let reviewTimeHours = 24;  // Default review time in hours
 
   // ===========================================
   // INITIALIZATION
@@ -84,6 +86,7 @@
     } else {
       currentUser = null;
       isOwnerUser = false;
+      isAdminUser = false;
       hideDashboard();
       showAuthStatus('Bitte melden Sie sich auf einer Rezeptseite an.');
     }
@@ -92,8 +95,15 @@
   const isOwner = () => currentUser && currentUser.email === OWNER_EMAIL;
 
   const determineAdminAccess = async () => {
-    if (!currentUser) return false;
-    if (isOwner()) return true;
+    if (!currentUser) {
+      isAdminUser = false;
+      return false;
+    }
+    
+    if (isOwner()) {
+      isAdminUser = true;
+      return true;
+    }
 
     try {
       const { data, error } = await supabase
@@ -104,12 +114,15 @@
 
       if (error) {
         console.error('Error checking admin access:', error);
+        isAdminUser = false;
         return false;
       }
 
-      return !!data;
+      isAdminUser = !!data;
+      return isAdminUser;
     } catch (error) {
       console.error('Error checking admin access:', error);
+      isAdminUser = false;
       return false;
     }
   };
@@ -140,7 +153,7 @@
   // DATA LOADING
   // ===========================================
   const loadAllData = async () => {
-    if (!isOwner()) return;
+    if (!isAdminUser) return;
 
     try {
       // Load all comments with profiles
@@ -177,16 +190,22 @@
 
       pendingComments = allComments.filter(c => c.status === 'pending');
 
-      // Load admin access list if owner
+      // Load settings (available to all admins for display)
+      await loadSettings();
+
+      // Load admin access list and show settings if owner
       if (isOwnerUser) {
         await loadAdminAccessList();
         toggleAdminAccessSection(true);
+        toggleSettingsSection(true);
       } else {
         toggleAdminAccessSection(false);
+        toggleSettingsSection(false);
       }
 
       // Update UI
       updateStats();
+      updateReviewTimeDisplay();
       renderPendingComments();
       renderAllComments();
       populatePageFilter();
@@ -407,6 +426,94 @@
     section.style.display = visible ? 'block' : 'none';
   };
 
+  const toggleSettingsSection = (visible) => {
+    const section = document.getElementById('admin-settings-section');
+    if (!section) return;
+    section.style.display = visible ? 'block' : 'none';
+  };
+
+  const loadSettings = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('settings')
+        .select('value')
+        .eq('key', 'review_time_hours')
+        .maybeSingle();
+
+      if (error) throw error;
+
+      if (data) {
+        reviewTimeHours = parseInt(data.value) || 24;
+      }
+      
+      // Update input field if visible
+      const input = document.getElementById('review-time-input');
+      if (input) {
+        input.value = reviewTimeHours;
+      }
+    } catch (error) {
+      console.error('Error loading settings:', error);
+    }
+  };
+
+  const updateReviewTimeDisplay = () => {
+    const display = document.getElementById('review-time-display');
+    if (display) {
+      display.textContent = reviewTimeHours;
+    }
+  };
+
+  const handleSaveReviewTime = async () => {
+    if (!isOwnerUser) return;
+
+    const input = document.getElementById('review-time-input');
+    const message = document.getElementById('review-time-message');
+    if (!input) return;
+
+    const hours = parseInt(input.value);
+    if (isNaN(hours) || hours < 1 || hours > 168) {
+      if (message) {
+        message.textContent = 'Bitte einen Wert zwischen 1 und 168 Stunden eingeben.';
+        message.classList.add('error');
+        message.classList.remove('success');
+      }
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+        .from('settings')
+        .upsert({ 
+          key: 'review_time_hours', 
+          value: hours,
+          updated_at: new Date().toISOString(),
+          updated_by: currentUser.id
+        });
+
+      if (error) throw error;
+
+      reviewTimeHours = hours;
+      updateReviewTimeDisplay();
+      
+      if (message) {
+        message.textContent = 'Einstellung gespeichert.';
+        message.classList.remove('error');
+        message.classList.add('success');
+        setTimeout(() => {
+          message.textContent = '';
+          message.classList.remove('success');
+        }, 3000);
+      }
+    } catch (error) {
+      console.error('Error saving review time:', error);
+      if (message) {
+        message.textContent = 'Fehler beim Speichern.';
+        message.classList.add('error');
+        message.classList.remove('success');
+      }
+    }
+  };
+
   const showAdminAccessMessage = (text, isError = false) => {
     const message = document.getElementById('admin-access-message');
     if (!message) return;
@@ -439,7 +546,7 @@
   // ACTIONS
   // ===========================================
   const handleApprove = async (commentId) => {
-    if (!isOwner() || !commentId) return;
+    if (!isAdminUser || !commentId) return;
 
     try {
       const { error } = await supabase
@@ -468,7 +575,7 @@
   };
 
   const handleReject = async (commentId) => {
-    if (!isOwner() || !commentId) return;
+    if (!isAdminUser || !commentId) return;
 
     try {
       const { error } = await supabase
@@ -496,7 +603,7 @@
   };
 
   const handleDelete = async (commentId) => {
-    if (!isOwner() || !commentId) return;
+    if (!isAdminUser || !commentId) return;
 
     if (!confirm('Möchten Sie diesen Kommentar wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.')) {
       return;
@@ -606,6 +713,9 @@
 
     // Admin access form
     document.getElementById('admin-access-form')?.addEventListener('submit', handleAddAdminEmail);
+
+    // Settings save button
+    document.getElementById('save-review-time-btn')?.addEventListener('click', handleSaveReviewTime);
   };
 
   // ===========================================

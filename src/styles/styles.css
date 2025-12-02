@@ -8908,3 +8908,86 @@ article.card {
   background: rgba(220, 38, 38, 0.2);
   color: #f87171;
 }
+
+/* Admin Settings Section */
+.admin-settings-group {
+  margin-bottom: 24px;
+}
+
+.admin-settings-label {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.admin-settings-label strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.admin-settings-hint {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.admin-settings-input-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.admin-settings-input-group input {
+  width: 100px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.admin-settings-unit {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.admin-settings-save-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent-terracotta);
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 200ms ease, transform 150ms ease;
+}
+
+.admin-settings-save-btn:hover {
+  transform: translateY(-2px);
+  background: var(--accent-terracotta-hover, #b96447);
+}
+
+.admin-settings-message {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  width: 100%;
+}
+
+.admin-settings-message.success {
+  color: var(--accent-sage);
+}
+
+.admin-settings-message.error {
+  color: var(--accent-terracotta);
+}
+
+[data-theme="dark"] .admin-settings-input-group input {
+  border-color: var(--border-dark);
+  background: var(--surface-dark);
+  color: var(--text-dark);
+}

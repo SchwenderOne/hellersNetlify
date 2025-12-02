@@ -1,6 +1,6 @@
 # Hellers Kaffees Brew Guides — Project Overview
 
-**Last Updated:** November 2025
+**Last Updated:** December 2025
 
 This repository contains the static website for the Hellers Kaffees brew guides. It mirrors the experience of the Greater Goods Roasting reference site while localising the content for Berlin and adding custom interactive widgets.
 
@@ -24,6 +24,7 @@ This repository contains the static website for the Hellers Kaffees brew guides.
 - Scroll-triggered animations, storytelling sections, payment methods section, visit CTA, and events registration modal.
 - Dark mode palette, responsive layouts down to 320px, print stylesheet, and accessibility affordances (skip links, ARIA labels, focus traps).
 - Supabase-basierte Kommentarfunktion auf allen Zubereitungsseiten mit E-Mail/Passwort-Anmeldung, Profilen (Displayname/Avatar) und Moderations-Workflow für verdächtige Beiträge.
+- Admin-Dashboard unter `/admin/` mit mehrstufigem Zugriff (Owner + `admin_access`) inklusive Freigabe/Ablehnung/Löschung, Statistiken und konfigurierbarer Auto-Freigabe-Zeit.
 
 ## Tech Stack
 - Eleventy 3.x with `@11ty/eleventy-plugin-vite` for the build pipeline.
