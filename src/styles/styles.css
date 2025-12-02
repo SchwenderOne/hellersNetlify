@@ -8991,3 +8991,873 @@ article.card {
   background: var(--surface-dark);
   color: var(--text-dark);
 }
+
+/* ========================================
+   COFFEE DETAIL PAGE - New Design
+   ======================================== */
+
+.coffee-detail-page {
+  padding-top: 0;
+}
+
+/* Coffee Hero */
+.coffee-hero {
+  min-height: 35vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 48px 24px;
+  background: var(--bg);
+}
+
+.coffee-hero .hero-origin {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.coffee-hero .hero-origin-flag {
+  font-size: 28px;
+}
+
+.coffee-hero .hero-origin-text {
+  font-size: var(--font-size-label);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent-sage);
+}
+
+.coffee-hero .hero-title {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-display);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.coffee-hero .hero-tagline {
+  font-size: var(--font-size-body);
+  color: var(--text-muted);
+  max-width: 550px;
+  font-style: italic;
+}
+
+/* Coffee Product Section */
+.coffee-product-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* Coffee Gallery */
+.coffee-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.coffee-gallery .gallery-main {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  position: relative;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coffee-gallery .gallery-main:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.coffee-gallery .gallery-main img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.coffee-gallery .gallery-main:hover img {
+  transform: scale(1.03);
+}
+
+.coffee-gallery .gallery-zoom-hint {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.coffee-gallery .gallery-main:hover .gallery-zoom-hint {
+  opacity: 1;
+}
+
+.coffee-gallery .gallery-zoom-hint svg {
+  width: 14px;
+  height: 14px;
+}
+
+.coffee-gallery .sold-out-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--accent-terracotta);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: var(--font-size-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.coffee-gallery .gallery-thumbnails {
+  display: flex;
+  gap: 8px;
+}
+
+.coffee-gallery .thumbnail {
+  width: 72px;
+  height: 72px;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.coffee-gallery .thumbnail:hover {
+  transform: translateY(-2px);
+}
+
+.coffee-gallery .thumbnail.active {
+  border-color: var(--accent-terracotta);
+}
+
+.coffee-gallery .thumbnail img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Coffee Product Info */
+.coffee-product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.coffee-product-info .product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.coffee-product-info .product-meta {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.coffee-product-info .badge {
+  padding: 5px 12px;
+  border-radius: 16px;
+  font-size: var(--font-size-label);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.coffee-product-info .badge-origin {
+  background: var(--accent-sage);
+  color: white;
+}
+
+.coffee-product-info .badge-category {
+  background: var(--accent-beige);
+  color: var(--text);
+}
+
+.coffee-product-info .product-name {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-h1);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.coffee-product-info .product-subtitle {
+  font-size: var(--font-size-small);
+  color: var(--text-muted);
+}
+
+.coffee-product-info .product-price-block {
+  text-align: right;
+}
+
+.coffee-product-info .product-price {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-h1);
+  color: var(--accent-terracotta);
+}
+
+.coffee-product-info .product-price-kg {
+  font-size: var(--font-size-small);
+  color: var(--text-muted);
+}
+
+.coffee-product-info .flavour-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.coffee-product-info .flavour-tag {
+  padding: 8px 14px;
+  background: var(--surface);
+  border: 1px solid var(--accent-beige);
+  border-radius: 20px;
+  font-size: var(--font-size-small);
+}
+
+.coffee-product-info .specs-row {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-top: 1px solid var(--accent-beige);
+  border-bottom: 1px solid var(--accent-beige);
+}
+
+.coffee-product-info .spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.coffee-product-info .spec-label {
+  font-size: var(--font-size-label);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.coffee-product-info .spec-value {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-h3);
+  color: var(--accent-terracotta);
+}
+
+.coffee-product-info .cta-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.coffee-product-info .cta-button {
+  flex: 1;
+  max-width: 280px;
+  padding: 14px 28px;
+  background: var(--accent-terracotta);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-body);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.coffee-product-info .cta-button.sold-out {
+  background: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.coffee-product-info .trust-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.coffee-product-info .trust-icon {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-small);
+  color: var(--text-muted);
+}
+
+.coffee-product-info .trust-icon svg {
+  width: 18px;
+  height: 18px;
+  color: var(--accent-sage);
+}
+
+/* Coffee Tabs Section */
+.coffee-tabs-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+}
+
+.coffee-tabs-section .tabs-header {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--accent-beige);
+  margin-bottom: 24px;
+}
+
+.coffee-tabs-section .tab-btn {
+  padding: 14px 28px;
+  background: none;
+  border: none;
+  font-size: var(--font-size-body);
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--text-muted);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.coffee-tabs-section .tab-btn:hover {
+  color: var(--text);
+}
+
+.coffee-tabs-section .tab-btn.active {
+  color: var(--accent-terracotta);
+}
+
+.coffee-tabs-section .tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-terracotta);
+}
+
+.coffee-tabs-section .tab-content {
+  display: none;
+}
+
+.coffee-tabs-section .tab-content.active {
+  display: block;
+  animation: coffeeTabFadeIn 0.3s ease;
+}
+
+@keyframes coffeeTabFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tab: Details */
+.coffee-tabs-section .details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.coffee-tabs-section .detail-card {
+  background: var(--surface);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+}
+
+.coffee-tabs-section .detail-card h3 {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-h2);
+  margin-bottom: 16px;
+}
+
+.coffee-tabs-section .detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.coffee-tabs-section .detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--accent-beige);
+}
+
+.coffee-tabs-section .detail-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.coffee-tabs-section .detail-label {
+  color: var(--text-muted);
+}
+
+.coffee-tabs-section .detail-value {
+  font-weight: 600;
+}
+
+/* Tab: Story */
+.coffee-tabs-section .story-card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.coffee-tabs-section .story-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-sage), var(--accent-terracotta));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 24px;
+  color: white;
+}
+
+.coffee-tabs-section .story-content h3 {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-h2);
+  margin-bottom: 4px;
+}
+
+.coffee-tabs-section .story-subtitle {
+  font-size: var(--font-size-small);
+  color: var(--accent-sage);
+  margin-bottom: 12px;
+}
+
+.coffee-tabs-section .story-text {
+  color: var(--text-muted);
+  font-size: var(--font-size-small);
+  line-height: 1.7;
+}
+
+.coffee-tabs-section .story-text p {
+  margin-bottom: 12px;
+}
+
+.coffee-tabs-section .story-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Tab: Brewing */
+.coffee-tabs-section .brewing-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.coffee-tabs-section .brewing-card {
+  background: var(--surface);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.coffee-tabs-section .brewing-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 12px;
+  background: var(--accent-beige);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coffee-tabs-section .brewing-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--accent-terracotta);
+}
+
+.coffee-tabs-section .brewing-card h4 {
+  font-size: var(--font-size-h3);
+  margin-bottom: 6px;
+}
+
+.coffee-tabs-section .brewing-card p {
+  font-size: var(--font-size-small);
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Coffee Lightbox */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.97);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.lightbox-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.lightbox-close svg {
+  width: 24px;
+  height: 24px;
+}
+
+.lightbox-content {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 40px;
+  max-width: 1200px;
+  max-height: 90vh;
+  width: 100%;
+}
+
+.lightbox-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.lightbox-main-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.03);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  min-height: 400px;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.lightbox-main-image.zoomed {
+  cursor: zoom-out;
+  overflow: auto;
+}
+
+.lightbox-main-image img {
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.lightbox-main-image.zoomed img {
+  max-width: none;
+  max-height: none;
+  transform: scale(2);
+  cursor: grab;
+}
+
+.lightbox-main-image.zoomed img:active {
+  cursor: grabbing;
+}
+
+.lightbox-zoom-hint {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.8);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.lightbox-thumbnails {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.lightbox-thumb {
+  width: 80px;
+  height: 80px;
+  background: rgba(255,255,255,0.08);
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.lightbox-thumb:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.lightbox-thumb.active {
+  border-color: var(--accent-terracotta);
+}
+
+.lightbox-thumb img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.lightbox-info {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+}
+
+.lightbox-info .product-meta {
+  display: flex;
+  gap: 8px;
+}
+
+.lightbox-info .badge-origin {
+  background: var(--accent-sage);
+  color: white;
+}
+
+.lightbox-info .badge-category {
+  background: rgba(255,255,255,0.15);
+  color: white;
+}
+
+.lightbox-title {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-h1);
+  font-weight: 400;
+}
+
+.lightbox-subtitle {
+  font-size: var(--font-size-small);
+  color: rgba(255,255,255,0.6);
+  margin-top: 4px;
+}
+
+.lightbox-price {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-h1);
+  color: var(--accent-terracotta);
+}
+
+.lightbox-price-kg {
+  font-size: var(--font-size-small);
+  color: rgba(255,255,255,0.5);
+}
+
+.lightbox-description {
+  font-size: var(--font-size-small);
+  color: rgba(255,255,255,0.7);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.lightbox-flavours {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.lightbox-flavour {
+  padding: 6px 12px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 16px;
+  font-size: var(--font-size-small);
+}
+
+.lightbox-specs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 16px;
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--radius-md);
+}
+
+.lightbox-spec {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lightbox-spec-label {
+  font-size: var(--font-size-label);
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+}
+
+.lightbox-spec-value {
+  font-family: var(--font-serif);
+  color: var(--accent-terracotta);
+}
+
+/* Coffee Page Navigation */
+.coffee-page-navigation {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+  border-top: 1px solid var(--accent-beige);
+}
+
+.coffee-page-navigation .nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-terracotta);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.coffee-page-navigation .nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Coffee Detail Responsive */
+@media (max-width: 1024px) {
+  .lightbox-content {
+    grid-template-columns: 1fr;
+    max-height: none;
+    overflow-y: auto;
+  }
+
+  .lightbox-info {
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .coffee-product-section {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .coffee-gallery {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .coffee-product-info .product-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .coffee-product-info .product-price-block {
+    text-align: left;
+  }
+
+  .coffee-product-info .specs-row {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .coffee-tabs-section .details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .coffee-tabs-section .brewing-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .coffee-tabs-section .story-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .coffee-tabs-section .story-avatar {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .coffee-hero {
+    padding: 40px 20px;
+  }
+
+  .coffee-product-info .cta-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .coffee-product-info .cta-button {
+    max-width: none;
+  }
+
+  .coffee-product-info .trust-icons {
+    justify-content: center;
+  }
+
+  .coffee-tabs-section .tabs-header {
+    overflow-x: auto;
+  }
+
+  .coffee-tabs-section .tab-btn {
+    padding: 12px 20px;
+    white-space: nowrap;
+  }
+
+  .lightbox-overlay {
+    padding: 20px;
+  }
+
+  .lightbox-close {
+    top: 12px;
+    right: 12px;
+  }
+}

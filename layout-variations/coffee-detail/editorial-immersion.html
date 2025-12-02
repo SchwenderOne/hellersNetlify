@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hendra Maulizar – Editorial Immersion Layout | Hellers Kaffees</title>
+  <meta name="description" content="Layout Variation: Editorial Immersion - Magazine-style split-screen coffee detail page">
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/azg8ito.css">
+  
+  <style>
+    /* ========================================
+       LAYOUT 1: EDITORIAL IMMERSION
+       Magazine-style, split-screen, premium feel
+       ======================================== */
+    
+    /* Design System Tokens */
+    :root {
+      --bg: #f7f5f4;
+      --surface: #ffffff;
+      --text: #111d3d;
+      --text-muted: #5c6785;
+      --accent-beige: #e6dccf;
+      --accent-terracotta: #c97a5c;
+      --accent-sage: #7e9c87;
+      --accent-ink: #0e1a3a;
+      --accent-warm: #d4a574;
+      
+      --font-serif: "p22-mackinac-pro", Georgia, serif;
+      --font-sans: "GTAmerica", Poppins, system-ui, sans-serif;
+      
+      --font-size-display: clamp(2.75rem, 6vw, 4.5rem);
+      --font-size-h1: clamp(2.25rem, 4.5vw, 3.5rem);
+      --font-size-h2: clamp(1.5rem, 3vw, 2rem);
+      --font-size-h3: clamp(1.25rem, 2vw, 1.5rem);
+      --font-size-body: 1.125rem;
+      --font-size-small: 0.9375rem;
+      --font-size-label: 0.75rem;
+      
+      --radius-lg: 12px;
+      --radius-md: 8px;
+      --header-height: 72px;
+    }
+    
+    [data-theme="dark"] {
+      --bg: #1a1a1a;
+      --surface: #2a2a2a;
+      --text: #f5f5f5;
+      --text-muted: #b0b0b0;
+      --accent-terracotta: #e09a7a;
+      --accent-sage: #94c2a8;
+      --accent-beige: rgba(230, 220, 207, 0.15);
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: var(--font-size-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Layout Indicator Badge */
+    .layout-indicator {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      background: var(--accent-terracotta);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    /* ===== HERO SECTION ===== */
+    .editorial-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .editorial-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--accent-ink) 0%, rgba(14, 26, 58, 0.85) 100%);
+      z-index: 1;
+    }
+    
+    .hero-background {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    
+    .hero-background img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.4;
+      transform: scale(1.1);
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 40px;
+      max-width: 800px;
+    }
+    
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-terracotta);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: var(--font-size-label);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+    
+    .hero-origin {
+      color: var(--accent-sage);
+      font-size: var(--font-size-small);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 16px;
+    }
+    
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-display);
+      font-weight: 400;
+      color: white;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    
+    .hero-description {
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    
+    .hero-price {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h2);
+      color: var(--accent-terracotta);
+    }
+    
+    .hero-price .per-kg {
+      font-size: var(--font-size-small);
+      color: rgba(255,255,255,0.6);
+      margin-left: 8px;
+    }
+    
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: rgba(255,255,255,0.6);
+      font-size: var(--font-size-small);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .scroll-indicator::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+      animation: scroll-pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes scroll-pulse {
+      0%, 100% { opacity: 0.6; height: 40px; }
+      50% { opacity: 1; height: 60px; }
+    }
+    
+    /* ===== SPLIT CONTENT SECTION ===== */
+    .split-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+    
+    .split-image {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      background: var(--accent-beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px;
+    }
+    
+    .split-image img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+    }
+    
+    .split-text {
+      padding: 80px 60px;
+      background: var(--surface);
+    }
+    
+    /* ===== QUICK STATS BAR ===== */
+    .stats-bar {
+      display: flex;
+      gap: 32px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--accent-beige);
+      margin-bottom: 48px;
+    }
+    
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    
+    .stat-label {
+      font-size: var(--font-size-label);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    .stat-value {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h3);
+      color: var(--text);
+    }
+    
+    /* ===== CONTENT SECTIONS ===== */
+    .content-section {
+      margin-bottom: 64px;
+    }
+    
+    .section-label {
+      font-size: var(--font-size-label);
+      color: var(--accent-terracotta);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+    }
+    
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h2);
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    
+    .section-text {
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    
+    .section-text p {
+      margin-bottom: 1.5em;
+    }
+    
+    .section-text p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* ===== FLAVOUR TAGS ===== */
+    .flavour-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    
+    .flavour-tag {
+      display: inline-block;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, var(--accent-beige), rgba(230, 220, 207, 0.5));
+      border-radius: 30px;
+      font-size: var(--font-size-small);
+      font-weight: 500;
+      color: var(--text);
+      border: 1px solid rgba(201, 122, 92, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .flavour-tag:hover {
+      background: var(--accent-terracotta);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    /* ===== ATTRIBUTES GRID ===== */
+    .attributes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    
+    .attribute-card {
+      padding: 20px;
+      background: var(--bg);
+      border-radius: var(--radius-md);
+    }
+    
+    .attribute-label {
+      font-size: var(--font-size-label);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    
+    .attribute-value {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h3);
+      color: var(--accent-terracotta);
+    }
+    
+    /* ===== PRODUCER STORY ===== */
+    .producer-section {
+      background: var(--bg);
+      margin: 0 -60px;
+      padding: 60px;
+      position: relative;
+    }
+    
+    .producer-section::before {
+      content: '"';
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      font-family: var(--font-serif);
+      font-size: 120px;
+      color: var(--accent-beige);
+      line-height: 1;
+    }
+    
+    .producer-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* ===== NAVIGATION ===== */
+    .page-navigation {
+      padding: 40px 60px;
+      background: var(--surface);
+      border-top: 1px solid var(--accent-beige);
+    }
+    
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-terracotta);
+      text-decoration: none;
+      font-weight: 500;
+      transition: gap 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      gap: 16px;
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .split-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .split-image {
+        position: relative;
+        height: 60vh;
+      }
+      
+      .split-text {
+        padding: 48px 32px;
+      }
+      
+      .producer-section {
+        margin: 0 -32px;
+        padding: 48px 32px;
+      }
+      
+      .attributes-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .hero-content {
+        padding: 24px;
+      }
+      
+      .stats-bar {
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      
+      .split-text {
+        padding: 32px 20px;
+      }
+      
+      .producer-section {
+        margin: 0 -20px;
+        padding: 32px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout-indicator">Layout 1: Editorial Immersion</div>
+  
+  <!-- HERO SECTION -->
+  <section class="editorial-hero">
+    <div class="hero-background">
+      <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1920&q=80" alt="Coffee farm background">
+    </div>
+    <div class="hero-content">
+      <span class="hero-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+        Micro Lot • Ausverkauft
+      </span>
+      <p class="hero-origin">Indonesia</p>
+      <h1 class="hero-title">Hendra Maulizar</h1>
+      <p class="hero-description">Sweet and juicy with Kenyan-like currant notes, white peach acidity and elegant white flowers.</p>
+      <p class="hero-price">€19,00 <span class="per-kg">€95,00/kg</span></p>
+    </div>
+    <div class="scroll-indicator">Scroll</div>
+  </section>
+  
+  <!-- SPLIT CONTENT -->
+  <section class="split-content">
+    <div class="split-image">
+      <img src="https://rozalicoffee.de/cdn/shop/files/hendra-maulizar_product_retail_1800x1800.png?v=1754980110" alt="Hendra Maulizar Coffee">
+    </div>
+    
+    <div class="split-text">
+      <!-- Quick Stats -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <span class="stat-label">Röstung</span>
+          <span class="stat-value">Light</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Verarbeitung</span>
+          <span class="stat-value">Washed</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Säure</span>
+          <span class="stat-value">High</span>
+        </div>
+      </div>
+      
+      <!-- Flavour Profile -->
+      <div class="content-section">
+        <p class="section-label">Geschmacksprofil</p>
+        <h2 class="section-title">Aromen & Noten</h2>
+        <div class="flavour-grid">
+          <span class="flavour-tag">Blackcurrant</span>
+          <span class="flavour-tag">White Peach</span>
+          <span class="flavour-tag">Green Apple</span>
+          <span class="flavour-tag">White Flowers</span>
+        </div>
+        <div class="attributes-grid">
+          <div class="attribute-card">
+            <p class="attribute-label">Röstung</p>
+            <p class="attribute-value">Light</p>
+          </div>
+          <div class="attribute-card">
+            <p class="attribute-label">Geschmack</p>
+            <p class="attribute-value">Fruity / floral</p>
+          </div>
+          <div class="attribute-card">
+            <p class="attribute-label">Säure</p>
+            <p class="attribute-value">High</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Producer Story -->
+      <div class="content-section producer-section">
+        <p class="section-label">Die Geschichte</p>
+        <h2 class="section-title">Hendra Maulizar</h2>
+        <p class="producer-subtitle" style="color: var(--accent-sage); margin-bottom: 24px; font-style: italic;">Gayo Avatara</p>
+        <div class="producer-content section-text">
+          <p>Hendra Maulizar has been a driving force in Indonesian specialty coffee processing, continuously pushing boundaries to improve quality and elevate the country's coffee industry. His journey began in 2006 when his father, Drs. Hamdan, moved to Aceh and started growing coffee. Witnessing his father's passion and dedication to coffee farming, Hendra was inspired to follow in his footsteps. In 2010, he planted his first coffee crop on a small plot of land, laying the foundation for what would become a thriving coffee operation.</p>
+          <p>What started as a modest 1-hectare farm has since grown into a 10-hectare estate, producing some of the finest specialty coffee in Indonesia. Hendra's commitment to quality and innovation has led him to invest heavily in post-harvest infrastructure, allowing him to refine processing techniques and unlock the full potential of the region's coffee.</p>
+          <p>Beyond his own farm, Hendra has built a strong network of 70 local farming families who partner with him to supply high-quality cherries for processing. This collaboration not only helps expand his production capacity but also supports the livelihoods of many families in the region.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Navigation -->
+  <div class="page-navigation">
+    <a href="/index.html" class="nav-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Zurück zur Übersicht
+    </a>
+  </div>
+</body>
+</html>

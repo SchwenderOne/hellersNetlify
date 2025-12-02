@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hendra Maulizar – Hybrid Compact A v2 | Hellers Kaffees</title>
+  <meta name="description" content="Layout Variation: Hybrid Compact A v2 - With image gallery, lightbox, and tabs">
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/azg8ito.css">
+  
+  <style>
+    /* ========================================
+       LAYOUT 6 v2: HYBRID COMPACT A
+       Enhanced with: Image gallery, Lightbox, Tabs
+       ======================================== */
+    
+    :root {
+      --bg: #f7f5f4;
+      --surface: #ffffff;
+      --text: #111d3d;
+      --text-muted: #5c6785;
+      --accent-beige: #e6dccf;
+      --accent-terracotta: #c97a5c;
+      --accent-sage: #7e9c87;
+      --accent-ink: #0e1a3a;
+      
+      --font-serif: "p22-mackinac-pro", Georgia, serif;
+      --font-sans: "GTAmerica", Poppins, system-ui, sans-serif;
+      
+      --font-size-display: clamp(2.5rem, 6vw, 4rem);
+      --font-size-h1: clamp(1.75rem, 3vw, 2.25rem);
+      --font-size-h2: clamp(1.25rem, 2vw, 1.5rem);
+      --font-size-h3: clamp(1rem, 1.5vw, 1.125rem);
+      --font-size-body: 1rem;
+      --font-size-small: 0.875rem;
+      --font-size-label: 0.75rem;
+      
+      --radius-lg: 12px;
+      --radius-md: 8px;
+    }
+    
+    [data-theme="dark"] {
+      --bg: #1a1a1a;
+      --surface: #2a2a2a;
+      --text: #f5f5f5;
+      --text-muted: #b0b0b0;
+      --accent-terracotta: #e09a7a;
+      --accent-sage: #94c2a8;
+      --accent-beige: rgba(230, 220, 207, 0.12);
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+    }
+    
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: var(--font-size-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .layout-indicator {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      background: linear-gradient(135deg, var(--accent-terracotta), var(--accent-sage));
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    /* ===== COMPACT HERO ===== */
+    .compact-hero {
+      min-height: 35vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 48px 24px;
+      background: var(--bg);
+    }
+    
+    .hero-origin {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    
+    .hero-origin-flag {
+      font-size: 28px;
+    }
+    
+    .hero-origin-text {
+      font-size: var(--font-size-label);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent-sage);
+    }
+    
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-display);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    
+    .hero-tagline {
+      font-size: var(--font-size-body);
+      color: var(--text-muted);
+      max-width: 550px;
+      font-style: italic;
+    }
+    
+    /* ===== PRODUCT SECTION ===== */
+    .product-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 24px;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    
+    /* ===== IMAGE GALLERY ===== */
+    .product-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .gallery-main {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .gallery-main:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    
+    .gallery-main img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-main:hover img {
+      transform: scale(1.03);
+    }
+    
+    .gallery-zoom-hint {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    
+    .gallery-main:hover .gallery-zoom-hint {
+      opacity: 1;
+    }
+    
+    .gallery-zoom-hint svg {
+      width: 14px;
+      height: 14px;
+    }
+    
+    .sold-out-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--accent-terracotta);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: var(--font-size-label);
+      font-weight: 600;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+    
+    .gallery-thumbnails {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .thumbnail {
+      width: 72px;
+      height: 72px;
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+    
+    .thumbnail:hover {
+      transform: translateY(-2px);
+    }
+    
+    .thumbnail.active {
+      border-color: var(--accent-terracotta);
+    }
+    
+    .thumbnail img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    
+    /* ===== PRODUCT INFO ===== */
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    
+    .product-meta {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    
+    .badge {
+      padding: 5px 12px;
+      border-radius: 16px;
+      font-size: var(--font-size-label);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    
+    .badge-origin {
+      background: var(--accent-sage);
+      color: white;
+    }
+    
+    .badge-category {
+      background: var(--accent-beige);
+      color: var(--text);
+    }
+    
+    .product-name {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h1);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    
+    .product-subtitle {
+      font-size: var(--font-size-small);
+      color: var(--text-muted);
+    }
+    
+    .product-price-block {
+      text-align: right;
+    }
+    
+    .product-price {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h1);
+      color: var(--accent-terracotta);
+    }
+    
+    .product-price-kg {
+      font-size: var(--font-size-small);
+      color: var(--text-muted);
+    }
+    
+    .flavour-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .flavour-tag {
+      padding: 8px 14px;
+      background: var(--surface);
+      border: 1px solid var(--accent-beige);
+      border-radius: 20px;
+      font-size: var(--font-size-small);
+    }
+    
+    .specs-row {
+      display: flex;
+      gap: 24px;
+      padding: 16px 0;
+      border-top: 1px solid var(--accent-beige);
+      border-bottom: 1px solid var(--accent-beige);
+    }
+    
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    
+    .spec-label {
+      font-size: var(--font-size-label);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .spec-value {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h3);
+      color: var(--accent-terracotta);
+    }
+    
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    
+    .cta-button {
+      flex: 1;
+      max-width: 280px;
+      padding: 14px 28px;
+      background: var(--accent-terracotta);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-body);
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    
+    .cta-button.sold-out {
+      background: var(--text-muted);
+      cursor: not-allowed;
+    }
+    
+    .trust-icons {
+      display: flex;
+      gap: 16px;
+    }
+    
+    .trust-icon {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--font-size-small);
+      color: var(--text-muted);
+    }
+    
+    .trust-icon svg {
+      width: 18px;
+      height: 18px;
+      color: var(--accent-sage);
+    }
+    
+    /* ===== TABS SECTION ===== */
+    .tabs-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
+    }
+    
+    .tabs-header {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--accent-beige);
+      margin-bottom: 24px;
+    }
+    
+    .tab-btn {
+      padding: 14px 28px;
+      background: none;
+      border: none;
+      font-size: var(--font-size-body);
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--text-muted);
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    
+    .tab-btn:hover {
+      color: var(--text);
+    }
+    
+    .tab-btn.active {
+      color: var(--accent-terracotta);
+    }
+    
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent-terracotta);
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Tab: Details */
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    
+    .detail-card {
+      background: var(--surface);
+      padding: 24px;
+      border-radius: var(--radius-lg);
+    }
+    
+    .detail-card h3 {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h2);
+      margin-bottom: 16px;
+    }
+    
+    .detail-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .detail-item {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--accent-beige);
+    }
+    
+    .detail-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    
+    .detail-label {
+      color: var(--text-muted);
+    }
+    
+    .detail-value {
+      font-weight: 600;
+    }
+    
+    /* Tab: Story */
+    .story-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    
+    .story-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-sage), var(--accent-terracotta));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 24px;
+      color: white;
+    }
+    
+    .story-content h3 {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h2);
+      margin-bottom: 4px;
+    }
+    
+    .story-subtitle {
+      font-size: var(--font-size-small);
+      color: var(--accent-sage);
+      margin-bottom: 12px;
+    }
+    
+    .story-text {
+      color: var(--text-muted);
+      font-size: var(--font-size-small);
+      line-height: 1.7;
+    }
+    
+    .story-text p {
+      margin-bottom: 12px;
+    }
+    
+    .story-text p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .story-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--accent-beige);
+    }
+    
+    .story-stat-value {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h2);
+      color: var(--accent-terracotta);
+    }
+    
+    .story-stat-label {
+      font-size: var(--font-size-label);
+      color: var(--text-muted);
+    }
+    
+    /* Tab: Brewing */
+    .brewing-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    
+    .brewing-card {
+      background: var(--surface);
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+    
+    .brewing-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 12px;
+      background: var(--accent-beige);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .brewing-icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--accent-terracotta);
+    }
+    
+    .brewing-card h4 {
+      font-size: var(--font-size-h3);
+      margin-bottom: 6px;
+    }
+    
+    .brewing-card p {
+      font-size: var(--font-size-small);
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    
+    /* ===== LIGHTBOX OVERLAY ===== */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(0, 0, 0, 0.97);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .lightbox-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+    
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    
+    .lightbox-close svg {
+      width: 24px;
+      height: 24px;
+    }
+    
+    .lightbox-content {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 40px;
+      max-width: 1200px;
+      max-height: 90vh;
+      width: 100%;
+    }
+    
+    .lightbox-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .lightbox-main-image {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.03);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      min-height: 400px;
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+    
+    .lightbox-main-image.zoomed {
+      cursor: zoom-out;
+      overflow: auto;
+    }
+    
+    .lightbox-main-image img {
+      max-width: 100%;
+      max-height: 60vh;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+    
+    .lightbox-main-image.zoomed img {
+      max-width: none;
+      max-height: none;
+      transform: scale(2);
+      cursor: grab;
+    }
+    
+    .lightbox-main-image.zoomed img:active {
+      cursor: grabbing;
+    }
+    
+    .lightbox-zoom-hint {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.8);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      pointer-events: none;
+    }
+    
+    .lightbox-main-image.zoomed + .lightbox-zoom-hint {
+      display: none;
+    }
+    
+    .lightbox-thumbnails {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+    
+    .lightbox-thumb {
+      width: 80px;
+      height: 80px;
+      background: rgba(255,255,255,0.08);
+      border-radius: var(--radius-md);
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+    
+    .lightbox-thumb:hover {
+      background: rgba(255,255,255,0.12);
+    }
+    
+    .lightbox-thumb.active {
+      border-color: var(--accent-terracotta);
+    }
+    
+    .lightbox-thumb img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    
+    .lightbox-info {
+      color: white;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow-y: auto;
+    }
+    
+    .lightbox-info .product-meta {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .lightbox-info .badge-origin {
+      background: var(--accent-sage);
+      color: white;
+    }
+    
+    .lightbox-info .badge-category {
+      background: rgba(255,255,255,0.15);
+      color: white;
+    }
+    
+    .lightbox-title {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h1);
+      font-weight: 400;
+    }
+    
+    .lightbox-subtitle {
+      font-size: var(--font-size-small);
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+    }
+    
+    .lightbox-price {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h1);
+      color: var(--accent-terracotta);
+    }
+    
+    .lightbox-price-kg {
+      font-size: var(--font-size-small);
+      color: rgba(255,255,255,0.5);
+    }
+    
+    .lightbox-description {
+      font-size: var(--font-size-small);
+      color: rgba(255,255,255,0.7);
+      font-style: italic;
+      line-height: 1.6;
+    }
+    
+    .lightbox-flavours {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .lightbox-flavour {
+      padding: 6px 12px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 16px;
+      font-size: var(--font-size-small);
+    }
+    
+    .lightbox-specs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 16px;
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius-md);
+    }
+    
+    .lightbox-spec {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    
+    .lightbox-spec-label {
+      font-size: var(--font-size-label);
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+    }
+    
+    .lightbox-spec-value {
+      font-family: var(--font-serif);
+      color: var(--accent-terracotta);
+    }
+    
+    /* ===== NAVIGATION ===== */
+    .page-navigation {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+      border-top: 1px solid var(--accent-beige);
+    }
+    
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-terracotta);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .nav-link:hover {
+      text-decoration: underline;
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .lightbox-content {
+        grid-template-columns: 1fr;
+        max-height: none;
+        overflow-y: auto;
+      }
+      
+      .lightbox-info {
+        padding-bottom: 40px;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .product-section {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      
+      .product-gallery {
+        max-width: 320px;
+        margin: 0 auto;
+      }
+      
+      .product-header {
+        flex-direction: column;
+        gap: 12px;
+      }
+      
+      .product-price-block {
+        text-align: left;
+      }
+      
+      .specs-row {
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      
+      .details-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .brewing-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .story-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .story-avatar {
+        margin: 0 auto;
+      }
+      
+      .story-stats {
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .compact-hero {
+        padding: 40px 20px;
+      }
+      
+      .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .cta-button {
+        max-width: none;
+      }
+      
+      .trust-icons {
+        justify-content: center;
+      }
+      
+      .tabs-header {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      .tab-btn {
+        padding: 12px 20px;
+        white-space: nowrap;
+      }
+      
+      .lightbox-overlay {
+        padding: 20px;
+      }
+      
+      .lightbox-close {
+        top: 12px;
+        right: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout-indicator">Layout 6 v2: Enhanced</div>
+  
+  <!-- COMPACT HERO -->
+  <section class="compact-hero">
+    <div class="hero-origin">
+      <span class="hero-origin-flag">🇮🇩</span>
+      <span class="hero-origin-text">Indonesia • Aceh, Gayo</span>
+    </div>
+    <h1 class="hero-title">Hendra Maulizar</h1>
+    <p class="hero-tagline">"Sweet and juicy with Kenyan-like currant notes, white peach acidity and elegant white flowers."</p>
+  </section>
+  
+  <!-- PRODUCT SECTION -->
+  <section class="product-section">
+    <!-- Image Gallery -->
+    <div class="product-gallery">
+      <div class="gallery-main" onclick="openLightbox(0)">
+        <span class="sold-out-badge">Ausverkauft</span>
+        <img id="mainImage" src="https://rozalicoffee.de/cdn/shop/files/hendra-maulizar_product_retail_1800x1800.png?v=1754980110" alt="Hendra Maulizar Coffee">
+        <div class="gallery-zoom-hint">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+            <path d="M11 8v6M8 11h6"/>
+          </svg>
+          Vergrößern
+        </div>
+      </div>
+      <div class="gallery-thumbnails">
+        <div class="thumbnail active" onclick="switchImage(0, this)">
+          <img src="https://rozalicoffee.de/cdn/shop/files/hendra-maulizar_product_retail_1800x1800.png?v=1754980110" alt="Front view">
+        </div>
+        <div class="thumbnail" onclick="switchImage(1, this)">
+          <img src="https://rozalicoffee.de/cdn/shop/files/hendra-maulizar_product_retail_1800x1800.png?v=1754980110" alt="Back view">
+        </div>
+        <div class="thumbnail" onclick="switchImage(2, this)">
+          <img src="https://rozalicoffee.de/cdn/shop/files/hendra-maulizar_product_retail_1800x1800.png?v=1754980110" alt="Detail view">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Product Info -->
+    <div class="product-info">
+      <div class="product-header">
+        <div>
+          <div class="product-meta">
+            <span class="badge badge-origin">Indonesia</span>
+            <span class="badge badge-category">Micro Lot</span>
+          </div>
+          <h2 class="product-name">Hendra Maulizar</h2>
+          <p class="product-subtitle">Gayo Avatara • Specialty Coffee</p>
+        </div>
+        <div class="product-price-block">
+          <div class="product-price">€19,00</div>
+          <div class="product-price-kg">€95,00/kg</div>
+        </div>
+      </div>
+      
+      <div class="flavour-row">
+        <span class="flavour-tag">🍇 Blackcurrant</span>
+        <span class="flavour-tag">🍑 White Peach</span>
+        <span class="flavour-tag">🍏 Green Apple</span>
+        <span class="flavour-tag">🌸 White Flowers</span>
+      </div>
+      
+      <div class="specs-row">
+        <div class="spec-item">
+          <span class="spec-label">Röstung</span>
+          <span class="spec-value">Light</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Verarbeitung</span>
+          <span class="spec-value">Washed</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Säure</span>
+          <span class="spec-value">Hoch</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Geschmack</span>
+          <span class="spec-value">Fruity</span>
+        </div>
+      </div>
+      
+      <div class="cta-row">
+        <button class="cta-button sold-out">Ausverkauft</button>
+        <div class="trust-icons">
+          <span class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Frisch geröstet
+          </span>
+          <span class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Specialty Grade
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- TABS SECTION -->
+  <section class="tabs-section">
+    <div class="tabs-header">
+      <button class="tab-btn active" data-tab="details">Details</button>
+      <button class="tab-btn" data-tab="story">Die Geschichte</button>
+      <button class="tab-btn" data-tab="brewing">Zubereitung</button>
+    </div>
+    
+    <!-- Tab: Details -->
+    <div id="details" class="tab-content active">
+      <div class="details-grid">
+        <div class="detail-card">
+          <h3>Kaffee-Details</h3>
+          <div class="detail-list">
+            <div class="detail-item">
+              <span class="detail-label">Herkunft</span>
+              <span class="detail-value">Indonesia, Aceh</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Region</span>
+              <span class="detail-value">Gayo</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Produzent</span>
+              <span class="detail-value">Hendra Maulizar</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Verarbeitung</span>
+              <span class="detail-value">Washed</span>
+            </div>
+          </div>
+        </div>
+        <div class="detail-card">
+          <h3>Geschmacksprofil</h3>
+          <div class="detail-list">
+            <div class="detail-item">
+              <span class="detail-label">Röstung</span>
+              <span class="detail-value">Light</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Geschmack</span>
+              <span class="detail-value">Fruity / floral</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Säure</span>
+              <span class="detail-value">Hoch</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Körper</span>
+              <span class="detail-value">Mittel</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Tab: Story -->
+    <div id="story" class="tab-content">
+      <div class="story-card">
+        <div class="story-avatar">HM</div>
+        <div class="story-content">
+          <h3>Hendra Maulizar</h3>
+          <p class="story-subtitle">Gayo Avatara • Indonesia</p>
+          <div class="story-text">
+            <p>Hendra Maulizar has been a driving force in Indonesian specialty coffee processing, continuously pushing boundaries to improve quality and elevate the country's coffee industry. His journey began in 2006 when his father, Drs. Hamdan, moved to Aceh and started growing coffee.</p>
+            <p>What started as a modest 1-hectare farm has since grown into a 10-hectare estate, producing some of the finest specialty coffee in Indonesia. Hendra's commitment to quality and innovation has led him to invest heavily in post-harvest infrastructure.</p>
+            <p>Beyond his own farm, Hendra has built a strong network of 70 local farming families who partner with him to supply high-quality cherries for processing.</p>
+          </div>
+          <div class="story-stats">
+            <div>
+              <div class="story-stat-value">10ha</div>
+              <div class="story-stat-label">Farm</div>
+            </div>
+            <div>
+              <div class="story-stat-value">70</div>
+              <div class="story-stat-label">Partner Families</div>
+            </div>
+            <div>
+              <div class="story-stat-value">2010</div>
+              <div class="story-stat-label">Since</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Tab: Brewing -->
+    <div id="brewing" class="tab-content">
+      <div class="brewing-cards">
+        <div class="brewing-card">
+          <div class="brewing-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+            </svg>
+          </div>
+          <h4>Empfohlen</h4>
+          <p>V60 oder Chemex für die besten Ergebnisse bei diesem leichten, floralen Kaffee.</p>
+        </div>
+        <div class="brewing-card">
+          <div class="brewing-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <h4>Temperatur</h4>
+          <p>92-94°C für optimale Extraktion der fruchtigen Noten.</p>
+        </div>
+        <div class="brewing-card">
+          <div class="brewing-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            </svg>
+          </div>
+          <h4>Mahlgrad</h4>
+          <p>Mittel-fein, ähnlich wie Tafelsalz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- LIGHTBOX OVERLAY -->
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightboxOutside(event)">
+    <button class="lightbox-close" onclick="closeLightbox()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+    </button>
+    
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <!-- Gallery -->
+      <div class="lightbox-gallery">
+        <div class="lightbox-main-image" id="lightboxImageContainer" onclick="toggleZoom()">
+          <img id="lightboxMainImage" src="https://rozalicoffee.de/cdn/shop/files/hendra-maulizar_product_retail_1800x1800.png?v=1754980110" alt="Hendra Maulizar Coffee">
+        </div>
+        <div class="lightbox-zoom-hint" id="zoomHint">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+            <path d="M11 8v6M8 11h6"/>
+          </svg>
+          Klicken zum Vergrößern
+        </div>
+        <div class="lightbox-thumbnails">
+          <div class="lightbox-thumb active" onclick="switchLightboxImage(0, this)">
+            <img src="https://rozalicoffee.de/cdn/shop/files/hendra-maulizar_product_retail_1800x1800.png?v=1754980110" alt="Front">
+          </div>
+          <div class="lightbox-thumb" onclick="switchLightboxImage(1, this)">
+            <img src="https://rozalicoffee.de/cdn/shop/files/hendra-maulizar_product_retail_1800x1800.png?v=1754980110" alt="Back">
+          </div>
+          <div class="lightbox-thumb" onclick="switchLightboxImage(2, this)">
+            <img src="https://rozalicoffee.de/cdn/shop/files/hendra-maulizar_product_retail_1800x1800.png?v=1754980110" alt="Detail">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Info Panel -->
+      <div class="lightbox-info">
+        <div class="product-meta">
+          <span class="badge badge-origin">Indonesia</span>
+          <span class="badge badge-category">Micro Lot</span>
+        </div>
+        
+        <div>
+          <h2 class="lightbox-title">Hendra Maulizar</h2>
+          <p class="lightbox-subtitle">Gayo Avatara • Specialty Coffee</p>
+        </div>
+        
+        <div>
+          <div class="lightbox-price">€19,00</div>
+          <div class="lightbox-price-kg">€95,00 pro Kilogramm • 200g Packung</div>
+        </div>
+        
+        <p class="lightbox-description">"Sweet and juicy with Kenyan-like currant notes, white peach acidity and elegant white flowers."</p>
+        
+        <div class="lightbox-flavours">
+          <span class="lightbox-flavour">🍇 Blackcurrant</span>
+          <span class="lightbox-flavour">🍑 White Peach</span>
+          <span class="lightbox-flavour">🍏 Green Apple</span>
+          <span class="lightbox-flavour">🌸 White Flowers</span>
+        </div>
+        
+        <div class="lightbox-specs">
+          <div class="lightbox-spec">
+            <span class="lightbox-spec-label">Röstung</span>
+            <span class="lightbox-spec-value">Light</span>
+          </div>
+          <div class="lightbox-spec">
+            <span class="lightbox-spec-label">Verarbeitung</span>
+            <span class="lightbox-spec-value">Washed</span>
+          </div>
+          <div class="lightbox-spec">
+            <span class="lightbox-spec-label">Säure</span>
+            <span class="lightbox-spec-value">Hoch</span>
+          </div>
+          <div class="lightbox-spec">
+            <span class="lightbox-spec-label">Geschmack</span>
+            <span class="lightbox-spec-value">Fruity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Navigation -->
+  <nav class="page-navigation">
+    <a href="/index.html" class="nav-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Zurück zur Übersicht
+    </a>
+  </nav>
+  
+  <script>
+    // Image data (in production, this would come from your CMS/data)
+    const images = [
+      'https://rozalicoffee.de/cdn/shop/files/hendra-maulizar_product_retail_1800x1800.png?v=1754980110',
+      'https://rozalicoffee.de/cdn/shop/files/hendra-maulizar_product_retail_1800x1800.png?v=1754980110',
+      'https://rozalicoffee.de/cdn/shop/files/hendra-maulizar_product_retail_1800x1800.png?v=1754980110'
+    ];
+    
+    let currentImageIndex = 0;
+    
+    // === TABS ===
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabId = btn.dataset.tab;
+        
+        // Update buttons
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // Update content
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.remove('active');
+        });
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+    
+    // === IMAGE GALLERY ===
+    function switchImage(index, thumbnail) {
+      currentImageIndex = index;
+      document.getElementById('mainImage').src = images[index];
+      
+      // Update thumbnail active state
+      document.querySelectorAll('.gallery-thumbnails .thumbnail').forEach(t => {
+        t.classList.remove('active');
+      });
+      thumbnail.classList.add('active');
+    }
+    
+    // === LIGHTBOX ===
+    function openLightbox(index) {
+      currentImageIndex = index;
+      document.getElementById('lightboxMainImage').src = images[index];
+      
+      // Update lightbox thumbnail active state
+      document.querySelectorAll('.lightbox-thumb').forEach((t, i) => {
+        t.classList.toggle('active', i === index);
+      });
+      
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+      resetZoom();
+    }
+    
+    function closeLightboxOutside(event) {
+      if (event.target === document.getElementById('lightbox')) {
+        closeLightbox();
+      }
+    }
+    
+    function switchLightboxImage(index, thumbnail) {
+      currentImageIndex = index;
+      document.getElementById('lightboxMainImage').src = images[index];
+      
+      // Update thumbnail active state
+      document.querySelectorAll('.lightbox-thumb').forEach(t => {
+        t.classList.remove('active');
+      });
+      thumbnail.classList.add('active');
+      
+      // Also sync the main gallery
+      document.getElementById('mainImage').src = images[index];
+      document.querySelectorAll('.gallery-thumbnails .thumbnail').forEach((t, i) => {
+        t.classList.toggle('active', i === index);
+      });
+    }
+    
+    // === ZOOM ===
+    function toggleZoom() {
+      const container = document.getElementById('lightboxImageContainer');
+      const hint = document.getElementById('zoomHint');
+      container.classList.toggle('zoomed');
+      
+      if (container.classList.contains('zoomed')) {
+        hint.style.display = 'none';
+      } else {
+        hint.style.display = 'flex';
+      }
+    }
+    
+    function resetZoom() {
+      const container = document.getElementById('lightboxImageContainer');
+      const hint = document.getElementById('zoomHint');
+      container.classList.remove('zoomed');
+      hint.style.display = 'flex';
+    }
+    
+    // Keyboard support for lightbox
+    document.addEventListener('keydown', (e) => {
+      if (!document.getElementById('lightbox').classList.contains('active')) return;
+      
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        resetZoom();
+        const newIndex = (currentImageIndex - 1 + images.length) % images.length;
+        const thumb = document.querySelectorAll('.lightbox-thumb')[newIndex];
+        switchLightboxImage(newIndex, thumb);
+      } else if (e.key === 'ArrowRight') {
+        resetZoom();
+        const newIndex = (currentImageIndex + 1) % images.length;
+        const thumb = document.querySelectorAll('.lightbox-thumb')[newIndex];
+        switchLightboxImage(newIndex, thumb);
+      }
+    });
+  </script>
+</body>
+</html>

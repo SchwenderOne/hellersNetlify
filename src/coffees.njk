@@ -11,84 +11,493 @@ eleventyComputed:
   description: "{{ coffee.description }}"
 ---
 {%- set coffee = pagination.items[0] -%}
-<main>
-  <div class="guide-hero-image">
-    <img src="{{ coffee.image }}" alt="{{ coffee.name }}" loading="eager">
-  </div>
 
-  <div class="wrapper guide-content">
-    <div class="guide-header">
-      <span class="label">{{ coffee.origin }}</span>
-      <h1 class="guide-title">{{ coffee.name }}</h1>
-      {% if coffee.category %}
-        <p class="guide-meta">{{ coffee.category }}</p>
-      {% endif %}
+<main class="coffee-detail-page">
+  <!-- COMPACT HERO -->
+  <section class="coffee-hero">
+    <div class="hero-origin">
+      <span class="hero-origin-flag">
+        {%- if coffee.origin == "Indonesia" -%}🇮🇩
+        {%- elif coffee.origin == "Brazil" -%}🇧🇷
+        {%- elif coffee.origin == "Colombia" -%}🇨🇴
+        {%- elif coffee.origin == "Peru" -%}🇵🇪
+        {%- elif coffee.origin == "Honduras" -%}🇭🇳
+        {%- elif coffee.origin == "Panama" -%}🇵🇦
+        {%- elif coffee.origin == "Kenya" -%}🇰🇪
+        {%- elif coffee.origin == "Ethiopia" -%}🇪🇹
+        {%- else -%}🌍
+        {%- endif -%}
+      </span>
+      <span class="hero-origin-text">{{ coffee.origin }}{% if coffee.region %} • {{ coffee.region }}{% endif %}</span>
+    </div>
+    <h1 class="hero-title">{{ coffee.name }}</h1>
+    <p class="hero-tagline">"{{ coffee.description }}"</p>
+  </section>
+
+  <!-- PRODUCT SECTION -->
+  <section class="coffee-product-section">
+    <!-- Image Gallery -->
+    <div class="coffee-gallery">
+      <div class="gallery-main" onclick="openLightbox(0)">
+        {% if coffee.soldOut %}
+          <span class="sold-out-badge">Ausverkauft</span>
+        {% endif %}
+        <img id="mainImage" src="{{ coffee.image }}" alt="{{ coffee.name }}">
+        <div class="gallery-zoom-hint">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+            <path d="M11 8v6M8 11h6"/>
+          </svg>
+          Vergrößern
+        </div>
+      </div>
+      <div class="gallery-thumbnails">
+        <div class="thumbnail active" onclick="switchImage(0, this)">
+          <img src="{{ coffee.image }}" alt="{{ coffee.name }} - Ansicht 1">
+        </div>
+        <div class="thumbnail" onclick="switchImage(1, this)">
+          <img src="{{ coffee.image }}" alt="{{ coffee.name }} - Ansicht 2">
+        </div>
+      </div>
     </div>
 
-    <div class="guide-main">
-      <div class="guide-intro">
-        <p>{{ coffee.description }}</p>
-        <div class="coffee-price-info">
-          <p class="coffee-price">{{ coffee.price }}{% if coffee.pricePerKg %} <span class="price-per-kg">{{ coffee.pricePerKg }}</span>{% endif %}</p>
+    <!-- Product Info -->
+    <div class="coffee-product-info">
+      <div class="product-header">
+        <div>
+          <div class="product-meta">
+            <span class="badge badge-origin">{{ coffee.origin }}</span>
+            {% if coffee.category %}
+              <span class="badge badge-category">{{ coffee.category }}</span>
+            {% endif %}
+          </div>
+          <h2 class="product-name">{{ coffee.name }}</h2>
+          {% if coffee.producerStory and coffee.producerStory.subtitle %}
+            <p class="product-subtitle">{{ coffee.producerStory.subtitle }} • Specialty Coffee</p>
+          {% else %}
+            <p class="product-subtitle">Specialty Coffee</p>
+          {% endif %}
+        </div>
+        <div class="product-price-block">
+          <div class="product-price">{{ coffee.price }}</div>
+          {% if coffee.pricePerKg %}
+            <div class="product-price-kg">{{ coffee.pricePerKg }}</div>
+          {% endif %}
         </div>
       </div>
 
       {% if coffee.flavourProfile and coffee.flavourProfile.length > 0 %}
-        <section class="coffee-flavour-profile">
-          <h2>Geschmacksprofil</h2>
-          <div class="flavour-tags">
-            {% for flavour in coffee.flavourProfile %}
-              <span class="flavour-tag">{{ flavour }}</span>
-            {% endfor %}
+        <div class="flavour-row">
+          {% for flavour in coffee.flavourProfile %}
+            <span class="flavour-tag">{{ flavour }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <div class="specs-row">
+        {% if coffee.roastLevel %}
+          <div class="spec-item">
+            <span class="spec-label">Röstung</span>
+            <span class="spec-value">{{ coffee.roastLevel }}</span>
           </div>
-          <div class="flavour-attributes">
+        {% endif %}
+        {% if coffee.processingMethod %}
+          <div class="spec-item">
+            <span class="spec-label">Verarbeitung</span>
+            <span class="spec-value">{{ coffee.processingMethod }}</span>
+          </div>
+        {% endif %}
+        {% if coffee.acidity %}
+          <div class="spec-item">
+            <span class="spec-label">Säure</span>
+            <span class="spec-value">{% if coffee.acidity == "High" %}Hoch{% elif coffee.acidity == "Medium" %}Mittel{% elif coffee.acidity == "Low" %}Niedrig{% else %}{{ coffee.acidity }}{% endif %}</span>
+          </div>
+        {% endif %}
+        {% if coffee.flavourType %}
+          <div class="spec-item">
+            <span class="spec-label">Geschmack</span>
+            <span class="spec-value">{{ coffee.flavourType }}</span>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="cta-row">
+        {% if coffee.soldOut %}
+          <button class="cta-button sold-out" disabled>Ausverkauft</button>
+        {% else %}
+          <button class="cta-button">In den Warenkorb</button>
+        {% endif %}
+        <div class="trust-icons">
+          <span class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Frisch geröstet
+          </span>
+          <span class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Specialty Grade
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABS SECTION -->
+  <section class="coffee-tabs-section">
+    <div class="tabs-header">
+      <button class="tab-btn active" data-tab="details">Details</button>
+      <button class="tab-btn" data-tab="story">Die Geschichte</button>
+      <button class="tab-btn" data-tab="brewing">Zubereitung</button>
+    </div>
+
+    <!-- Tab: Details -->
+    <div id="details" class="tab-content active">
+      <div class="details-grid">
+        <div class="detail-card">
+          <h3>Kaffee-Details</h3>
+          <div class="detail-list">
+            <div class="detail-item">
+              <span class="detail-label">Herkunft</span>
+              <span class="detail-value">{{ coffee.origin }}</span>
+            </div>
+            {% if coffee.producerStory and coffee.producerStory.subtitle %}
+              <div class="detail-item">
+                <span class="detail-label">Region</span>
+                <span class="detail-value">{{ coffee.producerStory.subtitle }}</span>
+              </div>
+            {% endif %}
+            <div class="detail-item">
+              <span class="detail-label">Produzent</span>
+              <span class="detail-value">{{ coffee.name }}</span>
+            </div>
+            {% if coffee.processingMethod %}
+              <div class="detail-item">
+                <span class="detail-label">Verarbeitung</span>
+                <span class="detail-value">{{ coffee.processingMethod }}</span>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="detail-card">
+          <h3>Geschmacksprofil</h3>
+          <div class="detail-list">
             {% if coffee.roastLevel %}
-              <div class="flavour-attr">
-                <strong>Röstung:</strong> {{ coffee.roastLevel }}
+              <div class="detail-item">
+                <span class="detail-label">Röstung</span>
+                <span class="detail-value">{{ coffee.roastLevel }}</span>
               </div>
             {% endif %}
             {% if coffee.flavourType %}
-              <div class="flavour-attr">
-                <strong>Geschmack:</strong> {{ coffee.flavourType }}
+              <div class="detail-item">
+                <span class="detail-label">Geschmack</span>
+                <span class="detail-value">{{ coffee.flavourType }}</span>
               </div>
             {% endif %}
             {% if coffee.acidity %}
-              <div class="flavour-attr">
-                <strong>Säure:</strong> {{ coffee.acidity }}
+              <div class="detail-item">
+                <span class="detail-label">Säure</span>
+                <span class="detail-value">{% if coffee.acidity == "High" %}Hoch{% elif coffee.acidity == "Medium" %}Mittel{% elif coffee.acidity == "Low" %}Niedrig{% else %}{{ coffee.acidity }}{% endif %}</span>
+              </div>
+            {% endif %}
+            <div class="detail-item">
+              <span class="detail-label">Körper</span>
+              <span class="detail-value">Mittel</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab: Story -->
+    <div id="story" class="tab-content">
+      {% if coffee.producerStory %}
+        <div class="story-card">
+          <div class="story-avatar">{{ coffee.name[0] | upper }}{{ coffee.name[1] | upper }}</div>
+          <div class="story-content">
+            <h3>{{ coffee.producerStory.title }}</h3>
+            {% if coffee.producerStory.subtitle %}
+              <p class="story-subtitle">{{ coffee.producerStory.subtitle }} • {{ coffee.origin }}</p>
+            {% endif %}
+            {% if coffee.producerStory.content %}
+              <div class="story-text">
+                {% set paragraphs = coffee.producerStory.content | split("\n\n") %}
+                {% for paragraph in paragraphs %}
+                  <p>{{ paragraph }}</p>
+                {% endfor %}
               </div>
             {% endif %}
           </div>
-        </section>
+        </div>
+      {% else %}
+        <div class="story-card">
+          <div class="story-avatar">{{ coffee.name[0] | upper }}{{ coffee.name[1] | upper }}</div>
+          <div class="story-content">
+            <h3>{{ coffee.name }}</h3>
+            <p class="story-subtitle">{{ coffee.origin }}</p>
+            <div class="story-text">
+              <p>{{ coffee.description }}</p>
+            </div>
+          </div>
+        </div>
       {% endif %}
+    </div>
 
-      {% if coffee.producerStory %}
-        <section class="coffee-producer-story storytelling-section">
-          <h2>{{ coffee.producerStory.title }}</h2>
-          {% if coffee.producerStory.subtitle %}
-            <p class="producer-subtitle">{{ coffee.producerStory.subtitle }}</p>
+    <!-- Tab: Brewing -->
+    <div id="brewing" class="tab-content">
+      <div class="brewing-cards">
+        <div class="brewing-card">
+          <div class="brewing-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+            </svg>
+          </div>
+          <h4>Empfohlen</h4>
+          <p>{% if coffee.roastLevel == "Light" %}V60 oder Chemex für beste Ergebnisse{% elif coffee.roastLevel == "Medium" %}Filter oder Aeropress{% else %}Espresso oder French Press{% endif %}</p>
+        </div>
+        <div class="brewing-card">
+          <div class="brewing-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <h4>Temperatur</h4>
+          <p>{% if coffee.roastLevel == "Light" %}92-94°C{% elif coffee.roastLevel == "Medium" %}90-92°C{% else %}88-90°C{% endif %} für optimale Extraktion</p>
+        </div>
+        <div class="brewing-card">
+          <div class="brewing-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            </svg>
+          </div>
+          <h4>Mahlgrad</h4>
+          <p>{% if coffee.roastLevel == "Light" %}Mittel-fein{% elif coffee.roastLevel == "Medium" %}Mittel{% else %}Mittel-grob{% endif %}, ähnlich wie Tafelsalz</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX OVERLAY -->
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightboxOutside(event)">
+    <button class="lightbox-close" onclick="closeLightbox()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+    </button>
+
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <div class="lightbox-gallery">
+        <div class="lightbox-main-image" id="lightboxImageContainer" onclick="toggleZoom()">
+          <img id="lightboxMainImage" src="{{ coffee.image }}" alt="{{ coffee.name }}">
+        </div>
+        <div class="lightbox-zoom-hint" id="zoomHint">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+            <path d="M11 8v6M8 11h6"/>
+          </svg>
+          Klicken zum Vergrößern
+        </div>
+        <div class="lightbox-thumbnails">
+          <div class="lightbox-thumb active" onclick="switchLightboxImage(0, this)">
+            <img src="{{ coffee.image }}" alt="Ansicht 1">
+          </div>
+          <div class="lightbox-thumb" onclick="switchLightboxImage(1, this)">
+            <img src="{{ coffee.image }}" alt="Ansicht 2">
+          </div>
+        </div>
+      </div>
+
+      <div class="lightbox-info">
+        <div class="product-meta">
+          <span class="badge badge-origin">{{ coffee.origin }}</span>
+          {% if coffee.category %}
+            <span class="badge badge-category">{{ coffee.category }}</span>
           {% endif %}
-          {% if coffee.producerStory.content %}
-            <div class="producer-content">
-              {% set paragraphs = coffee.producerStory.content | split("\n\n") %}
-              {% for paragraph in paragraphs %}
-                <p>{{ paragraph | replace("\n", "<br>") | safe }}</p>
-              {% endfor %}
+        </div>
+
+        <div>
+          <h2 class="lightbox-title">{{ coffee.name }}</h2>
+          {% if coffee.producerStory and coffee.producerStory.subtitle %}
+            <p class="lightbox-subtitle">{{ coffee.producerStory.subtitle }} • Specialty Coffee</p>
+          {% endif %}
+        </div>
+
+        <div>
+          <div class="lightbox-price">{{ coffee.price }}</div>
+          {% if coffee.pricePerKg %}
+            <div class="lightbox-price-kg">{{ coffee.pricePerKg }} • 200g Packung</div>
+          {% endif %}
+        </div>
+
+        <p class="lightbox-description">"{{ coffee.description }}"</p>
+
+        {% if coffee.flavourProfile and coffee.flavourProfile.length > 0 %}
+          <div class="lightbox-flavours">
+            {% for flavour in coffee.flavourProfile %}
+              <span class="lightbox-flavour">{{ flavour }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <div class="lightbox-specs">
+          {% if coffee.roastLevel %}
+            <div class="lightbox-spec">
+              <span class="lightbox-spec-label">Röstung</span>
+              <span class="lightbox-spec-value">{{ coffee.roastLevel }}</span>
             </div>
           {% endif %}
-        </section>
-      {% endif %}
-
-      {% if coffee.processingMethod %}
-        <section class="coffee-details">
-          <h3>Verarbeitung</h3>
-          <p>{{ coffee.processingMethod }}</p>
-        </section>
-      {% endif %}
-    </div>
-
-    <div class="guide-navigation">
-      <a href="../index.html" class="nav-link">← Zurück zur Übersicht</a>
+          {% if coffee.processingMethod %}
+            <div class="lightbox-spec">
+              <span class="lightbox-spec-label">Verarbeitung</span>
+              <span class="lightbox-spec-value">{{ coffee.processingMethod }}</span>
+            </div>
+          {% endif %}
+          {% if coffee.acidity %}
+            <div class="lightbox-spec">
+              <span class="lightbox-spec-label">Säure</span>
+              <span class="lightbox-spec-value">{% if coffee.acidity == "High" %}Hoch{% elif coffee.acidity == "Medium" %}Mittel{% elif coffee.acidity == "Low" %}Niedrig{% else %}{{ coffee.acidity }}{% endif %}</span>
+            </div>
+          {% endif %}
+          {% if coffee.flavourType %}
+            <div class="lightbox-spec">
+              <span class="lightbox-spec-label">Geschmack</span>
+              <span class="lightbox-spec-value">{{ coffee.flavourType }}</span>
+            </div>
+          {% endif %}
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Navigation -->
+  <nav class="coffee-page-navigation">
+    <a href="/index.html" class="nav-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Zurück zur Übersicht
+    </a>
+  </nav>
 </main>
 
+<script>
+  // Image data
+  const images = [
+    '{{ coffee.image }}',
+    '{{ coffee.image }}'
+  ];
+
+  let currentImageIndex = 0;
+
+  // === TABS ===
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabId = btn.dataset.tab;
+
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      document.getElementById(tabId).classList.add('active');
+    });
+  });
+
+  // === IMAGE GALLERY ===
+  function switchImage(index, thumbnail) {
+    currentImageIndex = index;
+    document.getElementById('mainImage').src = images[index];
+
+    document.querySelectorAll('.gallery-thumbnails .thumbnail').forEach(t => {
+      t.classList.remove('active');
+    });
+    thumbnail.classList.add('active');
+  }
+
+  // === LIGHTBOX ===
+  function openLightbox(index) {
+    currentImageIndex = index;
+    document.getElementById('lightboxMainImage').src = images[index];
+
+    document.querySelectorAll('.lightbox-thumb').forEach((t, i) => {
+      t.classList.toggle('active', i === index);
+    });
+
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+    resetZoom();
+  }
+
+  function closeLightboxOutside(event) {
+    if (event.target === document.getElementById('lightbox')) {
+      closeLightbox();
+    }
+  }
+
+  function switchLightboxImage(index, thumbnail) {
+    currentImageIndex = index;
+    document.getElementById('lightboxMainImage').src = images[index];
+
+    document.querySelectorAll('.lightbox-thumb').forEach(t => {
+      t.classList.remove('active');
+    });
+    thumbnail.classList.add('active');
+
+    document.getElementById('mainImage').src = images[index];
+    document.querySelectorAll('.gallery-thumbnails .thumbnail').forEach((t, i) => {
+      t.classList.toggle('active', i === index);
+    });
+
+    resetZoom();
+  }
+
+  // === ZOOM ===
+  function toggleZoom() {
+    const container = document.getElementById('lightboxImageContainer');
+    const hint = document.getElementById('zoomHint');
+    container.classList.toggle('zoomed');
+
+    if (container.classList.contains('zoomed')) {
+      hint.style.display = 'none';
+    } else {
+      hint.style.display = 'flex';
+    }
+  }
+
+  function resetZoom() {
+    const container = document.getElementById('lightboxImageContainer');
+    const hint = document.getElementById('zoomHint');
+    if (container) {
+      container.classList.remove('zoomed');
+    }
+    if (hint) {
+      hint.style.display = 'flex';
+    }
+  }
+
+  // Keyboard support
+  document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox || !lightbox.classList.contains('active')) return;
+
+    if (e.key === 'Escape') {
+      closeLightbox();
+    } else if (e.key === 'ArrowLeft') {
+      resetZoom();
+      const newIndex = (currentImageIndex - 1 + images.length) % images.length;
+      const thumb = document.querySelectorAll('.lightbox-thumb')[newIndex];
+      switchLightboxImage(newIndex, thumb);
+    } else if (e.key === 'ArrowRight') {
+      resetZoom();
+      const newIndex = (currentImageIndex + 1) % images.length;
+      const thumb = document.querySelectorAll('.lightbox-thumb')[newIndex];
+      switchLightboxImage(newIndex, thumb);
+    }
+  });
+</script>

@@ -18,6 +18,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ 'src/sitemap.xml': 'sitemap.xml' });
   eleventyConfig.addPassthroughCopy({ 'src/_redirects': '_redirects' });
 
+  // Layout variations for testing (standalone HTML pages)
+  eleventyConfig.addPassthroughCopy({ 'layout-variations': 'layout-variations' });
+
   // MapLibre GL JS CSS
   eleventyConfig.addPassthroughCopy({ 'node_modules/maplibre-gl/dist/maplibre-gl.css': 'styles/maplibre-gl.css' });
 

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hendra Maulizar – Tasting Accordion Layout | Hellers Kaffees</title>
+  <meta name="description" content="Layout Variation: Tasting Accordion - Collapsible sections, progressive disclosure">
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/azg8ito.css">
+  
+  <style>
+    /* ========================================
+       LAYOUT 2: TASTING ACCORDION
+       Collapsible sections, mobile-first, progressive disclosure
+       ======================================== */
+    
+    :root {
+      --bg: #f7f5f4;
+      --surface: #ffffff;
+      --text: #111d3d;
+      --text-muted: #5c6785;
+      --accent-beige: #e6dccf;
+      --accent-terracotta: #c97a5c;
+      --accent-sage: #7e9c87;
+      --accent-ink: #0e1a3a;
+      
+      --font-serif: "p22-mackinac-pro", Georgia, serif;
+      --font-sans: "GTAmerica", Poppins, system-ui, sans-serif;
+      
+      --font-size-display: clamp(2rem, 5vw, 3rem);
+      --font-size-h1: clamp(1.75rem, 4vw, 2.5rem);
+      --font-size-h2: clamp(1.25rem, 2.5vw, 1.5rem);
+      --font-size-body: 1rem;
+      --font-size-small: 0.875rem;
+      --font-size-label: 0.75rem;
+      
+      --radius-lg: 16px;
+      --radius-md: 8px;
+    }
+    
+    [data-theme="dark"] {
+      --bg: #1a1a1a;
+      --surface: #2a2a2a;
+      --text: #f5f5f5;
+      --text-muted: #b0b0b0;
+      --accent-terracotta: #e09a7a;
+      --accent-sage: #94c2a8;
+      --accent-beige: rgba(230, 220, 207, 0.15);
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+    }
+    
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: var(--font-size-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .layout-indicator {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      background: var(--accent-sage);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    /* ===== COMPACT HEADER ===== */
+    .compact-header {
+      background: var(--surface);
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 24px;
+      align-items: center;
+      border-bottom: 1px solid var(--accent-beige);
+    }
+    
+    .header-image {
+      width: 120px;
+      height: 120px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--accent-beige);
+    }
+    
+    .header-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .header-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .header-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: var(--font-size-label);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .badge-origin {
+      background: var(--accent-sage);
+      color: white;
+    }
+    
+    .badge-category {
+      background: var(--accent-beige);
+      color: var(--text);
+    }
+    
+    .badge-sold-out {
+      background: var(--accent-terracotta);
+      color: white;
+    }
+    
+    .header-title {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h1);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    
+    .header-price {
+      font-size: var(--font-size-h2);
+      font-weight: 600;
+      color: var(--accent-terracotta);
+    }
+    
+    .header-price .per-kg {
+      font-size: var(--font-size-small);
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+    
+    /* ===== MAIN CONTENT ===== */
+    .main-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px 20px;
+    }
+    
+    /* ===== ACCORDION ===== */
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .accordion-item {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border: 1px solid transparent;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .accordion-item:hover {
+      border-color: var(--accent-beige);
+    }
+    
+    .accordion-item.active {
+      border-color: var(--accent-terracotta);
+      box-shadow: 0 4px 16px rgba(201, 122, 92, 0.15);
+    }
+    
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s ease;
+    }
+    
+    .accordion-header:hover {
+      background: rgba(230, 220, 207, 0.3);
+    }
+    
+    .accordion-header-content {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .accordion-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent-beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .accordion-icon svg {
+      width: 20px;
+      height: 20px;
+      color: var(--accent-terracotta);
+    }
+    
+    .accordion-title {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h2);
+      font-weight: 400;
+    }
+    
+    .accordion-arrow {
+      width: 24px;
+      height: 24px;
+      color: var(--text-muted);
+      transition: transform 0.3s ease;
+    }
+    
+    .accordion-item.active .accordion-arrow {
+      transform: rotate(180deg);
+      color: var(--accent-terracotta);
+    }
+    
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+    
+    .accordion-item.active .accordion-content {
+      max-height: 1000px;
+    }
+    
+    .accordion-body {
+      padding: 0 24px 24px;
+    }
+    
+    /* ===== SECTION-SPECIFIC STYLES ===== */
+    
+    /* At a Glance */
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    
+    .stat-card {
+      padding: 16px;
+      background: var(--bg);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+    
+    .stat-card-label {
+      font-size: var(--font-size-label);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    
+    .stat-card-value {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h2);
+      color: var(--accent-terracotta);
+    }
+    
+    /* Flavour */
+    .flavour-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    
+    .flavour-tag {
+      padding: 10px 18px;
+      background: linear-gradient(135deg, var(--accent-sage), rgba(126, 156, 135, 0.7));
+      color: white;
+      border-radius: 25px;
+      font-size: var(--font-size-small);
+      font-weight: 500;
+    }
+    
+    .flavour-description {
+      padding: 16px;
+      background: var(--bg);
+      border-radius: var(--radius-md);
+      color: var(--text-muted);
+      font-style: italic;
+      border-left: 3px solid var(--accent-sage);
+    }
+    
+    /* Story */
+    .story-content {
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    
+    .story-content p {
+      margin-bottom: 1.25em;
+    }
+    
+    .story-content p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .story-highlight {
+      background: linear-gradient(135deg, var(--accent-beige), rgba(230, 220, 207, 0.5));
+      padding: 20px;
+      border-radius: var(--radius-md);
+      margin-bottom: 20px;
+    }
+    
+    .story-highlight-title {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h2);
+      color: var(--accent-terracotta);
+      margin-bottom: 8px;
+    }
+    
+    .story-highlight-subtitle {
+      color: var(--text-muted);
+      font-size: var(--font-size-small);
+    }
+    
+    /* Brewing */
+    .brew-tip {
+      display: flex;
+      gap: 16px;
+      padding: 16px;
+      background: var(--bg);
+      border-radius: var(--radius-md);
+      margin-bottom: 12px;
+    }
+    
+    .brew-tip:last-child {
+      margin-bottom: 0;
+    }
+    
+    .brew-tip-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--accent-terracotta);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .brew-tip-icon svg {
+      width: 16px;
+      height: 16px;
+      color: white;
+    }
+    
+    .brew-tip-content h4 {
+      font-size: var(--font-size-body);
+      margin-bottom: 4px;
+    }
+    
+    .brew-tip-content p {
+      font-size: var(--font-size-small);
+      color: var(--text-muted);
+    }
+    
+    /* ===== NAVIGATION ===== */
+    .page-navigation {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px 20px;
+    }
+    
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-terracotta);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 12px 20px;
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      transition: background 0.2s ease;
+    }
+    
+    .nav-link:hover {
+      background: var(--accent-beige);
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 640px) {
+      .compact-header {
+        grid-template-columns: 160px 1fr;
+        padding: 32px 40px;
+      }
+      
+      .header-image {
+        width: 160px;
+        height: 160px;
+      }
+      
+      .main-content {
+        padding: 40px;
+      }
+      
+      .quick-stats {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout-indicator">Layout 2: Tasting Accordion</div>
+  
+  <!-- COMPACT HEADER -->
+  <header class="compact-header">
+    <div class="header-image">
+      <img src="https://rozalicoffee.de/cdn/shop/files/hendra-maulizar_product_retail_1800x1800.png?v=1754980110" alt="Hendra Maulizar Coffee">
+    </div>
+    <div class="header-info">
+      <div class="header-badges">
+        <span class="badge badge-origin">Indonesia</span>
+        <span class="badge badge-category">Micro Lot</span>
+        <span class="badge badge-sold-out">Ausverkauft</span>
+      </div>
+      <h1 class="header-title">Hendra Maulizar</h1>
+      <p class="header-price">€19,00 <span class="per-kg">€95,00/kg</span></p>
+    </div>
+  </header>
+  
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <div class="accordion">
+      
+      <!-- Section 1: At a Glance -->
+      <div class="accordion-item active">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="accordion-header-content">
+            <div class="accordion-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <h2 class="accordion-title">Auf einen Blick</h2>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <div class="quick-stats">
+              <div class="stat-card">
+                <p class="stat-card-label">Röstung</p>
+                <p class="stat-card-value">Light</p>
+              </div>
+              <div class="stat-card">
+                <p class="stat-card-label">Verarbeitung</p>
+                <p class="stat-card-value">Washed</p>
+              </div>
+              <div class="stat-card">
+                <p class="stat-card-label">Säure</p>
+                <p class="stat-card-value">High</p>
+              </div>
+              <div class="stat-card">
+                <p class="stat-card-label">Geschmack</p>
+                <p class="stat-card-value">Fruity</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Section 2: Flavour Profile -->
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="accordion-header-content">
+            <div class="accordion-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <h2 class="accordion-title">Geschmacksprofil</h2>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <div class="flavour-tags">
+              <span class="flavour-tag">🍇 Blackcurrant</span>
+              <span class="flavour-tag">🍑 White Peach</span>
+              <span class="flavour-tag">🍏 Green Apple</span>
+              <span class="flavour-tag">🌸 White Flowers</span>
+            </div>
+            <div class="flavour-description">
+              "Sweet and juicy with Kenyan-like currant notes, white peach acidity and elegant white flowers."
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Section 3: Producer Story -->
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="accordion-header-content">
+            <div class="accordion-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h2 class="accordion-title">Die Geschichte</h2>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <div class="story-highlight">
+              <h3 class="story-highlight-title">Hendra Maulizar</h3>
+              <p class="story-highlight-subtitle">Gayo Avatara • Indonesia</p>
+            </div>
+            <div class="story-content">
+              <p>Hendra Maulizar has been a driving force in Indonesian specialty coffee processing, continuously pushing boundaries to improve quality and elevate the country's coffee industry. His journey began in 2006 when his father, Drs. Hamdan, moved to Aceh and started growing coffee.</p>
+              <p>What started as a modest 1-hectare farm has since grown into a 10-hectare estate, producing some of the finest specialty coffee in Indonesia. His farm now boasts a fully equipped wet mill, gravitational washing channels, and raised drying beds.</p>
+              <p>Beyond his own farm, Hendra has built a strong network of 70 local farming families who partner with him to supply high-quality cherries for processing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Section 4: Brewing Tips -->
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="accordion-header-content">
+            <div class="accordion-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                <line x1="6" y1="1" x2="6" y2="4"/>
+                <line x1="10" y1="1" x2="10" y2="4"/>
+                <line x1="14" y1="1" x2="14" y2="4"/>
+              </svg>
+            </div>
+            <h2 class="accordion-title">Zubereitung</h2>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <div class="brew-tip">
+              <div class="brew-tip-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/>
+                </svg>
+              </div>
+              <div class="brew-tip-content">
+                <h4>Empfohlene Methode</h4>
+                <p>V60 oder Chemex für die besten Ergebnisse bei diesem leichten, floralen Kaffee.</p>
+              </div>
+            </div>
+            <div class="brew-tip">
+              <div class="brew-tip-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 6v6l4 2"/>
+                </svg>
+              </div>
+              <div class="brew-tip-content">
+                <h4>Wassertemperatur</h4>
+                <p>92-94°C für optimale Extraktion der fruchtigen Noten.</p>
+              </div>
+            </div>
+            <div class="brew-tip">
+              <div class="brew-tip-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                </svg>
+              </div>
+              <div class="brew-tip-content">
+                <h4>Mahlgrad</h4>
+                <p>Mittel-fein, ähnlich wie Tafelsalz.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+  
+  <!-- Navigation -->
+  <nav class="page-navigation">
+    <a href="/index.html" class="nav-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Zurück zur Übersicht
+    </a>
+  </nav>
+  
+  <script>
+    function toggleAccordion(header) {
+      const item = header.parentElement;
+      const wasActive = item.classList.contains('active');
+      
+      // Close all items
+      document.querySelectorAll('.accordion-item').forEach(i => {
+        i.classList.remove('active');
+      });
+      
+      // Open clicked item if it wasn't active
+      if (!wasActive) {
+        item.classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>

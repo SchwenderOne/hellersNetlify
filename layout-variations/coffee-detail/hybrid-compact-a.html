@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hendra Maulizar – Hybrid Compact A | Hellers Kaffees</title>
+  <meta name="description" content="Layout Variation: Hybrid Compact A - Minimal hero + concise e-commerce">
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/azg8ito.css">
+  
+  <style>
+    /* ========================================
+       LAYOUT 6: HYBRID COMPACT A
+       Minimal hero (half height) + concise horizontal e-commerce
+       ======================================== */
+    
+    :root {
+      --bg: #f7f5f4;
+      --surface: #ffffff;
+      --text: #111d3d;
+      --text-muted: #5c6785;
+      --accent-beige: #e6dccf;
+      --accent-terracotta: #c97a5c;
+      --accent-sage: #7e9c87;
+      --accent-ink: #0e1a3a;
+      
+      --font-serif: "p22-mackinac-pro", Georgia, serif;
+      --font-sans: "GTAmerica", Poppins, system-ui, sans-serif;
+      
+      --font-size-display: clamp(2.5rem, 6vw, 4rem);
+      --font-size-h1: clamp(1.75rem, 3vw, 2.25rem);
+      --font-size-h2: clamp(1.25rem, 2vw, 1.5rem);
+      --font-size-h3: clamp(1rem, 1.5vw, 1.125rem);
+      --font-size-body: 1rem;
+      --font-size-small: 0.875rem;
+      --font-size-label: 0.75rem;
+      
+      --radius-lg: 12px;
+      --radius-md: 8px;
+    }
+    
+    [data-theme="dark"] {
+      --bg: #1a1a1a;
+      --surface: #2a2a2a;
+      --text: #f5f5f5;
+      --text-muted: #b0b0b0;
+      --accent-terracotta: #e09a7a;
+      --accent-sage: #94c2a8;
+      --accent-beige: rgba(230, 220, 207, 0.12);
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+    }
+    
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: var(--font-size-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .layout-indicator {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      background: linear-gradient(135deg, var(--accent-terracotta), var(--accent-sage));
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    /* ===== COMPACT HERO (from Layout 4, half height) ===== */
+    .compact-hero {
+      min-height: 35vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 48px 24px;
+      background: var(--bg);
+    }
+    
+    .hero-origin {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    
+    .hero-origin-flag {
+      font-size: 28px;
+    }
+    
+    .hero-origin-text {
+      font-size: var(--font-size-label);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent-sage);
+    }
+    
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-display);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    
+    .hero-tagline {
+      font-size: var(--font-size-body);
+      color: var(--text-muted);
+      max-width: 550px;
+      font-style: italic;
+    }
+    
+    /* ===== PRODUCT SECTION (horizontal layout) ===== */
+    .product-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 24px;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    
+    /* Product Image */
+    .product-image-wrap {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+    }
+    
+    .product-image-wrap img {
+      width: 100%;
+      height: auto;
+    }
+    
+    .sold-out-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--accent-terracotta);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: var(--font-size-label);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    
+    /* Product Info */
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    
+    .product-meta {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    
+    .badge {
+      padding: 5px 12px;
+      border-radius: 16px;
+      font-size: var(--font-size-label);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    
+    .badge-origin {
+      background: var(--accent-sage);
+      color: white;
+    }
+    
+    .badge-category {
+      background: var(--accent-beige);
+      color: var(--text);
+    }
+    
+    .product-name {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h1);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    
+    .product-subtitle {
+      font-size: var(--font-size-small);
+      color: var(--text-muted);
+    }
+    
+    .product-price-block {
+      text-align: right;
+    }
+    
+    .product-price {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h1);
+      color: var(--accent-terracotta);
+    }
+    
+    .product-price-kg {
+      font-size: var(--font-size-small);
+      color: var(--text-muted);
+    }
+    
+    /* Flavour Tags */
+    .flavour-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .flavour-tag {
+      padding: 8px 14px;
+      background: var(--surface);
+      border: 1px solid var(--accent-beige);
+      border-radius: 20px;
+      font-size: var(--font-size-small);
+    }
+    
+    /* Quick Specs - Inline */
+    .specs-row {
+      display: flex;
+      gap: 24px;
+      padding: 16px 0;
+      border-top: 1px solid var(--accent-beige);
+      border-bottom: 1px solid var(--accent-beige);
+    }
+    
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    
+    .spec-label {
+      font-size: var(--font-size-label);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .spec-value {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h3);
+      color: var(--accent-terracotta);
+    }
+    
+    /* CTA */
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    
+    .cta-button {
+      flex: 1;
+      max-width: 280px;
+      padding: 14px 28px;
+      background: var(--accent-terracotta);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-body);
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    
+    .cta-button.sold-out {
+      background: var(--text-muted);
+      cursor: not-allowed;
+    }
+    
+    .trust-icons {
+      display: flex;
+      gap: 16px;
+    }
+    
+    .trust-icon {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--font-size-small);
+      color: var(--text-muted);
+    }
+    
+    .trust-icon svg {
+      width: 18px;
+      height: 18px;
+      color: var(--accent-sage);
+    }
+    
+    /* ===== PRODUCER STORY (compact) ===== */
+    .story-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+    
+    .story-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    
+    .story-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-sage), var(--accent-terracotta));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 24px;
+      color: white;
+    }
+    
+    .story-content h3 {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h2);
+      margin-bottom: 4px;
+    }
+    
+    .story-subtitle {
+      font-size: var(--font-size-small);
+      color: var(--accent-sage);
+      margin-bottom: 12px;
+    }
+    
+    .story-text {
+      color: var(--text-muted);
+      font-size: var(--font-size-small);
+      line-height: 1.7;
+    }
+    
+    .story-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--accent-beige);
+    }
+    
+    .story-stat-value {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-h2);
+      color: var(--accent-terracotta);
+    }
+    
+    .story-stat-label {
+      font-size: var(--font-size-label);
+      color: var(--text-muted);
+    }
+    
+    /* ===== NAVIGATION ===== */
+    .page-navigation {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+      border-top: 1px solid var(--accent-beige);
+    }
+    
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-terracotta);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .nav-link:hover {
+      text-decoration: underline;
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .product-section {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      
+      .product-image-wrap {
+        max-width: 300px;
+        margin: 0 auto;
+      }
+      
+      .product-header {
+        flex-direction: column;
+        gap: 12px;
+      }
+      
+      .product-price-block {
+        text-align: left;
+      }
+      
+      .specs-row {
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      
+      .story-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .story-avatar {
+        margin: 0 auto;
+      }
+      
+      .story-stats {
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .compact-hero {
+        min-height: auto;
+        padding: 40px 20px;
+      }
+      
+      .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .cta-button {
+        max-width: none;
+      }
+      
+      .trust-icons {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout-indicator">Layout 6: Hybrid Compact A</div>
+  
+  <!-- COMPACT HERO -->
+  <section class="compact-hero">
+    <div class="hero-origin">
+      <span class="hero-origin-flag">🇮🇩</span>
+      <span class="hero-origin-text">Indonesia • Aceh, Gayo</span>
+    </div>
+    <h1 class="hero-title">Hendra Maulizar</h1>
+    <p class="hero-tagline">"Sweet and juicy with Kenyan-like currant notes, white peach acidity and elegant white flowers."</p>
+  </section>
+  
+  <!-- PRODUCT SECTION -->
+  <section class="product-section">
+    <div class="product-image-wrap">
+      <span class="sold-out-badge">Ausverkauft</span>
+      <img src="https://rozalicoffee.de/cdn/shop/files/hendra-maulizar_product_retail_1800x1800.png?v=1754980110" alt="Hendra Maulizar Coffee">
+    </div>
+    
+    <div class="product-info">
+      <div class="product-header">
+        <div>
+          <div class="product-meta">
+            <span class="badge badge-origin">Indonesia</span>
+            <span class="badge badge-category">Micro Lot</span>
+          </div>
+          <h2 class="product-name">Hendra Maulizar</h2>
+          <p class="product-subtitle">Gayo Avatara • Specialty Coffee</p>
+        </div>
+        <div class="product-price-block">
+          <div class="product-price">€19,00</div>
+          <div class="product-price-kg">€95,00/kg</div>
+        </div>
+      </div>
+      
+      <div class="flavour-row">
+        <span class="flavour-tag">🍇 Blackcurrant</span>
+        <span class="flavour-tag">🍑 White Peach</span>
+        <span class="flavour-tag">🍏 Green Apple</span>
+        <span class="flavour-tag">🌸 White Flowers</span>
+      </div>
+      
+      <div class="specs-row">
+        <div class="spec-item">
+          <span class="spec-label">Röstung</span>
+          <span class="spec-value">Light</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Verarbeitung</span>
+          <span class="spec-value">Washed</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Säure</span>
+          <span class="spec-value">Hoch</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Geschmack</span>
+          <span class="spec-value">Fruity</span>
+        </div>
+      </div>
+      
+      <div class="cta-row">
+        <button class="cta-button sold-out">Ausverkauft</button>
+        <div class="trust-icons">
+          <span class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Frisch geröstet
+          </span>
+          <span class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Specialty Grade
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- PRODUCER STORY (compact) -->
+  <section class="story-section">
+    <div class="story-card">
+      <div class="story-avatar">HM</div>
+      <div class="story-content">
+        <h3>Hendra Maulizar</h3>
+        <p class="story-subtitle">Gayo Avatara • Indonesia</p>
+        <p class="story-text">Hendra Maulizar has been a driving force in Indonesian specialty coffee, growing from a 1-hectare plot in 2010 to a 10-hectare estate. He partners with 70 local families, investing in wet mills and raised drying beds to produce exceptional coffee.</p>
+        <div class="story-stats">
+          <div>
+            <div class="story-stat-value">10ha</div>
+            <div class="story-stat-label">Farm</div>
+          </div>
+          <div>
+            <div class="story-stat-value">70</div>
+            <div class="story-stat-label">Partner Families</div>
+          </div>
+          <div>
+            <div class="story-stat-value">2010</div>
+            <div class="story-stat-label">Since</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Navigation -->
+  <nav class="page-navigation">
+    <a href="/index.html" class="nav-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Zurück zur Übersicht
+    </a>
+  </nav>
+</body>
+</html>
