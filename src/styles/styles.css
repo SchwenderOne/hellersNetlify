@@ -53,9 +53,12 @@
   --shadow-soft: 0 16px 34px rgba(14, 26, 58, 0.12);
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -428,7 +431,12 @@ a:focus-visible {
   color: var(--accent-terracotta);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-serif);
   font-weight: 400;
   color: var(--text);
@@ -449,7 +457,9 @@ h3 {
   font-size: var(--font-size-h3);
 }
 
-h4, h5, h6 {
+h4,
+h5,
+h6 {
   font-family: var(--font-sans);
   font-size: var(--font-size-h4);
   letter-spacing: var(--letter-spacing-label);
@@ -487,7 +497,7 @@ h4, h5, h6 {
   display: inline-block;
   position: relative;
   color: var(--text);
-  text-shadow: 
+  text-shadow:
     0 2px 10px rgba(17, 29, 61, 0.3),
     0 4px 20px rgba(17, 29, 61, 0.2),
     0 0 40px rgba(201, 122, 92, 0.15);
@@ -504,14 +514,14 @@ h4, h5, h6 {
   right: 0;
   bottom: 0;
   background: linear-gradient(135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 50%,
-    rgba(255, 255, 255, 0.1) 100%);
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0.1) 100%);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 
+  box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.2),
     inset 0 -1px 0 rgba(255, 255, 255, 0.05);
@@ -521,7 +531,7 @@ h4, h5, h6 {
 
 [data-theme="dark"] .hero-title-liquid {
   color: var(--text-dark);
-  text-shadow: 
+  text-shadow:
     0 2px 10px rgba(0, 0, 0, 0.5),
     0 4px 20px rgba(0, 0, 0, 0.4),
     0 0 40px rgba(224, 154, 122, 0.25);
@@ -531,11 +541,11 @@ h4, h5, h6 {
 
 [data-theme="dark"] .hero-title-liquid::after {
   background: linear-gradient(135deg,
-    rgba(255, 255, 255, 0.15) 0%,
-    rgba(255, 255, 255, 0.08) 50%,
-    rgba(255, 255, 255, 0.15) 100%);
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(255, 255, 255, 0.15) 100%);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 
+  box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.3),
     inset 0 -1px 0 rgba(255, 255, 255, 0.1);
@@ -545,7 +555,7 @@ h4, h5, h6 {
   .hero-title-container {
     padding: 40px 20px 30px;
   }
-  
+
   .hero-title-liquid {
     padding: 15px 30px;
   }
@@ -1088,13 +1098,17 @@ article.card {
   color: rgba(255, 255, 255, 0.75);
 }
 
-.footer-grid p { 
-  margin: 8px 0; 
-  font-size: var(--font-size-small); 
+.footer-grid p {
+  margin: 8px 0;
+  font-size: var(--font-size-small);
   color: rgba(255, 255, 255, 0.85);
 }
 
-.footer-newsletter .newsletter { display: flex; gap: 8px; }
+.footer-newsletter .newsletter {
+  display: flex;
+  gap: 8px;
+}
+
 .footer-newsletter input {
   padding: 10px 12px;
   border-radius: var(--radius-md);
@@ -1232,10 +1246,10 @@ article.card {
   outline-offset: 2px;
 }
 
-.footer-bottom { 
-  border-top: 1px solid rgba(255,255,255,0.15); 
-  padding-top: 16px; 
-  padding-bottom: 24px; 
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 16px;
+  padding-bottom: 24px;
   font-size: var(--font-size-small);
   color: rgba(255, 255, 255, 0.7);
 }
@@ -1451,12 +1465,12 @@ article.card {
     padding: 24px;
     margin-bottom: 32px;
   }
-  
+
   .calculator-controls {
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  
+
   .calculator-results {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -1702,26 +1716,26 @@ article.card {
     padding: 24px;
     margin-bottom: 32px;
   }
-  
+
   .timer-time {
     font-size: 2.5rem;
   }
-  
+
   .timer-controls {
     flex-wrap: wrap;
   }
-  
+
   .timer-btn {
     flex: 1;
     min-width: 100px;
     justify-content: center;
   }
-  
+
   .timer-step {
     flex-direction: column;
     gap: 8px;
   }
-  
+
   .step-time {
     min-width: auto;
   }
@@ -1782,7 +1796,7 @@ article.card {
 .guide-navigation {
   text-align: center;
   padding-top: 32px;
-  border-top: 1px solid rgba(0,0,0,0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .nav-link {
@@ -2749,7 +2763,8 @@ article.card {
 .event-image {
   position: relative;
   width: 100%;
-  padding-bottom: 60%; /* Aspect ratio */
+  padding-bottom: 60%;
+  /* Aspect ratio */
   overflow: hidden;
   background: var(--accent-beige);
 }
@@ -3221,18 +3236,18 @@ article.card {
   .modal-content {
     padding: 24px;
   }
-  
+
   .modal-close {
     top: 12px;
     right: 12px;
     width: 36px;
     height: 36px;
   }
-  
+
   .form-actions {
     flex-direction: column;
   }
-  
+
   .button-primary,
   .button-secondary {
     width: 100%;
@@ -3338,7 +3353,8 @@ article.card {
 .menu-item-image {
   position: relative;
   width: 100%;
-  padding-bottom: 60%; /* Aspect ratio */
+  padding-bottom: 60%;
+  /* Aspect ratio */
   overflow: hidden;
   background: var(--accent-beige);
 }
@@ -3807,7 +3823,8 @@ article.card {
   position: relative;
   width: 100%;
   height: 0;
-  padding-bottom: 75%; /* 4:3 aspect ratio */
+  padding-bottom: 75%;
+  /* 4:3 aspect ratio */
   overflow: hidden;
   border-radius: var(--radius-lg);
   box-shadow: 0 4px 16px rgba(14, 26, 58, 0.1);
@@ -3834,46 +3851,57 @@ article.card {
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .card { flex: 0 1 calc((100% - 24px) / 2); }
-  .footer-grid { grid-template-columns: repeat(3, 1fr); }
-  .guide-details { grid-template-columns: 1fr; gap: 36px; }
-  
+  .card {
+    flex: 0 1 calc((100% - 24px) / 2);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .guide-details {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
   .brew-basics-infographic {
     grid-template-columns: repeat(2, 1fr);
     gap: 32px;
   }
-  
+
   .farm-to-cup-timeline {
     flex-direction: column;
     gap: 24px;
   }
-  
+
   .timeline-item {
     max-width: 100%;
   }
-  
+
   .timeline-connector {
     padding-top: 0;
     padding-bottom: 0;
     height: auto;
     transform: rotate(90deg);
   }
-  
+
   .timeline-connector svg {
     width: 60px;
     height: 24px;
   }
-  
+
   .visit-content {
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  
+
   .map-container {
-    padding-bottom: 60%; /* Slightly taller on tablet */
-    order: -1; /* Show map first on tablet/mobile */
+    padding-bottom: 60%;
+    /* Slightly taller on tablet */
+    order: -1;
+    /* Show map first on tablet/mobile */
   }
-  
+
   .events-grid {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -3886,11 +3914,11 @@ article.card {
     padding-right: 24px;
     --wrapper-padding: 24px;
   }
-  
+
   .section-header {
     margin-bottom: 32px;
   }
-  
+
   .storytelling-section {
     padding-top: 48px;
     padding-bottom: 48px;
@@ -3935,12 +3963,12 @@ article.card {
   .card:active {
     transform: translateY(-4px) scale(1.01);
   }
-  
-  
+
+
   .timer-btn:active {
     transform: translateY(0) scale(0.95);
   }
-  
+
   .cta-button:active {
     transform: translateY(1px);
   }
@@ -3952,10 +3980,12 @@ article.card {
     transform: scale(1);
     opacity: 1;
   }
+
   50% {
     transform: scale(1.05);
     opacity: 0.9;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -3972,35 +4002,39 @@ article.card {
   0% {
     background-position: -1000px 0;
   }
+
   100% {
     background-position: 1000px 0;
   }
 }
 
 .image-skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--bg) 0%,
-    rgba(255, 255, 255, 0.5) 50%,
-    var(--bg) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--bg) 0%,
+      rgba(255, 255, 255, 0.5) 50%,
+      var(--bg) 100%);
   background-size: 1000px 100%;
   animation: skeletonShimmer 2s infinite;
 }
 
 [data-theme="dark"] .image-skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--bg-dark) 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    var(--bg-dark) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--bg-dark) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      var(--bg-dark) 100%);
   background-size: 1000px 100%;
 }
 
 @media (max-width: 640px) {
-  .wrapper { padding-left: 20px; padding-right: 20px; }
-  .card { flex: 0 0 100%; }
+  .wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .card {
+    flex: 0 0 100%;
+  }
+
   .card-hero {
     flex: 0 0 100vw;
     width: 100vw;
@@ -4009,11 +4043,11 @@ article.card {
     margin-left: calc(-1 * ((100vw - 100%) / 2));
     margin-right: calc(-1 * ((100vw - 100%) / 2));
   }
-  
+
   .card-hero .image-container {
     height: 100vh;
   }
-  
+
   .card-hero .image-container img {
     /* Smaller extra width on mobile */
     width: calc(100% + 100px);
@@ -4022,114 +4056,145 @@ article.card {
     margin-left: -50px;
     object-position: center center;
   }
-  .card-hero .hero-overlay { width: calc(100% - 40px); top: 50%; transform: translate(-50%, -50%); padding: 16px 18px; gap: 10px; }
-  .card-hero .hero-overlay h2 { font-size: 28px; }
-  .hero-cta-button { padding: 12px 24px; font-size: 0.6875rem; }
-  .title { font-size: 24px; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .guide-title { font-size: 36px; }
-  .guide-name { font-size: 42px; }
-  .guide-details { grid-template-columns: 1fr; gap: 28px; }
-  
+
+  .card-hero .hero-overlay {
+    width: calc(100% - 40px);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 16px 18px;
+    gap: 10px;
+  }
+
+  .card-hero .hero-overlay h2 {
+    font-size: 28px;
+  }
+
+  .hero-cta-button {
+    padding: 12px 24px;
+    font-size: 0.6875rem;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-title {
+    font-size: 36px;
+  }
+
+  .guide-name {
+    font-size: 42px;
+  }
+
+  .guide-details {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
   .storytelling-section {
     padding-top: 48px;
     padding-bottom: 48px;
   }
-  
+
   .section-header {
     margin-bottom: 40px;
   }
-  
+
   .brew-basics-infographic {
     grid-template-columns: 1fr;
     gap: 24px;
   }
-  
+
   .infographic-item {
     padding: 24px 20px;
   }
-  
+
   .infographic-icon {
     width: 56px;
     height: 56px;
     margin-bottom: 16px;
   }
-  
+
   .ratio-display {
     flex-direction: column;
     gap: 8px;
   }
-  
+
   .ratio-item {
     padding: 12px;
   }
-  
+
   .temperature-scale {
     gap: 12px;
   }
-  
+
   .timeline-icon {
     width: 64px;
     height: 64px;
     margin-bottom: 20px;
   }
-  
+
   .timeline-icon svg {
     width: 40px;
     height: 40px;
   }
-  
+
   .timeline-content h3 {
     font-size: 1.5rem;
   }
-  
+
   .visit-section {
     padding-top: 48px;
     padding-bottom: 48px;
   }
-  
+
   .visit-details {
     padding: 24px 20px;
   }
-  
+
   .visit-details h3 {
     font-size: 1.75rem;
     margin-bottom: 20px;
   }
-  
+
   .visit-address {
     font-size: 1rem;
     margin-bottom: 24px;
   }
-  
+
   .payment-methods-grid {
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  
+
   .visit-button {
     padding: 12px 20px;
     font-size: 0.8125rem;
   }
-  
+
   .map-container {
-    padding-bottom: 100%; /* Square on mobile */
+    padding-bottom: 100%;
+    /* Square on mobile */
     order: -1;
   }
-  
+
   .events-grid {
     grid-template-columns: 1fr;
     gap: 24px;
   }
-  
+
   .event-content {
     padding: 24px 20px;
   }
-  
+
   .event-title {
     font-size: 1.5rem;
   }
-  
+
   .events-footer {
     padding: 24px 20px;
   }
@@ -4137,6 +4202,7 @@ article.card {
 
 /* Print Styles */
 @media print {
+
   /* Hide non-essential elements */
   .skip-to-content,
   .site-header,
@@ -4157,7 +4223,7 @@ article.card {
   .farm-to-cup-timeline {
     display: none !important;
   }
-  
+
   /* Reset colors for print */
   * {
     background: white !important;
@@ -4165,170 +4231,175 @@ article.card {
     box-shadow: none !important;
     text-shadow: none !important;
   }
-  
+
   /* Page setup */
   @page {
     margin: 2cm;
   }
-  
+
   body {
     font-size: 12pt;
     line-height: 1.5;
     color: black;
     background: white;
   }
-  
+
   /* Typography for print */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     page-break-after: avoid;
     color: black;
     font-weight: bold;
   }
-  
+
   h1 {
     font-size: 24pt;
     margin-top: 0;
     margin-bottom: 12pt;
   }
-  
+
   h2 {
     font-size: 20pt;
     margin-top: 18pt;
     margin-bottom: 10pt;
   }
-  
+
   h3 {
     font-size: 16pt;
     margin-top: 14pt;
     margin-bottom: 8pt;
   }
-  
+
   h4 {
     font-size: 14pt;
     margin-top: 12pt;
     margin-bottom: 6pt;
   }
-  
+
   p {
     margin-bottom: 10pt;
     orphans: 3;
     widows: 3;
   }
-  
+
   /* Recipe pages specific */
   .brew-guide-page {
     max-width: 100%;
     padding: 0;
   }
-  
+
   .guide-header {
     margin-bottom: 20pt;
     border-bottom: 2pt solid black;
     padding-bottom: 10pt;
   }
-  
+
   .guide-title {
     font-size: 24pt;
     margin-bottom: 6pt;
   }
-  
+
   .guide-meta {
     font-size: 10pt;
     color: #666;
   }
-  
+
   .guide-intro {
     margin-bottom: 16pt;
   }
-  
+
   .guide-name {
     font-size: 20pt;
     margin-bottom: 8pt;
   }
-  
+
   .guide-secondary-image {
     display: none;
   }
-  
+
   .guide-details {
     display: block;
     margin-top: 20pt;
   }
-  
+
   .specifications {
     margin-bottom: 20pt;
     page-break-inside: avoid;
   }
-  
+
   .spec-item {
     margin-bottom: 8pt;
     padding: 8pt;
     border-bottom: 1pt solid #ccc;
   }
-  
+
   .spec-item strong {
     display: inline-block;
     width: 40%;
     font-weight: bold;
   }
-  
+
   .spec-item p {
     display: inline-block;
     width: 58%;
     margin: 0;
   }
-  
+
   .instructions {
     margin-top: 20pt;
   }
-  
+
   .instruction-section {
     margin-bottom: 16pt;
     page-break-inside: avoid;
   }
-  
+
   .instruction-section h3 {
     font-size: 16pt;
     margin-bottom: 8pt;
     padding-bottom: 4pt;
     border-bottom: 1pt solid black;
   }
-  
+
   .instruction-section p {
     margin-bottom: 8pt;
   }
-  
+
   /* Homepage */
   .cards-grid {
     display: none;
   }
-  
+
   /* Links */
   a {
     color: black;
     text-decoration: underline;
   }
-  
+
   a[href^="http"]:after {
     content: " (" attr(href) ")";
     font-size: 9pt;
     color: #666;
   }
-  
+
   /* Avoid breaking */
   img {
     max-width: 100%;
     height: auto;
     page-break-inside: avoid;
   }
-  
+
   /* Page breaks */
   .guide-header,
   .guide-intro,
   .specifications {
     page-break-after: avoid;
   }
-  
+
   /* Wrapper adjustments */
   .wrapper {
     max-width: 100%;
@@ -4533,6 +4604,7 @@ article.card {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -4878,8 +4950,15 @@ article.card {
 }
 
 @keyframes countryPulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.95; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.95;
+  }
 }
 
 .country-marker {
@@ -4899,8 +4978,15 @@ article.card {
 }
 
 @keyframes markerPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 .country-label {
@@ -4989,9 +5075,19 @@ article.card {
 }
 
 @keyframes flagWave {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-2deg); }
-  75% { transform: rotate(2deg); }
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-2deg);
+  }
+
+  75% {
+    transform: rotate(2deg);
+  }
 }
 
 .origin-details-content {
@@ -5005,6 +5101,7 @@ article.card {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -5715,8 +5812,13 @@ article.card {
 }
 
 @keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 100%; }
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 100%;
+  }
 }
 
 /* Characteristics Section */
@@ -6083,7 +6185,9 @@ article.card {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .map-loading p {
@@ -6096,8 +6200,8 @@ article.card {
 .coffee-marker {
   cursor: pointer;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              filter 0.3s ease,
-              opacity 0.3s ease;
+    filter 0.3s ease,
+    opacity 0.3s ease;
   position: relative;
   outline: none;
   will-change: transform;
@@ -6123,8 +6227,7 @@ article.card {
 
 .coffee-marker.hover .marker-svg,
 .coffee-marker:hover .marker-svg {
-  filter: drop-shadow(0 0 20px rgba(217, 117, 91, 1))
-          drop-shadow(0 6px 16px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 0 20px rgba(217, 117, 91, 1)) drop-shadow(0 6px 16px rgba(0, 0, 0, 0.4));
 }
 
 /* Hover animation for bean highlight */
@@ -6140,8 +6243,7 @@ article.card {
 }
 
 .coffee-marker.active .marker-svg {
-  filter: drop-shadow(0 0 24px rgba(255, 176, 136, 1))
-          drop-shadow(0 8px 20px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 0 24px rgba(255, 176, 136, 1)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.5));
 }
 
 /* Dimmed state for non-active markers */
@@ -6180,10 +6282,13 @@ article.card {
 
 /* Enhanced Animations */
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }
+
   50% {
     transform: scale(1.05);
     opacity: 0.85;
@@ -6191,18 +6296,24 @@ article.card {
 }
 
 @keyframes bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1.35) translateY(-6px);
   }
+
   50% {
     transform: scale(1.4) translateY(-10px);
   }
 }
 
 @keyframes shimmer {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.25;
   }
+
   50% {
     opacity: 0.5;
   }
@@ -6249,10 +6360,13 @@ article.card {
 }
 
 @keyframes roasteryPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }
+
   50% {
     transform: scale(1.08);
     opacity: 0.9;
@@ -6536,13 +6650,11 @@ article.card {
 .legend-line {
   width: 30px;
   height: 2px;
-  background: repeating-linear-gradient(
-    to right,
-    #D9755B 0,
-    #D9755B 6px,
-    transparent 6px,
-    transparent 10px
-  );
+  background: repeating-linear-gradient(to right,
+      #D9755B 0,
+      #D9755B 6px,
+      transparent 6px,
+      transparent 10px);
   opacity: 0.6;
 }
 
@@ -7158,7 +7270,7 @@ article.card {
     direction: rtl;
   }
 
-  .harvest-season:nth-child(even) > * {
+  .harvest-season:nth-child(even)>* {
     direction: ltr;
   }
 }
@@ -7629,6 +7741,7 @@ article.card {
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
+
   .coffee-marker,
   .map-panel,
   .coffee-card-link,
@@ -9001,22 +9114,32 @@ article.card {
 }
 
 /* Coffee Hero */
+/* Coffee Hero */
 .coffee-hero {
-  min-height: 35vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 48px 24px;
+  padding: 16px 24px;
   background: var(--bg);
+}
+
+.coffee-hero .hero-header-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 12px;
 }
 
 .coffee-hero .hero-origin {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 0;
 }
 
 .coffee-hero .hero-origin-flag {
@@ -9027,22 +9150,30 @@ article.card {
   font-size: var(--font-size-label);
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--accent-sage);
+  color: var(--text);
+  /* Changed from accent-sage to ensure readability */
+  font-weight: 600;
 }
 
 .coffee-hero .hero-title {
   font-family: var(--font-serif);
-  font-size: var(--font-size-display);
-  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3rem);
+  /* Slightly smaller to fit in one line often */
+  font-weight: 700;
+  /* Increased weight for readability */
   line-height: 1.1;
-  margin-bottom: 16px;
+  margin-bottom: 0;
+  color: var(--text);
+  /* Explicitly set to dark text */
 }
 
 .coffee-hero .hero-tagline {
   font-size: var(--font-size-body);
-  color: var(--text-muted);
-  max-width: 550px;
+  color: var(--text);
+  /* Changed from text-muted to text for better readability */
+  max-width: 650px;
   font-style: italic;
+  opacity: 0.8;
 }
 
 /* Coffee Product Section */
@@ -9077,7 +9208,7 @@ article.card {
 }
 
 .coffee-gallery .gallery-main:hover {
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .coffee-gallery .gallery-main img {
@@ -9095,7 +9226,7 @@ article.card {
   position: absolute;
   bottom: 12px;
   right: 12px;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   color: white;
   padding: 6px 10px;
   border-radius: 6px;
@@ -9368,8 +9499,15 @@ article.card {
 }
 
 @keyframes coffeeTabFadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Tab: Details */
@@ -9534,7 +9672,7 @@ article.card {
   right: 24px;
   width: 48px;
   height: 48px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 50%;
   color: white;
@@ -9546,7 +9684,7 @@ article.card {
 }
 
 .lightbox-close:hover {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .lightbox-close svg {
@@ -9575,7 +9713,7 @@ article.card {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.03);
   border-radius: var(--radius-lg);
   padding: 24px;
   min-height: 400px;
@@ -9611,8 +9749,8 @@ article.card {
   bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.8);
   padding: 6px 12px;
   border-radius: 6px;
   font-size: 11px;
@@ -9631,7 +9769,7 @@ article.card {
 .lightbox-thumb {
   width: 80px;
   height: 80px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
   border: 2px solid transparent;
   cursor: pointer;
@@ -9643,7 +9781,7 @@ article.card {
 }
 
 .lightbox-thumb:hover {
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .lightbox-thumb.active {
@@ -9675,7 +9813,7 @@ article.card {
 }
 
 .lightbox-info .badge-category {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   color: white;
 }
 
@@ -9687,7 +9825,7 @@ article.card {
 
 .lightbox-subtitle {
   font-size: var(--font-size-small);
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.6);
   margin-top: 4px;
 }
 
@@ -9699,12 +9837,12 @@ article.card {
 
 .lightbox-price-kg {
   font-size: var(--font-size-small);
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .lightbox-description {
   font-size: var(--font-size-small);
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7);
   font-style: italic;
   line-height: 1.6;
 }
@@ -9717,7 +9855,7 @@ article.card {
 
 .lightbox-flavour {
   padding: 6px 12px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   font-size: var(--font-size-small);
 }
@@ -9727,7 +9865,7 @@ article.card {
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   padding: 16px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-md);
 }
 
@@ -9739,7 +9877,7 @@ article.card {
 
 .lightbox-spec-label {
   font-size: var(--font-size-label);
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
 }
 

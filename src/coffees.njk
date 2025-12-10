@@ -14,25 +14,7 @@ eleventyComputed:
 
 <main class="coffee-detail-page">
   <!-- COMPACT HERO -->
-  <section class="coffee-hero">
-    <div class="hero-origin">
-      <span class="hero-origin-flag">
-        {%- if coffee.origin == "Indonesia" -%}🇮🇩
-        {%- elif coffee.origin == "Brazil" -%}🇧🇷
-        {%- elif coffee.origin == "Colombia" -%}🇨🇴
-        {%- elif coffee.origin == "Peru" -%}🇵🇪
-        {%- elif coffee.origin == "Honduras" -%}🇭🇳
-        {%- elif coffee.origin == "Panama" -%}🇵🇦
-        {%- elif coffee.origin == "Kenya" -%}🇰🇪
-        {%- elif coffee.origin == "Ethiopia" -%}🇪🇹
-        {%- else -%}🌍
-        {%- endif -%}
-      </span>
-      <span class="hero-origin-text">{{ coffee.origin }}{% if coffee.region %} • {{ coffee.region }}{% endif %}</span>
-    </div>
-    <h1 class="hero-title">{{ coffee.name }}</h1>
-    <p class="hero-tagline">"{{ coffee.description }}"</p>
-  </section>
+
 
   <!-- PRODUCT SECTION -->
   <section class="coffee-product-section">
@@ -42,7 +24,7 @@ eleventyComputed:
         {% if coffee.soldOut %}
           <span class="sold-out-badge">Ausverkauft</span>
         {% endif %}
-        <img id="mainImage" src="{{ coffee.image }}" alt="{{ coffee.name }}">
+        <img id="mainImage" src="{{ coffee.gallery[0] if coffee.gallery.length > 0 else coffee.image }}" alt="{{ coffee.name }}">
         <div class="gallery-zoom-hint">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -52,12 +34,11 @@ eleventyComputed:
         </div>
       </div>
       <div class="gallery-thumbnails">
-        <div class="thumbnail active" onclick="switchImage(0, this)">
-          <img src="{{ coffee.image }}" alt="{{ coffee.name }} - Ansicht 1">
+        {% for image in coffee.gallery %}
+        <div class="thumbnail {% if loop.first %}active{% endif %}" onclick="switchImage({{ loop.index0 }}, this)">
+          <img src="{{ image }}" alt="{{ coffee.name }} - Ansicht {{ loop.index }}">
         </div>
-        <div class="thumbnail" onclick="switchImage(1, this)">
-          <img src="{{ coffee.image }}" alt="{{ coffee.name }} - Ansicht 2">
-        </div>
+        {% endfor %}
       </div>
     </div>
 
@@ -288,7 +269,7 @@ eleventyComputed:
     <div class="lightbox-content" onclick="event.stopPropagation()">
       <div class="lightbox-gallery">
         <div class="lightbox-main-image" id="lightboxImageContainer" onclick="toggleZoom()">
-          <img id="lightboxMainImage" src="{{ coffee.image }}" alt="{{ coffee.name }}">
+          <img id="lightboxMainImage" src="{{ coffee.gallery[0] if coffee.gallery.length > 0 else coffee.image }}" alt="{{ coffee.name }}">
         </div>
         <div class="lightbox-zoom-hint" id="zoomHint">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -298,12 +279,11 @@ eleventyComputed:
           Klicken zum Vergrößern
         </div>
         <div class="lightbox-thumbnails">
-          <div class="lightbox-thumb active" onclick="switchLightboxImage(0, this)">
-            <img src="{{ coffee.image }}" alt="Ansicht 1">
+          {% for image in coffee.gallery %}
+          <div class="lightbox-thumb {% if loop.first %}active{% endif %}" onclick="switchLightboxImage({{ loop.index0 }}, this)">
+            <img src="{{ image }}" alt="Ansicht {{ loop.index }}">
           </div>
-          <div class="lightbox-thumb" onclick="switchLightboxImage(1, this)">
-            <img src="{{ coffee.image }}" alt="Ansicht 2">
-          </div>
+          {% endfor %}
         </div>
       </div>
 
@@ -382,10 +362,7 @@ eleventyComputed:
 
 <script>
   // Image data
-  const images = [
-    '{{ coffee.image }}',
-    '{{ coffee.image }}'
-  ];
+  const images = {{ coffee.gallery | dump | safe }};
 
   let currentImageIndex = 0;
 

@@ -7,7 +7,12 @@
     "pricePerKg": "€95,00/kg",
     "image": "https://rozalicoffee.de/cdn/shop/files/hendra-maulizar_product_retail_1800x1800.png?v=1754980110",
     "description": "Sweet and juicy with Kenyan-like currant notes, white peach acidity and elegant white flowers.",
-    "flavourProfile": ["Blackcurrant", "White Peach", "Green Apple", "White Flowers"],
+    "flavourProfile": [
+      "Blackcurrant",
+      "White Peach",
+      "Green Apple",
+      "White Flowers"
+    ],
     "roastLevel": "Light",
     "flavourType": "Fruity / floral",
     "acidity": "High",
@@ -21,7 +26,10 @@
     "category": "Micro Lot",
     "processingMethod": "Washed",
     "coffeeDetails": {},
-    "howToBrew": {}
+    "howToBrew": {},
+    "gallery": [
+      "https://rozalicoffee.de/cdn/shop/files/hendra-maulizar_product_retail_1800x1800.png?v=1754980110"
+    ]
   },
   {
     "name": "Garcia Family",
@@ -31,7 +39,11 @@
     "pricePerKg": "€80,00/kg",
     "image": "https://rozalicoffee.de/cdn/shop/files/garcia-family_product_retail_1800x1800.png?v=1754980110",
     "description": "Rich and balanced with notes of chocolate, caramel, and nuts.",
-    "flavourProfile": ["Chocolate", "Caramel", "Nuts"],
+    "flavourProfile": [
+      "Chocolate",
+      "Caramel",
+      "Nuts"
+    ],
     "roastLevel": "Medium",
     "flavourType": "Sweet & chocolaty",
     "acidity": "Low",
@@ -45,7 +57,10 @@
     "category": "Micro Lot",
     "processingMethod": "Natural",
     "coffeeDetails": {},
-    "howToBrew": {}
+    "howToBrew": {},
+    "gallery": [
+      "https://rozalicoffee.de/cdn/shop/files/garcia-family_product_retail_1800x1800.png?v=1754980110"
+    ]
   },
   {
     "name": "Inmaculada Geisha Signature",
@@ -55,7 +70,12 @@
     "pricePerKg": "€350,00/kg",
     "image": "https://rozalicoffee.de/cdn/shop/files/inmaculada-geisha-front-retail_1800x1800.png?v=1734117990",
     "description": "Exceptional Geisha varietal with complex floral and fruity notes.",
-    "flavourProfile": ["Jasmine", "Bergamot", "Peach", "Honey"],
+    "flavourProfile": [
+      "Jasmine",
+      "Bergamot",
+      "Peach",
+      "Honey"
+    ],
     "roastLevel": "Light",
     "flavourType": "Floral & light",
     "acidity": "High",
@@ -69,7 +89,10 @@
     "category": "Limited",
     "processingMethod": "Washed",
     "coffeeDetails": {},
-    "howToBrew": {}
+    "howToBrew": {},
+    "gallery": [
+      "https://rozalicoffee.de/cdn/shop/files/inmaculada-geisha-front-retail_1800x1800.png?v=1734117990"
+    ]
   },
   {
     "name": "James Gonzales",
@@ -79,7 +102,12 @@
     "pricePerKg": "€80,00/kg",
     "image": "https://rozalicoffee.de/cdn/shop/files/james-gonzales_product_retail_1800x1800.png?v=1754980110",
     "description": "Bright and clean with citrus notes and a smooth finish.",
-    "flavourProfile": ["Citrus", "Orange", "Honey", "Caramel"],
+    "flavourProfile": [
+      "Citrus",
+      "Orange",
+      "Honey",
+      "Caramel"
+    ],
     "roastLevel": "Light",
     "flavourType": "Fruity & lively",
     "acidity": "Medium",
@@ -93,7 +121,10 @@
     "category": "Micro Lot",
     "processingMethod": "Washed",
     "coffeeDetails": {},
-    "howToBrew": {}
+    "howToBrew": {},
+    "gallery": [
+      "https://rozalicoffee.de/cdn/shop/files/james-gonzales_product_retail_1800x1800.png?v=1754980110"
+    ]
   },
   {
     "name": "Roberto Martínez",
@@ -101,9 +132,14 @@
     "origin": "Honduras",
     "price": "€15,00",
     "pricePerKg": "€75,00/kg",
-    "image": "https://rozalicoffee.de/cdn/shop/files/roberto-martinez_product_retail_1800x1800.png?v=1754980110",
+    "image": "https://rozalicoffee.de/cdn/shop/files/product_alfonso-pineda_200g_2025.jpg?v=1764944125",
     "description": "Well-balanced with notes of chocolate, red fruits, and a hint of spice.",
-    "flavourProfile": ["Chocolate", "Red Fruits", "Spice", "Caramel"],
+    "flavourProfile": [
+      "Chocolate",
+      "Red Fruits",
+      "Spice",
+      "Caramel"
+    ],
     "roastLevel": "Medium",
     "flavourType": "Sweet & chocolaty",
     "acidity": "Medium",
@@ -117,7 +153,10 @@
     "category": "Micro Lot",
     "processingMethod": "Washed",
     "coffeeDetails": {},
-    "howToBrew": {}
+    "howToBrew": {},
+    "gallery": [
+      "https://rozalicoffee.de/cdn/shop/files/product_alfonso-pineda_200g_2025.jpg?v=1764944125"
+    ]
   },
   {
     "name": "Finca Deborah Geisha Vivid",
@@ -127,7 +166,12 @@
     "pricePerKg": "€420,00/kg",
     "image": "https://rozalicoffee.de/cdn/shop/files/finca-deborah-front-retail_1800x1800.png?v=1734118065",
     "description": "Exquisite Geisha with vibrant floral notes and tropical fruit complexity.",
-    "flavourProfile": ["Jasmine", "Bergamot", "Mango", "Passion Fruit"],
+    "flavourProfile": [
+      "Jasmine",
+      "Bergamot",
+      "Mango",
+      "Passion Fruit"
+    ],
     "roastLevel": "Light",
     "flavourType": "Floral & light",
     "acidity": "High",
@@ -141,7 +185,10 @@
     "category": "Exotic",
     "processingMethod": "Washed",
     "coffeeDetails": {},
-    "howToBrew": {}
+    "howToBrew": {},
+    "gallery": [
+      "https://rozalicoffee.de/cdn/shop/files/finca-deborah-front-retail_1800x1800.png?v=1734118065"
+    ]
   },
   {
     "name": "Ivan Villaquira",
@@ -151,7 +198,12 @@
     "pricePerKg": "€95,00/kg",
     "image": "https://rozalicoffee.de/cdn/shop/files/ivan-villaquira_product_retail_1800x1800.png?v=1754980110",
     "description": "Complex and fruity with notes of red berries, wine, and a floral finish.",
-    "flavourProfile": ["Red Berries", "Wine", "Floral", "Caramel"],
+    "flavourProfile": [
+      "Red Berries",
+      "Wine",
+      "Floral",
+      "Caramel"
+    ],
     "roastLevel": "Light",
     "flavourType": "Fruity & lively",
     "acidity": "High",
@@ -165,7 +217,10 @@
     "category": "Micro Lot",
     "processingMethod": "Washed",
     "coffeeDetails": {},
-    "howToBrew": {}
+    "howToBrew": {},
+    "gallery": [
+      "https://rozalicoffee.de/cdn/shop/files/ivan-villaquira_product_retail_1800x1800.png?v=1754980110"
+    ]
   },
   {
     "name": "Getuya AA",
@@ -175,7 +230,12 @@
     "pricePerKg": "€90,00/kg",
     "image": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=1800&h=1800&fit=crop&q=80",
     "description": "Classic Kenyan profile with bright acidity, blackcurrant notes, and a clean finish.",
-    "flavourProfile": ["Blackcurrant", "Grapefruit", "Lemon", "Black Tea"],
+    "flavourProfile": [
+      "Blackcurrant",
+      "Grapefruit",
+      "Lemon",
+      "Black Tea"
+    ],
     "roastLevel": "Light",
     "flavourType": "Fruity & lively",
     "acidity": "High",
@@ -189,7 +249,10 @@
     "category": "Micro Lot",
     "processingMethod": "Washed",
     "coffeeDetails": {},
-    "howToBrew": {}
+    "howToBrew": {},
+    "gallery": [
+      "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=1800&h=1800&fit=crop&q=80"
+    ]
   },
   {
     "name": "Bishan Wate",
@@ -197,9 +260,14 @@
     "origin": "Ethiopia",
     "price": "€18,00",
     "pricePerKg": "€90,00/kg",
-    "image": "https://rozalicoffee.de/cdn/shop/files/bishan-wate_product_retail_1800x1800.png?v=1754980110",
+    "image": "https://rozalicoffee.de/cdn/shop/files/product_bishan-wate_retail_2025.jpg?v=1765115085",
     "description": "Ethiopian classic with floral notes, bergamot, and a tea-like body.",
-    "flavourProfile": ["Jasmine", "Bergamot", "Lemon", "Tea"],
+    "flavourProfile": [
+      "Jasmine",
+      "Bergamot",
+      "Lemon",
+      "Tea"
+    ],
     "roastLevel": "Light",
     "flavourType": "Floral & light",
     "acidity": "High",
@@ -213,7 +281,10 @@
     "category": "Micro Lot",
     "processingMethod": "Washed",
     "coffeeDetails": {},
-    "howToBrew": {}
+    "howToBrew": {},
+    "gallery": [
+      "https://rozalicoffee.de/cdn/shop/files/product_bishan-wate_retail_2025.jpg?v=1765115085"
+    ]
   },
   {
     "name": "Javier Quintero",
@@ -223,7 +294,12 @@
     "pricePerKg": "€110,00/kg",
     "image": "https://rozalicoffee.de/cdn/shop/files/javier-quintero_product_retail_1800x1800.png?v=1754980110",
     "description": "Exceptional Colombian coffee with complex fruit notes and exceptional clarity.",
-    "flavourProfile": ["Red Apple", "Honey", "Caramel", "Floral"],
+    "flavourProfile": [
+      "Red Apple",
+      "Honey",
+      "Caramel",
+      "Floral"
+    ],
     "roastLevel": "Light",
     "flavourType": "Fruity & lively",
     "acidity": "High",
@@ -237,7 +313,9 @@
     "category": "Micro Lot",
     "processingMethod": "Washed",
     "coffeeDetails": {},
-    "howToBrew": {}
+    "howToBrew": {},
+    "gallery": [
+      "https://rozalicoffee.de/cdn/shop/files/javier-quintero_product_retail_1800x1800.png?v=1754980110"
+    ]
   }
 ]
-
